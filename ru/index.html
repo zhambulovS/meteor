@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>Метеор - электронный спорт</title>
+    <style>
+        body {
+            padding: 0!important;
+        }
+
+        /*page-loader styles*/
+        .page-loader {
+            background-color: #ffffff96;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 9998;
+            display: none;
+        }
+        .page-loader .preloader-image-preview {
+            left: 50%;
+            top: 50%;
+            position: relative;
+            display: block;
+            margin: -64px 0 0 -64px;
+        }
+        .preloader-image-preview img {
+            width: 128px;
+            height: 128px;
+        }
+
+        /*empty-not-found error styles*/
+        .g-callout.g-callout-danger {
+            border-left-color: #E76E6E;
+            background: #FFE4E4;
+            margin-left: 15px;
+        }
+        .g-callout {
+            padding: .875rem .875rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-left: .25rem solid transparent;
+            font-size: .875rem;
+        }
+
+        /* btn load more */
+        .main-cards__show-more {
+            border: 2px solid #1787FF;
+            color: #1787FF;
+            font-weight: bold;
+        }
+
+        /* fit img */
+        .avatar-card img {
+            object-fit: cover;
+        }
+
+        /* images for file-uploads on forms */
+        .file-download-wrapper .files-container .file-info-icon.doc {
+            background-image: url(../images/doc.svg);
+        }
+        .file-download-wrapper .files-container .file-info-icon.zip {
+            background-image: url(../images/folder.svg);
+        }
+
+        /* cabinet images on password inputs */
+        .password-control {
+            background: url(../images/view.svg) 0 0 no-repeat;
+        }
+        .password-control.view {
+            background: url(../images/no-view.svg) no-repeat 0 0;
+        }
+
+        .cabinet .form-control {
+            border: 1px solid #01B5F0!important;
+        }
+
+        .btn.cabinet-btn {
+            background-color: #fff;
+            border: 1px solid #0074F0;
+            color: #0074F0;
+        }
+
+        /* tech support fake */
+        .fake-block {
+            cursor: pointer;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+            z-index: 2147483648;
+        }
+        .fake-block .fb-body {
+            right: 30px;
+            left: auto;
+            position: relative;
+            box-shadow: 0 12px 14px 8px rgba(0, 0, 0, 0.17);
+            background: linear-gradient(95deg, #3f51b5 20%, #7486e5 80%);
+            border-top-left-radius: 8px !important;
+            border-top-right-radius: 34px !important;
+            height: 40px;
+            width: auto;
+            min-width: 300px;
+        }
+        .fake-block .fb-body .fb-title {
+            color: white;
+            margin: 0 33px 0 16px;
+            line-height: 40px;
+        }
+        .fake-block .fb-body .fb-img {
+            right: 0;
+            position: absolute;
+            top: 0;
+            width: 33px;
+            border-radius: 0 24px 0 0 !important;
+        }
+        .fake-block .fb-body .fb-img .icon {
+            width: 32px !important;
+            height: 34px !important;
+            position: absolute;
+            overflow: visible;
+            right: 0;
+            top: 0;
+        }
+
+        .checkbox-circle.off .icon-table-red {
+            font-size: 18px;
+            width: 35px;
+            height: 35px;
+            border: 3px solid #FF9D9D;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .child-visit-status-selector, .child-visit-status-selector-mobile {
+            position: relative;
+        }
+
+        .child-visit-status-variant {
+            z-index: 3;
+            position: relative;
+        }
+
+        .child-visit-status-variant-block, .child-visit-status-variant-block-mobile {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 4;
+            cursor: pointer;
+        }
+
+        .grey-mode-timesheet-cell {
+            filter: gray;
+            filter: gray; filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+            -webkit-filter: grayscale(100%);
+        }
+
+        .scroll-width {
+            max-width: none!important;
+        }
+    </style>
+
+        <meta name="csrf-param" content="_csrf">
+<meta name="csrf-token" content="w4B3Jiq76tBeAQFFi1LC-vTsoUJa8UEdfy2avAv4kHCp5k9eWNeisipydTTiJ6i9xraQETG5BysRH9b4TLWkGw==">
+
+<link href="../assets/71d79331/css/bootstrap.css@v=1721220178.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap&quot; rel=&quot;stylesheet" rel="stylesheet">
+<link href="../libs/slick/slick.css@v=1686801454.css" rel="stylesheet">
+<link href="../libs/slick/slick-theme.css@v=1686801454.css" rel="stylesheet">
+<link href="../libs/nice-select/nice-select.css@v=1686801454.css" rel="stylesheet">
+<link href="../libs/bootstrap/components.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../css/alert.css@v=1686801454.css" rel="stylesheet">
+<link href="../libs/fancybox/jquery.fancybox.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../css/main.css@v=1721219990.css" rel="stylesheet"></head>
+<!--class="meteor-almaty" включение метеор алматы-->
+<body class="" data-lang="ru" >
+
+
+<div class="page-loader" id="page-content-loader">
+    <div class="preloader-image-preview">
+        <img src="../images/loader.gif" alt="">
+    </div>
+</div>
+
+
+
+<header class="header">
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-8 col-lg-3 d-flex">
+                    <div class="dropdown mobile-dropdown align-self-center">
+                        <a class="dropdown-info dropdown-toggle" href="index.html#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sometext d-none d-sm-inline-block">Полезная информация</span>
+                            <span class="sometext d-inline-block d-sm-none">Информация</span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="index.html#">Как войти в Личный кабинет?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex clock-block">
+                    <div class="m-lg-auto align-self-center pl-lg-3">
+                        Эталонное время сервера: <span id="clock-text">2024.08.12 16:10:23</span>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-lg-4 d-flex">
+                    <div class="ml-auto align-self-center">
+                        <a href="index.html#" class="city-select" data-toggle="modal" data-target="#cityModal">
+                            <img src="../images/icons/maps-and-flags.svg" class="mr-2" alt="">
+                            <span class="d-none d-sm-block">Костанайская область</span>
+                        </a>
+                    </div>
+                    
+<div class="d-none d-lg-flex justify-content-end">
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="../kz/index.html">Қазақша</a>
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="index.html">Русский</a>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <nav class="navbar justify-content-between">
+                
+<div class="logo-city">
+<img src="index.html" alt="" width="50">
+
+                                   </div>
+
+<style>
+    .main-header .logo-city {
+        flex: 0 0 15rem!important;
+    }
+</style>
+                <a href="../ru.1.html" class="navbar-brand">
+                    <img src="../images/logo/logo.svg" alt="meteor_logo">
+                </a>
+
+                <ul class="d-none d-lg-flex navbar-nav flex-row">
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="sections.html">Спортивные секции</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="organizations.html">Спортивные объекты</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="couches.html">Тренерский состав</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="site/upcoming-events.html">Мероприятия</a>
+                    </li>
+                </ul>
+
+                <div class="burger-icon">
+                    <div id="burger-wrapper">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </div>
+
+                <a class="d-none d-lg-block btn main-btn personal-area-btn" href="cabinet.html">
+                                            Войти в личный кабинет                                    </a>
+                <a class="d-block d-lg-none avatar-block" href="cabinet.html">
+                    <img src="../images/icons/user.svg" alt="">
+                </a>
+            </nav>
+        </div>
+    </div>
+
+</header>
+
+<div class="mobileMenu" id="mobileMenu" >
+    <div class="mobileMenu__wrapper">
+
+        <a href="index.html#" class="city-select btn main-outline-btn" data-toggle="modal" data-target="#cityModal">
+            <svg class="icon">
+                <use xlink:href="/images/sprite.svg#map"></use>
+            </svg>
+            <span>Костанайская область</span>
+        </a>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="sections.html">Спортивные секции</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="organizations.html">Спортивные объекты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="couches.html">Тренерский состав</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="site/upcoming-events.html">Мероприятия</a>
+            </li>
+        </ul>
+
+        
+<div class="mobile-menu__choice-language d-lg-none">
+    <ul class="btn-group--lang">
+                    <li class="">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="../kz/index.html">Қазақша</a>
+            </li>
+                    <li class="active">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="index.html">Русский</a>
+            </li>
+            </ul>
+</div>
+
+        <a class="btn login-btn main-btn" href="cabinet.html">
+                            Войти в личный кабинет                    </a>
+    </div>
+
+</div>
+
+
+
+<script>
+    var burger = document.querySelector('.burger') !== null;
+    if (burger) {
+        burger.addEventListener('click', function(){
+            document.querySelector('.burger span').classList.toggle('active');
+        })
+    }
+
+    var menu = document.querySelector('.menu') !== null;
+    if (menu) {
+        menu.classList.toggle("animate");
+    }
+</script>
+
+<main class="main bg-section-card">
+    
+        <section class="section-almaty">
+    <div class="almaty-page">
+        <div class="promo-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="promo-wrapper">
+                            <img src="index.html" alt="" class="promo-wrapper__img">
+                            <h1 class="promo-wrapper__title">Спортивная молодежь — здоровая нация</h1>
+                            <h2 class="promo-wrapper__subtitle">Удобный поиск всех спортивных организаций, мероприятий, а также большой реестр секций и тренерского состава</h2>
+                            <div class="promo-box">
+                                <a href="enrollment-sport-school/start.html" class="btn second-light-btn btn-block">Записаться в ДЮСШ</a>
+                                <a href="enrollment-adult/start.html" class="btn white-btn btn-block">Записаться в спортивный клуб</a>
+                            </div>
+                            <a href="index.html#" class="promo-wrapper__link" data-toggle="modal"
+                               data-target="#supportModal">Написать обращение в управление спорта</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-wrapper">
+                            <div class="card-grid">
+                                <div class="card-item">
+                                    <img src="../images/almaty/card-img-1.jpg" alt="" class="card-item__img">
+                                    <div class="card-box">
+                                        <h3 class="card-box__title">Неолимпийские виды спорта</h3>
+                                        <a href="site/sport-page@id=1.html" class="card-box__link">Узнать подробнее</a>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <img src="../images/almaty/card-img-2.jpg" alt="" class="card-item__img">
+                                    <div class="card-box">
+                                        <h3 class="card-box__title">Летние олимпийские виды спорта</h3>
+                                        <a href="site/sport-page@id=2.html" class="card-box__link">Узнать подробнее</a>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <img src="../images/almaty/card-img-3.jpg" alt="" class="card-item__img">
+                                    <div class="card-box">
+                                        <h3 class="card-box__title">Зимние олимпийские виды спорта</h3>
+                                        <a href="site/sport-page@id=3.html" class="card-box__link">Узнать подробнее</a>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <img src="../images/almaty/card-img-4.jpg" alt="" class="card-item__img">
+                                    <div class="card-box">
+                                        <h3 class="card-box__title">Национальные виды спорта</h3>
+                                        <a href="site/sport-page@id=4.html" class="card-box__link">Узнать подробнее</a>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <img src="../images/almaty/card-img-5.jpg" alt="" class="card-item__img">
+                                    <div class="card-box">
+                                        <h3 class="card-box__title">Паралимпийские, сурдолимпийские и адаптивные виды спорта</h3>
+                                        <a href="site/sport-page@id=5.html" class="card-box__link">Узнать подробнее</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="organization-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="organization-wrapper">
+                            <h2 class="organization-wrapper__title">Спортивные организации</h2>
+                            <div class="organization-wrap">
+                                <a href="organizations/index@SearchOrganizationForm[tipy_organizatsiy][0]=1&amp;SearchOrganizationForm[tipy_organizatsiy][1]=3.html" class="section-item">
+                                    <img src="../images/almaty/organization-img-1.jpg" alt="" class="section-item__img">
+                                    <div class="section-box">
+                                        <p class="section-item__text">Спортивные школы</p>
+                                    </div>
+                                </a>
+                                <a href="organizations/index@SearchOrganizationForm[tipy_organizatsiy][0]=2.html" class="section-item">
+                                    <img src="../images/almaty/organization-img-2.jpg" alt="" class="section-item__img">
+                                    <div class="section-box">
+                                        <p class="section-item__text">Спортивные объекты</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <h2 class="organization-wrapper__title">Ищите спортивные школы и спортивные объекты на картах</h2>
+                        </div>
+                        <div class="organization-wrap organization-wrap--one">
+                            <a href="organizations/index@open-map=1.html" class="section-item">
+                                <img src="../images/almaty/organization-img-3.jpg" alt="" class="section-item__img">
+                                <div class="section-box">
+                                    <svg viewBox="0 0 29 41" fill="none" class="section-box__icon">
+                                        <path d="M14.5 0C10.6544 0 6.96623 1.51187 4.24695 4.20302C1.52767 6.89416 0 10.5441 0 14.35C0 25.1125 14.5 41 14.5 41C14.5 41 29 25.1125 29 14.35C29 10.5441 27.4723 6.89416 24.753 4.20302C22.0338 1.51187 18.3456 0 14.5 0V0ZM14.5 19.475C13.4758 19.475 12.4746 19.1744 11.6229 18.6113C10.7713 18.0481 10.1076 17.2477 9.71562 16.3113C9.32367 15.3748 9.22112 14.3443 9.42093 13.3502C9.62075 12.356 10.114 11.4428 10.8382 10.7261C11.5624 10.0093 12.4852 9.52122 13.4897 9.32347C14.4943 9.12573 15.5355 9.22722 16.4818 9.61512C17.428 10.003 18.2368 10.6599 18.8058 11.5027C19.3749 12.3455 19.6786 13.3364 19.6786 14.35C19.6786 15.023 19.5446 15.6895 19.2844 16.3113C19.0241 16.933 18.6427 17.498 18.1618 17.9739C17.6809 18.4498 17.11 18.8273 16.4818 19.0849C15.8535 19.3424 15.1801 19.475 14.5 19.475V19.475Z"
+                                              fill="white"/>
+                                    </svg>
+                                    <p class="section-item__text">Спортивные школы</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="services-wrapper">
+                        <h2 class="organization-wrapper__title">Услуги</h2>
+                        <div class="services-grid">
+                                                        <a href="enrollment-boarding-school/start.html" class="services-item">
+                                Зачисление в специализированные школы олимпийского резерва и областные школы-интернаты для одаренных в спорте детей                            </a>
+                                                                                    <a href="enrollment-sport-school/start.html" class="services-item">
+                                Прием документов в детско-юношеские спортивные школы, спортивные школы для инвалидов                            </a>
+                                                                                    <a href="enrollment-adult/start.html" class="services-item">
+                                Зачисление спортивного контингента 18+ в спортивные школы, спортивные школы для инвалидов                            </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="events-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="events-wrapper">
+                            <h2 class="organization-wrapper__title">Услуги</h2>
+                            <a href="site/upcoming-events.html" class="events-link">
+                                <svg viewBox="0 0 20 20" fill="none" class="events-link__icon">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.9013 2.66667H17.868C18.9541 2.66667 19.8346 3.5621 19.8346 4.66667V18C19.8346 19.1046 18.9541 20 17.868 20H2.13464C1.04848 20 0.167969 19.1046 0.167969 18V4.66667C0.167969 3.5621 1.04848 2.66667 2.13464 2.66667H4.1013V0H5.41241V2.66667H14.5902V0H15.9013V2.66667ZM8.03464 10.6667H4.1013V9.33333H8.03464V10.6667ZM15.9013 9.33333H11.968V10.6667H15.9013V9.33333ZM8.03464 14.6667H4.1013V13.3333H8.03464V14.6667ZM11.968 14.6667H15.9013V13.3333H11.968V14.6667Z" fill="white" />
+                                </svg>
+                                <span class="events-link__text">Календарь спортивных мероприятий</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="new-services-section">
+            <div class="container position-relative">
+
+                <div class="icons-content">
+                    <div>
+                        <div class="icons icon-1">
+                            <svg class="icon">
+                                <use xlink:href="/images/new-services/sprite.svg#icon-1"></use>
+                            </svg>
+                        </div>
+                        <div class="icons icon-2">
+                            <svg class="icon">
+                                <use xlink:href="/images/new-services/sprite.svg#icon-2"></use>
+                            </svg>
+                        </div>
+                        <div class="icons icon-3">
+                            <svg class="icon">
+                                <use xlink:href="/images/new-services/sprite.svg#icon-3"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="icons icon-4">
+                            <svg class="icon">
+                                <use xlink:href="/images/new-services/sprite.svg#icon-4"></use>
+                            </svg>
+                        </div>
+                        <div class="icons icon-5">
+                            <svg class="icon">
+                                <use xlink:href="/images/new-services/sprite.svg#icon-5"></use>
+                            </svg>
+                        </div>
+                        <div class="icons icon-6">
+                            <svg class="icon">
+                                <use xlink:href="/images/new-services/sprite.svg#icon-6"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m-auto text-center">
+                    <a target="_blank" href="https://ed24.kz/ru" class="logo-img">
+                        <img src="../images/new-services/logotype.svg" alt="edu-24"/>
+                    </a>
+                    <h2>Еще больше возможностей на Портале цифровых услуг для детского образования</h2>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+</div>
+<div class="main-page main-page--hidden">
+    <section class="promo-section position-relative">
+        <div class="logotype-desktop"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-7">
+                    <h1 class="title">Спортивная молодежь — здоровая нация</h1>
+                    <p class="description">Удобный поиск всех спортивных организаций, мероприятий, а также большой реестр секций и тренерского состава</p>
+                </div>
+                <div class="col-12">
+                    <div class="promo-btn-group">
+                        <div class="width-btn">
+                            <a href="enrollment-sport-school/start.html"
+                               class="btn white-btn btn-block">Записать ребенка в секцию</a>
+                        </div>
+                                                    <div class="width-btn">
+                                <a href="enrollment-adult/start.html"
+                                   class="btn second-light-btn btn-block">Записаться в секцию</a>
+                            </div>
+                                                <div class="width-btn">
+                            <a href="index.html#" class="btn second-btn btn-block" data-toggle="modal"
+                               data-target="#supportModal">Написать обращение в управление спорта</a>
+                        </div>
+                    </div>
+                    <div class="logotype">
+                        <img src="../images/logo/logo-eorda.svg" alt="logo">
+                    </div>
+                </div>
+            </div>
+            <div class="card__item-wrap row">
+                <div class="col-lg-6">
+                    <a class="card__item-link" href="site/sport-page@id=1.html">
+                        <div class="card__item">
+                            <div class="card__item-icons icon-2"></div>
+                            <h3 class="text-center">Неолимпийские виды спорта</h3>
+                            <span class="btn second-light-btn btn-block">Узнать подробнее</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a class="card__item-link" href="site/sport-page@id=2.html">
+                        <div class="card__item">
+                            <div class="card__item-icons icon-7"></div>
+                            <h3 class="text-center">Летние олимпийские виды спорта</h3>
+                            <span class="btn second-light-btn btn-block">Узнать подробнее</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a class="card__item-link" href="site/sport-page@id=3.html">
+                        <div class="card__item">
+                            <div class="card__item-icons icon-3"></div>
+                            <h3 class="text-center">Зимние олимпийские виды спорта</h3>
+                            <span class="btn second-light-btn btn-block">Узнать подробнее</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a class="card__item-link" href="site/sport-page@id=4.html">
+                        <div class="card__item">
+                            <div class="card__item-icons icon-5"></div>
+                            <h3 class="text-center">Национальные виды спорта</h3>
+                            <span class="btn second-light-btn btn-block">Узнать подробнее</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-12">
+                    <a class="card__item-link" href="site/sport-page@id=5.html">
+                        <div class="card__item">
+                            <div class="card__item-icons icon-8"></div>
+                            <h3 class="text-center">Паралимпийские, сурдолимпийские и адаптивные виды спорта</h3>
+                            <span class="btn second-light-btn btn-block">Узнать подробнее</span>
+                        </div>
+                    </a>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="promo-section-bg-right"></div>
+    </section>
+
+    <section class="org-section">
+        <div class="container">
+            <h2 class="text-center">Спортивные организации</h2>
+            <div class="row">
+                <div class="col-lg-6 padding-x cursor-pointer mb-3 mb-lg-0"
+                     onclick="location.href='/ru/organizations/index?SearchOrganizationForm%5Btipy_organizatsiy%5D%5B0%5D=1&SearchOrganizationForm%5Btipy_organizatsiy%5D%5B1%5D=3'">
+                    <div class="card__item f-obj">
+                        <h3 class="col-lg-6">Спортивные школы</h3>
+                    </div>
+                </div>
+                <div class="col-lg-6 padding-x cursor-pointer mb-3 mb-lg-0"
+                     onclick="location.href='/ru/organizations/index?SearchOrganizationForm%5Btipy_organizatsiy%5D%5B0%5D=2'">
+                    <div class="card__item s-obj">
+                        <h3 class="col-lg-6">Спортивные объекты</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="org-section__wrap">
+                <div class="search__block-maps col-lg-8 px-0">
+                    <img src="image/full/3568-5-7"
+                         alt="map">
+                </div>
+            </div>
+            <h3 class="title col-lg-8">Ищите спортивные школы и спортивные объекты на картах</h3>
+
+            <div class="d-flex justify-content-center">
+                <a href="organizations/index@open-map=1.html" class="btn main-btn btn-with-icon">
+                    <svg class="icon">
+                        <use xlink:href="/images/sprite.svg#map"></use>
+                    </svg>
+                    <span>Открыть карту</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+            <section class="service-section">
+            <div class="service-section--wrap">
+                <div class="container">
+                    <h2 class="text-center">Услуги</h2>
+                    <div class="row">
+                                                    <div class="col-lg-6 padding-x">
+                                <a href="enrollment-boarding-school/start.html" class="card__item-link">
+                                    <div class="card__item">
+                                        <svg class="icon icon-1">
+                                            <use xlink:href="/images/sprite.svg#service-talent"></use>
+                                        </svg>
+                                        <h3>Зачисление в специализированные школы олимпийского резерва и областные школы-интернаты для одаренных в спорте детей</h3>
+                                    </div>
+                                </a>
+                            </div>
+                                                                            <div class="col-lg-6 padding-x">
+                                <a href="enrollment-sport-school/start.html" class="card__item-link">
+                                    <div class="card__item">
+                                        <svg class="icon icon-2">
+                                            <use xlink:href="/images/sprite.svg#service-disabled"></use>
+                                        </svg>
+                                        <h3>Прием документов в детско-юношеские спортивные школы, спортивные школы для инвалидов</h3>
+                                    </div>
+                                </a>
+                            </div>
+                                                                                                    <div class="col-lg-6 padding-x mx-auto">
+                                <a href="enrollment-adult/start.html" class="card__item-link">
+                                    <div class="card__item">
+                                        <svg class="icon icon-4">
+                                            <use xlink:href="/images/sprite.svg#service-disabled"></use>
+                                        </svg>
+                                        <h3>Зачисление спортивного контингента 18+ в спортивные школы, спортивные школы для инвалидов</h3>
+                                    </div>
+                                </a>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </section>
+        <section class="events-section" id="events">
+        <div class="container">
+            <h2 class="text-center">Ближайшие мероприятия</h2>
+            <div class="row mb-lg-40 mb-0">
+                                    <div class="col-lg-4 mb-20">
+                        <div class="card__item-link">
+                            <div class="card__item d-flex flex-column">
+                                <h3>УТС по ОФП и СФП</h3>
+                                <div class="date">
+                                    <svg class="icon">
+                                        <use xlink:href="/images/sprite.svg#date"></use>
+                                    </svg>
+                                    <span>03.08.2024 - 18.08.2024</span>
+                                </div>
+                                <p class="mb-3">Участников:
+                                    <span>10</span></p>
+                                <p class="mb-3">Место проведения:
+                                    <span>г.Щучинск</span></p>
+                                <p>Ответственный: <span>Цыганова А.В.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4 mb-20">
+                        <div class="card__item-link">
+                            <div class="card__item d-flex flex-column">
+                                <h3>Кубок Республики Казахстан по летнему президентскому многоборью (пятиборье с бегом)</h3>
+                                <div class="date">
+                                    <svg class="icon">
+                                        <use xlink:href="/images/sprite.svg#date"></use>
+                                    </svg>
+                                    <span>14.08.2024 - 22.08.2024</span>
+                                </div>
+                                <p class="mb-3">Участников:
+                                    <span>2</span></p>
+                                <p class="mb-3">Место проведения:
+                                    <span></span></p>
+                                <p>Ответственный: <span>Кнышев В.В.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4 mb-20">
+                        <div class="card__item-link">
+                            <div class="card__item d-flex flex-column">
+                                <h3>5-й этап Детского кубка республики Казахстан по классическим шахматам"</h3>
+                                <div class="date">
+                                    <svg class="icon">
+                                        <use xlink:href="/images/sprite.svg#date"></use>
+                                    </svg>
+                                    <span>21.08.2024 - 30.08.2024</span>
+                                </div>
+                                <p class="mb-3">Участников:
+                                    <span>280</span></p>
+                                <p class="mb-3">Место проведения:
+                                    <span>ДЮСШ №3</span></p>
+                                <p>Ответственный: <span>Русанов П.В.   Уралбаев А.А.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4 mb-20">
+                        <div class="card__item-link">
+                            <div class="card__item d-flex flex-column">
+                                <h3></h3>
+                                <div class="date">
+                                    <svg class="icon">
+                                        <use xlink:href="/images/sprite.svg#date"></use>
+                                    </svg>
+                                    <span>04.12.2024 - 04.01.2024</span>
+                                </div>
+                                <p class="mb-3">Участников:
+                                    <span>40</span></p>
+                                <p class="mb-3">Место проведения:
+                                    <span>Қостанай облысы Жангелдин ауданы Торғай с </span></p>
+                                <p>Ответственный: <span>Молдагассимов А</span></p>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+
+            <div class="d-flex justify-content-center">
+                <a href="site/upcoming-events.html" class="btn main-btn btn-with-icon">
+                    <svg class="icon">
+                        <use xlink:href="/images/sprite.svg#date"></use>
+                    </svg>
+                    <span>Календарь спортивных мероприятий</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="new-services-section">
+        <div class="container position-relative">
+
+            <div class="icons-content">
+                <div>
+                    <div class="icons icon-1">
+                        <svg class="icon">
+                            <use xlink:href="/images/new-services/sprite.svg#icon-1"></use>
+                        </svg>
+                    </div>
+                    <div class="icons icon-2">
+                        <svg class="icon">
+                            <use xlink:href="/images/new-services/sprite.svg#icon-2"></use>
+                        </svg>
+                    </div>
+                    <div class="icons icon-3">
+                        <svg class="icon">
+                            <use xlink:href="/images/new-services/sprite.svg#icon-3"></use>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <div class="icons icon-4">
+                        <svg class="icon">
+                            <use xlink:href="/images/new-services/sprite.svg#icon-4"></use>
+                        </svg>
+                    </div>
+                    <div class="icons icon-5">
+                        <svg class="icon">
+                            <use xlink:href="/images/new-services/sprite.svg#icon-5"></use>
+                        </svg>
+                    </div>
+                    <div class="icons icon-6">
+                        <svg class="icon">
+                            <use xlink:href="/images/new-services/sprite.svg#icon-6"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-auto text-center">
+                <a target="_blank" href="https://ed24.kz/ru" class="logo-img">
+                    <img src="../images/new-services/logotype.svg" alt="edu-24"/>
+                </a>
+                <h2>Еще больше возможностей на Портале цифровых услуг для детского образования</h2>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+</main>
+
+
+<footer class="footer footer-almaty">
+    <div class="container">
+        
+        <hr class="d-lg-block d-none "/>
+        <div class="text-center f-link">
+            <p class="f-body footer-copyright">Интернет-ресурс, его структура, правила форматно-логического контроля и размещенный медиа-контент, охраняется законом «Об авторском праве и смежных правах» Республики Казахстан. Эверест ЖМ, 2021©</p>
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="supportModal" tabindex="-1" role="dialog" aria-labelledby="supportModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="supportModalLabel">Обращение в управление спорта</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">ФИО:</label>
+                        <input type="text" class="form-control" id="sender-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Номер телефона                            :</label>
+                        <input type="text" class="form-control" id="sender-phone" data-mask="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label">Текст сообщения                            :</label>
+                        <textarea class="form-control" id="message-text" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary"
+                        id="send-message">Отправить сообщение</button>
+            </div>
+        </div>
+    </div>
+</div><script>var Messages = {"SNOW_MORE":"Загрузить еще","RECEIVE_VERIFY_CODE_SMS":"Получить код подтверждения через SMS","RECEIVE_VERIFY_CODE_EMAIL":"Получить код подтверждения через email","FAILED_SEND_VERIFY_CODE":"Не удалось отправить код подтверждения","SUCCESS_SEND_VERIFY_CODE":"Код подтверждения успешно отправлен","FAILED_TO_GET_DATA":"Данные не найдены","YOU_MUST_SELECT_A_TRAINING_PROFILE":"Необходимо выбрать профиль обучения","UNABLE_TO_APPLY_AGE_IS":"Невозможно продолжить подачу заявления. Возраст ребенка составляет:","GO_TO":"Перейти","NOTHING_IS_SELECTED":"Ничего не выбрано","ALL":"Все","NO_SUPPORT":"<div><h4 class=\"alert-heading\">Извините, Вы обратились в нерабочее время.</h4><p>График работы технической поддержки с 9:00 - 18:00 в рабочие дни.</p><hr><p class=\"mb-0\">После начала рабочего дня обновите страницу и попробуйте еще раз.<br>Спасибо</p></div>","ERROR":"Ошибка","UNABLE_TO_APPLY_CITY_CHECK":"Невозможно продолжить подачу заявления. Место прописки не соответствует городу оказания услуги","UNABLE_TO_APPLY_PARENT_AGE":"Невозможно продолжить подачу заявления. Возраст законного представителя не может быть меньше 18 лет","UNABLE_TO_APPLY_APPLICANT_AGE":"Невозможно продолжить подачу заявления. Возраст заявителя не может быть меньше 18 лет","ERROR_SAME_IINS":"ИИН ребенка и законного представителя не могут быть одинаковыми","YOU_MUST_SELECT_THE_CURRENT_ORGANIZATION":"Необходимо выбрать текущую организацию","TO_CHOOSE":"To chose","CHOSEN":"Выбрано","SHOW_MORE":"Показать еще..."}</script><div class="alert alert--hide"></div>
+
+
+            <script>var LHC_API = LHC_API||{};
+            LHC_API.args = {mode:'widget',lhc_base_url:'//support.e-orda.kz/index.php/',wheight:450,wwidth:350,pheight:520,pwidth:500,leaveamessage:true,department:["46"],check_messages:false,proactive:false,lang:'rus/'};
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.setAttribute('crossorigin','anonymous'); po.async = true;
+                var date = new Date();po.src = '//support.e-orda.kz/design/defaulttheme/js/widgetv2/index.js?'+(""+date.getFullYear() + date.getMonth() + date.getDate());
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+    
+<script src="../assets/ad15b6a8/jquery.js@v=1721220178"></script>
+<script src="../assets/71d79331/js/bootstrap.bundle.js@v=1721220178"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=38bc483f-f846-4395-9bc9-cdc3cca71845&amp;lang=ru_RU"></script>
+<script src="../js/map.js@v=1686801454"></script>
+<script src="../libs/slick/slick.min.js@v=1686801454"></script>
+<script src="../libs/nice-select/jquery.nice-select.min.js@v=1686801454"></script>
+<script src="../libs/bootstrap/bootstrap-multiselect.js@v=1686801454"></script>
+<script src="../libs/fancybox/jquery.fancybox.min.js@v=1686801454"></script>
+<script src="../libs/inputmask/jquery.maskedinput.min.js@v=1686801454"></script>
+<script src="../js/script.js@v=1721219990"></script>
+<script src="../js/defaultSearch.js@v=1693483620"></script>
+<script src="../js/jquery.doubleScroll.js@v=1693483620"></script>
+<script src="../assets/6d082268/yii.js@v=1721220178"></script>
+<script src="../assets/666c9d38/jquery.inputmask.js@v=1721220178"></script>
+<script>jQuery(function ($) {
+    var lang = $('body').data('lang')
+    var d = new Date(2024,7,12,16,10,23);
+    function refreshTime() {
+        $.post("/" + lang + "/site/get-time", function(data) {
+            d = new Date(data.y, data.m, data.d, data.h, data.min, data.s);
+            update();
+        });
+    }  
+    
+    function update() {
+         var month = d.getMonth()+1 < 10 
+                    ? '0' + (d.getMonth()+1)
+                    : d.getMonth()+1;
+         var day = d.getDate() < 10 
+                    ? '0' + d.getDate() 
+                    : d.getDate();
+         var year = d.getFullYear();   
+            
+         var hours = d.getHours() == 0 
+                    ? '00'
+                    : d.getHours();
+            
+         var minutes = d.getMinutes() < 10 
+                    ? '0' + d.getMinutes() 
+                    : d.getMinutes();
+      
+        var seconds = d.getSeconds() < 10 
+                    ? '0' + d.getSeconds() 
+                    : d.getSeconds();     
+       
+       d.setSeconds(d.getSeconds() + 1);
+            $('#clock-text').text((year + '.' + month + '.' + day + ' ' + hours +':' + minutes + ':' + seconds ));
+    }
+    
+    update();
+    window.setInterval(update, 1000); 
+    window.setInterval(refreshTime, 1000*60*5);
+
+});</script></body>
+</html>

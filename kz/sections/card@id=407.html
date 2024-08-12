@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="kk-KK">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>Дзюдо (Кайырбеков Қ.Б.)</title>
+    <style>
+        body {
+            padding: 0!important;
+        }
+
+        /*page-loader styles*/
+        .page-loader {
+            background-color: #ffffff96;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 9998;
+            display: none;
+        }
+        .page-loader .preloader-image-preview {
+            left: 50%;
+            top: 50%;
+            position: relative;
+            display: block;
+            margin: -64px 0 0 -64px;
+        }
+        .preloader-image-preview img {
+            width: 128px;
+            height: 128px;
+        }
+
+        /*empty-not-found error styles*/
+        .g-callout.g-callout-danger {
+            border-left-color: #E76E6E;
+            background: #FFE4E4;
+            margin-left: 15px;
+        }
+        .g-callout {
+            padding: .875rem .875rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-left: .25rem solid transparent;
+            font-size: .875rem;
+        }
+
+        /* btn load more */
+        .main-cards__show-more {
+            border: 2px solid #1787FF;
+            color: #1787FF;
+            font-weight: bold;
+        }
+
+        /* fit img */
+        .avatar-card img {
+            object-fit: cover;
+        }
+
+        /* images for file-uploads on forms */
+        .file-download-wrapper .files-container .file-info-icon.doc {
+            background-image: url(../../images/doc.svg);
+        }
+        .file-download-wrapper .files-container .file-info-icon.zip {
+            background-image: url(../../images/folder.svg);
+        }
+
+        /* cabinet images on password inputs */
+        .password-control {
+            background: url(../../images/view.svg) 0 0 no-repeat;
+        }
+        .password-control.view {
+            background: url(../../images/no-view.svg) no-repeat 0 0;
+        }
+
+        .cabinet .form-control {
+            border: 1px solid #01B5F0!important;
+        }
+
+        .btn.cabinet-btn {
+            background-color: #fff;
+            border: 1px solid #0074F0;
+            color: #0074F0;
+        }
+
+        /* tech support fake */
+        .fake-block {
+            cursor: pointer;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+            z-index: 2147483648;
+        }
+        .fake-block .fb-body {
+            right: 30px;
+            left: auto;
+            position: relative;
+            box-shadow: 0 12px 14px 8px rgba(0, 0, 0, 0.17);
+            background: linear-gradient(95deg, #3f51b5 20%, #7486e5 80%);
+            border-top-left-radius: 8px !important;
+            border-top-right-radius: 34px !important;
+            height: 40px;
+            width: auto;
+            min-width: 300px;
+        }
+        .fake-block .fb-body .fb-title {
+            color: white;
+            margin: 0 33px 0 16px;
+            line-height: 40px;
+        }
+        .fake-block .fb-body .fb-img {
+            right: 0;
+            position: absolute;
+            top: 0;
+            width: 33px;
+            border-radius: 0 24px 0 0 !important;
+        }
+        .fake-block .fb-body .fb-img .icon {
+            width: 32px !important;
+            height: 34px !important;
+            position: absolute;
+            overflow: visible;
+            right: 0;
+            top: 0;
+        }
+
+        .checkbox-circle.off .icon-table-red {
+            font-size: 18px;
+            width: 35px;
+            height: 35px;
+            border: 3px solid #FF9D9D;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .child-visit-status-selector, .child-visit-status-selector-mobile {
+            position: relative;
+        }
+
+        .child-visit-status-variant {
+            z-index: 3;
+            position: relative;
+        }
+
+        .child-visit-status-variant-block, .child-visit-status-variant-block-mobile {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 4;
+            cursor: pointer;
+        }
+
+        .grey-mode-timesheet-cell {
+            filter: gray;
+            filter: gray; filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+            -webkit-filter: grayscale(100%);
+        }
+
+        .scroll-width {
+            max-width: none!important;
+        }
+    </style>
+
+        <meta name="csrf-param" content="_csrf">
+<meta name="csrf-token" content="EP37UOW4EzMzh-58iHmHwSSsCBVAtY3uwn9B3D0dsZd6m8Mol9RbUUf0mg3hDO2GFvY5Riv9y9isTQ2YelCF_A==">
+
+<link href="../../assets/71d79331/css/bootstrap.css@v=1721220178.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap&quot; rel=&quot;stylesheet" rel="stylesheet">
+<link href="../../libs/slick/slick.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/slick/slick-theme.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/nice-select/nice-select.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/bootstrap/components.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../../css/alert.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/fancybox/jquery.fancybox.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../../css/main.css@v=1721219990.css" rel="stylesheet"></head>
+<!--class="meteor-almaty" включение метеор алматы-->
+<body class="" data-lang="kz" >
+
+
+<div class="page-loader" id="page-content-loader">
+    <div class="preloader-image-preview">
+        <img src="../../images/loader.gif" alt="">
+    </div>
+</div>
+
+
+
+<header class="header">
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-8 col-lg-3 d-flex">
+                    <div class="dropdown mobile-dropdown align-self-center">
+                        <a class="dropdown-info dropdown-toggle" href="card@id=407.html#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sometext d-none d-sm-inline-block">Пайдалы ақпарат</span>
+                            <span class="sometext d-inline-block d-sm-none">Ақпарат</span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="card@id=407.html#">Жеке кабинетке қалай кіруге болады?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex clock-block">
+                    <div class="m-lg-auto align-self-center pl-lg-3">
+                        Сервердің эталондық уақыты: <span id="clock-text">2024.08.12 17:02:47</span>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-lg-4 d-flex">
+                    <div class="ml-auto align-self-center">
+                        <a href="card@id=407.html#" class="city-select" data-toggle="modal" data-target="#cityModal">
+                            <img src="../../images/icons/maps-and-flags.svg" class="mr-2" alt="">
+                            <span class="d-none d-sm-block">Қостанай облысы</span>
+                        </a>
+                    </div>
+                    
+<div class="d-none d-lg-flex justify-content-end">
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="card@id=407.html">Қазақша</a>
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="../../ru/sections/card@id=407.html">Русский</a>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <nav class="navbar justify-content-between">
+                
+<div class="logo-city">
+<img src="card@id=407.html" alt="" width="50">
+
+                                   </div>
+
+<style>
+    .main-header .logo-city {
+        flex: 0 0 15rem!important;
+    }
+</style>
+                <a href="../../kz.1.html" class="navbar-brand">
+                    <img src="../../images/logo/logo.svg" alt="meteor_logo">
+                </a>
+
+                <ul class="d-none d-lg-flex navbar-nav flex-row">
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../sections.html">Спорт секциялары</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../organizations.html">Спорт объектілері</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../couches.html">Жаттықтырушылар құрамы</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../site/upcoming-events.html">Іс-шаралар</a>
+                    </li>
+                </ul>
+
+                <div class="burger-icon">
+                    <div id="burger-wrapper">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </div>
+
+                <a class="d-none d-lg-block btn main-btn personal-area-btn" href="../cabinet.html">
+                                            Жеке кабинетке кіру                                    </a>
+                <a class="d-block d-lg-none avatar-block" href="../cabinet.html">
+                    <img src="../../images/icons/user.svg" alt="">
+                </a>
+            </nav>
+        </div>
+    </div>
+
+</header>
+
+<div class="mobileMenu" id="mobileMenu" >
+    <div class="mobileMenu__wrapper">
+
+        <a href="card@id=407.html#" class="city-select btn main-outline-btn" data-toggle="modal" data-target="#cityModal">
+            <svg class="icon">
+                <use xlink:href="/images/sprite.svg#map"></use>
+            </svg>
+            <span>Қостанай облысы</span>
+        </a>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="../sections.html">Спорт секциялары</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../organizations.html">Спорт объектілері</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../couches.html">Жаттықтырушылар құрамы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../site/upcoming-events.html">Іс-шаралар</a>
+            </li>
+        </ul>
+
+        
+<div class="mobile-menu__choice-language d-lg-none">
+    <ul class="btn-group--lang">
+                    <li class="active">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="card@id=407.html">Қазақша</a>
+            </li>
+                    <li class="">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="../../ru/sections/card@id=407.html">Русский</a>
+            </li>
+            </ul>
+</div>
+
+        <a class="btn login-btn main-btn" href="../cabinet.html">
+                            Жеке кабинетке кіру                    </a>
+    </div>
+
+</div>
+
+
+
+<script>
+    var burger = document.querySelector('.burger') !== null;
+    if (burger) {
+        burger.addEventListener('click', function(){
+            document.querySelector('.burger span').classList.toggle('active');
+        })
+    }
+
+    var menu = document.querySelector('.menu') !== null;
+    if (menu) {
+        menu.classList.toggle("animate");
+    }
+</script>
+
+<main class="main bg-section-card">
+            <nav aria-label="breadcrumb" class="breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kz.1.html">Басты бет</a></li><li class="breadcrumb-item"><a href="../sections.html">Спорт секцияларының тізімі</a></li><li class="breadcrumb-item active" aria-current="page">Дзюдо (Кайырбеков Қ.Б.)</li></ol>            </div>
+        </nav>
+    
+        
+<div class="sections-card__wrap">
+    <div class="container pb-5">
+        <div class="row pb-5">
+            <div class="col-lg-5">
+                <div class="avatar-card">
+                                            <div class="card__sticker sticker_orange"><span>Оқушылар қабылданбайды</span></div>
+                                                                <img src="../../images/no-img.svg" alt="no-photo">
+                                    </div>
+            </div>
+            <div class="col-lg-7">
+                <h1 class="title mt-3 m-lg-0">Дзюдо (Кайырбеков Қ.Б.)</h1>
+                <div class="row description__item mt-2">
+                    <div class="col-lg-3 col-auto pr-0">
+                        <div class="description__title-icon">
+                            <svg class="icon">
+                                <use xlink:href="/images/sprite.svg#org"></use>
+                            </svg>
+                            <h6 class="description__title mb-0 d-none d-lg-block">Ұйым</h6>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col d-flex align-items-center">
+                        <p class="description__text">Қостанай облысы әкімдігінің дене шынықтыру және спорт басқармасының "Ералхан Сейкенов атындағы Амангелді аудандық балалар -жасөспірімдер спорт мектебі</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <ul class="description__list">
+                            <li class="row description__item">
+                                <div class="col-lg-5 col-6 d-flex align-items-center">
+                                    <h6 class="description__title mb-0">Оқу тілі:</h6>
+                                </div>
+                                <div class="col-lg-7 col-6 d-flex align-items-center">
+                                    <p class="description__text">Қазақ, Орыс</p>
+                                </div>
+                            </li>
+                            <li class="row description__item">
+                                <div class="col-lg-5 col-6 d-flex align-items-center">
+                                    <h6 class="description__title mb-0">Жасы:</h6>
+                                </div>
+                                <div class="col-lg-7 col-6 d-flex align-items-center">
+                                    <p class="description__text">
+                                        бастап 10 дейін 18 жыл                                    </p>
+                                </div>
+                            </li>
+                            <li class="row description__item">
+                                <div class="col-lg-5 col-6 d-flex align-items-center">
+                                    <h6 class="description__title mb-0">Топтың құрамы:</h6>
+                                </div>
+                                <div class="col-lg-7 col-6 d-flex align-items-center">
+                                    <p class="description__text">Ерлер, әйелдер</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-auto col-12">
+                        <span class="main-outline d-block mb-2">Баға: 0 тг</span>
+                                            </div>
+                </div>
+                <hr class="custom-hr">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <ul class="description__list">
+                            <li class="row description__item">
+                                <div class="col-lg-5 col-6 d-flex align-items-lg-center">
+                                    <h6 class="description__title mb-0">Жұмыс кестесі:</h6>
+                                </div>
+                                <div class="col-lg-7 col-6 d-flex align-items-lg-center">
+                                    <p class="description__text">Дүйсенбі - Жұма</p>
+                                </div>
+                            </li>
+                            <li class="row description__item">
+                                <div class="col-lg-5 col-6 d-flex align-items-lg-center">
+                                    <h6 class="description__title mb-0">Жұмыс уақыты:</h6>
+                                </div>
+                                <div class="col-lg-7 col-6 d-flex align-items-lg-center">
+                                    <p class="description__text">09:00-18:30</p>
+                                </div>
+                            </li>
+                            <li class="row description__item">
+                                <div class="col-lg-5 col-6 d-flex align-items-lg-center">
+                                    <h6 class="description__title mb-0">Байланыс телефоны:</h6>
+                                </div>
+                                <div class="col-lg-7 col-6 d-flex align-items-lg-center">
+                                    <a class="description__text" href="tel:+8 (701) 341-30-02">+8 (701) 341-30-02</a>
+                                </div>
+                            </li>
+                                                            <li class="row description__item">
+                                    <div class="col-lg-5 col-6 d-flex align-items-lg-center">
+                                        <h6 class="description__title mb-0">Интернет-ресурстары:</h6>
+                                    </div>
+                                    <div class="col-lg-7 col-6 d-flex align-items-lg-center flex-wrap">
+                                                                                    <a target="_blank" href="https://meteor-kostanay-region.e-orda.kz/kz/sections/-" class="links-badge">
+                                                <svg class="links-badge__icon">
+                                                    <use xlink:href="/images/sprite.svg#facebook"></use>
+                                                </svg>
+                                                <p class="links-badge__text crop-text">facebook</p>
+                                            </a>
+                                                                                                                            <a target="_blank" href="https://meteor-kostanay-region.e-orda.kz/kz/sections/-" class="links-badge">
+                                                <svg class="links-badge__icon">
+                                                    <use xlink:href="/images/sprite.svg#instagram"></use>
+                                                </svg>
+                                                <p class="links-badge__text crop-text">instagram</p>
+                                            </a>
+                                                                                                                            <a target="_blank" href="https://meteor-kostanay-region.e-orda.kz/kz/sections/-" class="links-badge">
+                                                <svg class="links-badge__icon">
+                                                    <use xlink:href="/images/sprite.svg#global"></use>
+                                                </svg>
+                                                <p class="links-badge__text crop-text">-</p>
+                                            </a>
+                                                                            </div>
+                                </li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="custom-hr mt-0">
+
+        <div class="row">
+            <div class="col-lg-5">
+                <h5 class="subtitle mb-20">Сипаттама</h5>
+                <html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="format-detection" content="telephone=no" />
+<style type="text/css">
+body{margin:0;padding:8px;}
+p{line-height:1.15;margin:0;white-space:pre-wrap;}
+ol,ul{margin-top:0;margin-bottom:0;}
+img{border:none;}
+li>p{display:inline;}
+</style>
+</head>
+<body>
+<p>Дзюдомен   күресу күш, төзімділік, ептілік, реакция жылдамдығы, қозғалысты үйлестіру   және тепе-теңдік сезімін дамытады.</p>
+</body>
+</html>                <br>
+
+                            </div>
+            <div class="col-lg-7">
+                <div class="row">
+                    <div class="col-lg-8">
+                        
+                                            </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="custom-hr">
+
+        <div class="row">
+            <div class="col-12">
+                <h5 class="subtitle mb-20">Спорттық жабдық</h5>
+            </div>
+            <div class="col-lg-5">
+                <p class="font-size-md font-weight-bold mb-3">Мемлекет ұсынатын спорт құрал-саймандары</p>
+                <ul class="disc-list">
+                                    </ul>
+            </div>
+            <div class="col-lg-5">
+                <p class="font-size-md font-weight-bold mb-3">Өз бетімен сатып алынатын спорт құрал-саймандары</p>
+                <ul class="disc-list">
+                                    </ul>
+            </div>
+        </div>
+
+        <hr class="custom-hr mb-35">
+
+                    <div class="row">
+                <div class="col-12">
+                    <h5 class="subtitle mb-20">I-ауысымның кестесі</h5>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Дүйсенбi</div>
+                            <div>10:30-12:00</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Сейсенбі</div>
+                            <div>10:30-12:00</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Сәрсенбі</div>
+                            <div>10:30-12:00</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Бейсенбі</div>
+                            <div>10:30-12:00</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Жұма</div>
+                            <div>-</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card not-active">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Сенбі</div>
+                            <div>-</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card not-active">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Жексенбі</div>
+                            <div>-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="custom-hr mb-35 mt-35">
+                    <div class="row">
+                <div class="col-12">
+                    <h5 class="subtitle mb-20">II-ауысымның кестесі</h5>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Дүйсенбi</div>
+                            <div>15:00-16:30</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Сейсенбі</div>
+                            <div>15:00-16:30</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Сәрсенбі</div>
+                            <div>15:00-16:30</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Бейсенбі</div>
+                            <div>15:00-16:30</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Жұма</div>
+                            <div>15:00-16:30</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card not-active">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Сенбі</div>
+                            <div>-</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card not-active">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Жексенбі</div>
+                            <div>-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="custom-hr mb-35 mt-35">
+                    <div class="row">
+                <div class="col-12">
+                    <h5 class="subtitle mb-20">III-ауысымның кестесі</h5>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Дүйсенбi</div>
+                            <div>16:30-18:00</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Сейсенбі</div>
+                            <div>16:30-18:00</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Сәрсенбі</div>
+                            <div>16:30-18:00</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Бейсенбі</div>
+                            <div>16:30-18:00</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Жұма</div>
+                            <div>16:30-18:00</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card not-active">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Сенбі</div>
+                            <div>-</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="timeline__card not-active">
+                        <div class="m-auto text-center">
+                            <div class="font-weight-bold">Жексенбі</div>
+                            <div>-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="custom-hr mb-35 mt-35">
+        
+                    <div class="row">
+                <div class="col-12">
+                    <h5 class="subtitle mb-35">Жаттықтырушылар</h5>
+                </div>
+                <div class="col-lg-9">
+                    <div class="main-cards pb-0">
+                                                    <div class="main-card d-flex align-items-start">
+                                <div class="main-card__img-box">
+                                                                            <img src="../../images/no-img.svg" alt="no-photo" class="main-card__img">
+                                                                        <div class="main-card__title-group d-lg-none d-block ml-3">
+                                        <span class="main-card__num">№610</span>
+                                        <h4 class="main-card__title">КАЙРБЕКОВ КУАНЫШБЕК БЕКТЕПБЕРГЕНОВИЧ</h4>
+                                    </div>
+                                </div>
+                                <div class="main-card__body d-flex flex-column">
+                                    <div class="main-card__title-group d-lg-flex align-items-center justify-content-between d-none">
+                                        <h4 class="main-card__title">КАЙРБЕКОВ КУАНЫШБЕК БЕКТЕПБЕРГЕНОВИЧ</h4>
+                                        <span class="main-card__num">№610</span>
+                                    </div>
+                                    <div class="main-card__tags d-flex align-items-center">
+                                                                            </div>
+                                    <div class="main-card__info d-flex flex-column">
+                                        <div class="main-card__info-el d-flex align-items-start">
+                                            <div class="main-card__info-title-group d-flex align-items-center">
+                                                <img src="../../images/icons/i-child.svg" alt="icon" class="">
+                                                <p class="main-card__info-title">Жас топтары:</p>
+                                            </div>
+                                            <p class="main-card__text">
+                                                Жасы шектелмейді                                            </p>
+                                        </div>
+                                        <div class="main-card__info-el d-flex align-items-start">
+                                            <div class="main-card__info-title-group d-flex align-items-center">
+                                                <svg class="icon main-card__info-map-flag">
+                                                    <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                                                </svg>
+                                                <p class="main-card__info-title">Негізгі жұмыс орны:</p>
+                                            </div>
+                                            <p class="main-card__text">Қостанай облысы әкімдігінің дене шынықтыру және спорт басқармасының "Ералхан Сейкенов атындағы Амангелді аудандық балалар -жасөспірімдер спорт мектебі</p>
+                                        </div>
+                                    </div>
+                                    <div class="main-card__btn-bar d-flex align-items-center justify-content-between">
+                                                                                <a href="../couches/card@id=610.html"
+                                           class="btn main-btn main-card__link">
+                                            Толығырақ                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+
+            <hr class="custom-hr mt-35 mb-35">
+        
+            </div>
+</div>
+
+<style>
+    .slider-for img {
+        object-fit: contain!important;
+    }
+    .sticker_orange{
+        background-color: #F99746!important;
+    }
+</style>
+
+<div class="common-modals">
+    <div class="modal fade settings-modal settings-modal_choice" id="adultOrChild-407" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <svg class="icon" data-dismiss="modal">
+                        <use xlink:href="/images/sprite.svg#close"></use>
+                    </svg>
+                </div>
+                <div class="modal-body d-flex flex-column align-items-center">
+                    <img src="../../images/img-exit.svg" alt="img">
+                    <p class="settings-modal__text">В эту секцию могут записаться как дети, так и взрослые</p>
+
+                    <div class="settings-modal__btn-bar">
+                        <a href="../enrollment-sport-school/start@section-id=407.html" class="btn second-btn settings-modal__close-btn">
+                            Баланы жазу                        </a>
+                        <a href="../enrollment-adult/start@section-id=407.html" class="btn main-btn settings-modal__save-btn">
+                            Жазылу ересек                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></main>
+
+
+<footer class="footer footer-almaty">
+    <div class="container">
+        
+        <hr class="d-lg-block d-none "/>
+        <div class="text-center f-link">
+            <p class="f-body footer-copyright">Интернет-ресурс, оның құрылымы, форматты-логикалық бақылау ережелері жəне орналастырылған медиа-контент Қазақстан Республикасының «Авторлық құқық жəне сабақтас құқықтар туралы» заңымен қорғалады. Эверест ЖМ, 2021©</p>
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="supportModal" tabindex="-1" role="dialog" aria-labelledby="supportModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="supportModalLabel">Спорт басқармасына өтініш</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Тегі, аты, әкесінің аты:</label>
+                        <input type="text" class="form-control" id="sender-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Телефон нөмірі                            :</label>
+                        <input type="text" class="form-control" id="sender-phone" data-mask="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label">Хабарлама мәтіні                            :</label>
+                        <textarea class="form-control" id="message-text" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Күшін жою</button>
+                <button type="button" class="btn btn-primary"
+                        id="send-message">Хабарламаны жөнелту</button>
+            </div>
+        </div>
+    </div>
+</div><script>var Messages = {"SNOW_MORE":"Тағы жүктеу","RECEIVE_VERIFY_CODE_SMS":"SMS арқылы растау кодын алу","RECEIVE_VERIFY_CODE_EMAIL":"Email арқылы растау кодын алу","FAILED_SEND_VERIFY_CODE":"Растау коды жіберілмеді","SUCCESS_SEND_VERIFY_CODE":"Растау коды сәтті жіберілді","FAILED_TO_GET_DATA":"Деректер табылмады","YOU_MUST_SELECT_A_TRAINING_PROFILE":"Оқу бейінін таңдау қажет","UNABLE_TO_APPLY_AGE_IS":"Өтінішті беруді әрі қарай жалғастыру мүмкін емес. Жасы:","GO_TO":"Өту","NOTHING_IS_SELECTED":"Ештеңе таңдалмады","ALL":"Барлығы","NO_SUPPORT":"<div><h4 class=\"alert-heading\">Кешіріңіз, Сіз жұмыс емес уақытта хабарластыңыз.</h4><p>Техникалық қолдау қызметінің жұмыс кестесі - жұмыс күндері, сағат 9:00-ден бастап 18:00-ге дейін.</p><hr><p class=\"mb-0\">Жұмыс күні басталған соң парақшаны жаңартып көріңіз.<br>Рахмет</p></div>","ERROR":"Қате","UNABLE_TO_APPLY_CITY_CHECK":"Өтініш беруді жалғастыру мүмкін емес. Тіркелген мекенжайы қызмет көрсетілетін қалаға сәйкес келмейді","UNABLE_TO_APPLY_PARENT_AGE":"Өтініш беруді жалғастыру мүмкін емес. Заңды өкілдің жасы 18-ге толған болу керек","UNABLE_TO_APPLY_APPLICANT_AGE":"Өтініш беруді жалғастыру мүмкін емес. Өтініш берушінің жасы 18-ге толған болу керек","ERROR_SAME_IINS":"Баланың және заңды өкілдің жасы бірдей бола алмайды","YOU_MUST_SELECT_THE_CURRENT_ORGANIZATION":"Қазіргі ұйымды таңдау қажет","TO_CHOOSE":"To chose","CHOSEN":"Таңдалды","SHOW_MORE":"Тағы көрсету..."}</script><div class="alert alert--hide"></div>
+
+
+            <script>var LHC_API = LHC_API||{};
+            LHC_API.args = {mode:'widget',lhc_base_url:'//support.e-orda.kz/index.php/',wheight:450,wwidth:350,pheight:520,pwidth:500,leaveamessage:true,department:["46"],check_messages:false,proactive:false,lang:'rus/'};
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.setAttribute('crossorigin','anonymous'); po.async = true;
+                var date = new Date();po.src = '//support.e-orda.kz/design/defaulttheme/js/widgetv2/index.js?'+(""+date.getFullYear() + date.getMonth() + date.getDate());
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+    
+<script src="../../assets/ad15b6a8/jquery.js@v=1721220178"></script>
+<script src="../../assets/71d79331/js/bootstrap.bundle.js@v=1721220178"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=38bc483f-f846-4395-9bc9-cdc3cca71845&amp;lang=ru_RU"></script>
+<script src="../../js/map.js@v=1686801454"></script>
+<script src="../../libs/slick/slick.min.js@v=1686801454"></script>
+<script src="../../libs/nice-select/jquery.nice-select.min.js@v=1686801454"></script>
+<script src="../../libs/bootstrap/bootstrap-multiselect.js@v=1686801454"></script>
+<script src="../../libs/fancybox/jquery.fancybox.min.js@v=1686801454"></script>
+<script src="../../libs/inputmask/jquery.maskedinput.min.js@v=1686801454"></script>
+<script src="../../js/script.js@v=1721219990"></script>
+<script src="../../js/defaultSearch.js@v=1693483620"></script>
+<script src="../../js/jquery.doubleScroll.js@v=1693483620"></script>
+<script src="../../assets/6d082268/yii.js@v=1721220178"></script>
+<script src="../../assets/666c9d38/jquery.inputmask.js@v=1721220178"></script>
+<script>jQuery(function ($) {
+    var lang = $('body').data('lang')
+    var d = new Date(2024,7,12,17,2,47);
+    function refreshTime() {
+        $.post("/" + lang + "/site/get-time", function(data) {
+            d = new Date(data.y, data.m, data.d, data.h, data.min, data.s);
+            update();
+        });
+    }  
+    
+    function update() {
+         var month = d.getMonth()+1 < 10 
+                    ? '0' + (d.getMonth()+1)
+                    : d.getMonth()+1;
+         var day = d.getDate() < 10 
+                    ? '0' + d.getDate() 
+                    : d.getDate();
+         var year = d.getFullYear();   
+            
+         var hours = d.getHours() == 0 
+                    ? '00'
+                    : d.getHours();
+            
+         var minutes = d.getMinutes() < 10 
+                    ? '0' + d.getMinutes() 
+                    : d.getMinutes();
+      
+        var seconds = d.getSeconds() < 10 
+                    ? '0' + d.getSeconds() 
+                    : d.getSeconds();     
+       
+       d.setSeconds(d.getSeconds() + 1);
+            $('#clock-text').text((year + '.' + month + '.' + day + ' ' + hours +':' + minutes + ':' + seconds ));
+    }
+    
+    update();
+    window.setInterval(update, 1000); 
+    window.setInterval(refreshTime, 1000*60*5);
+
+});</script></body>
+</html>

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>МАДЕНОВ САБЫР МУЛДАГАЛИЕВИЧ</title>
+    <style>
+        body {
+            padding: 0!important;
+        }
+
+        /*page-loader styles*/
+        .page-loader {
+            background-color: #ffffff96;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 9998;
+            display: none;
+        }
+        .page-loader .preloader-image-preview {
+            left: 50%;
+            top: 50%;
+            position: relative;
+            display: block;
+            margin: -64px 0 0 -64px;
+        }
+        .preloader-image-preview img {
+            width: 128px;
+            height: 128px;
+        }
+
+        /*empty-not-found error styles*/
+        .g-callout.g-callout-danger {
+            border-left-color: #E76E6E;
+            background: #FFE4E4;
+            margin-left: 15px;
+        }
+        .g-callout {
+            padding: .875rem .875rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-left: .25rem solid transparent;
+            font-size: .875rem;
+        }
+
+        /* btn load more */
+        .main-cards__show-more {
+            border: 2px solid #1787FF;
+            color: #1787FF;
+            font-weight: bold;
+        }
+
+        /* fit img */
+        .avatar-card img {
+            object-fit: cover;
+        }
+
+        /* images for file-uploads on forms */
+        .file-download-wrapper .files-container .file-info-icon.doc {
+            background-image: url(../../images/doc.svg);
+        }
+        .file-download-wrapper .files-container .file-info-icon.zip {
+            background-image: url(../../images/folder.svg);
+        }
+
+        /* cabinet images on password inputs */
+        .password-control {
+            background: url(../../images/view.svg) 0 0 no-repeat;
+        }
+        .password-control.view {
+            background: url(../../images/no-view.svg) no-repeat 0 0;
+        }
+
+        .cabinet .form-control {
+            border: 1px solid #01B5F0!important;
+        }
+
+        .btn.cabinet-btn {
+            background-color: #fff;
+            border: 1px solid #0074F0;
+            color: #0074F0;
+        }
+
+        /* tech support fake */
+        .fake-block {
+            cursor: pointer;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+            z-index: 2147483648;
+        }
+        .fake-block .fb-body {
+            right: 30px;
+            left: auto;
+            position: relative;
+            box-shadow: 0 12px 14px 8px rgba(0, 0, 0, 0.17);
+            background: linear-gradient(95deg, #3f51b5 20%, #7486e5 80%);
+            border-top-left-radius: 8px !important;
+            border-top-right-radius: 34px !important;
+            height: 40px;
+            width: auto;
+            min-width: 300px;
+        }
+        .fake-block .fb-body .fb-title {
+            color: white;
+            margin: 0 33px 0 16px;
+            line-height: 40px;
+        }
+        .fake-block .fb-body .fb-img {
+            right: 0;
+            position: absolute;
+            top: 0;
+            width: 33px;
+            border-radius: 0 24px 0 0 !important;
+        }
+        .fake-block .fb-body .fb-img .icon {
+            width: 32px !important;
+            height: 34px !important;
+            position: absolute;
+            overflow: visible;
+            right: 0;
+            top: 0;
+        }
+
+        .checkbox-circle.off .icon-table-red {
+            font-size: 18px;
+            width: 35px;
+            height: 35px;
+            border: 3px solid #FF9D9D;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .child-visit-status-selector, .child-visit-status-selector-mobile {
+            position: relative;
+        }
+
+        .child-visit-status-variant {
+            z-index: 3;
+            position: relative;
+        }
+
+        .child-visit-status-variant-block, .child-visit-status-variant-block-mobile {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 4;
+            cursor: pointer;
+        }
+
+        .grey-mode-timesheet-cell {
+            filter: gray;
+            filter: gray; filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+            -webkit-filter: grayscale(100%);
+        }
+
+        .scroll-width {
+            max-width: none!important;
+        }
+    </style>
+
+        <meta name="csrf-param" content="_csrf">
+<meta name="csrf-token" content="LVJrwQDy4kR9Gs1G3oDGy2B_1Uj6A14eEJT-XuYXAK9HNFO5cp6qJglpuTe39ayMUiXkG5FLGCh-prIaoVo0xA==">
+
+<link href="../../assets/71d79331/css/bootstrap.css@v=1721220178.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap&quot; rel=&quot;stylesheet" rel="stylesheet">
+<link href="../../libs/slick/slick.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/slick/slick-theme.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/nice-select/nice-select.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/bootstrap/components.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../../css/alert.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/fancybox/jquery.fancybox.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../../css/main.css@v=1721219990.css" rel="stylesheet"></head>
+<!--class="meteor-almaty" включение метеор алматы-->
+<body class="" data-lang="ru" >
+
+
+<div class="page-loader" id="page-content-loader">
+    <div class="preloader-image-preview">
+        <img src="../../images/loader.gif" alt="">
+    </div>
+</div>
+
+
+
+<header class="header">
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-8 col-lg-3 d-flex">
+                    <div class="dropdown mobile-dropdown align-self-center">
+                        <a class="dropdown-info dropdown-toggle" href="card@id=104.html#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sometext d-none d-sm-inline-block">Полезная информация</span>
+                            <span class="sometext d-inline-block d-sm-none">Информация</span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="card@id=104.html#">Как войти в Личный кабинет?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex clock-block">
+                    <div class="m-lg-auto align-self-center pl-lg-3">
+                        Эталонное время сервера: <span id="clock-text">2024.08.12 17:06:47</span>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-lg-4 d-flex">
+                    <div class="ml-auto align-self-center">
+                        <a href="card@id=104.html#" class="city-select" data-toggle="modal" data-target="#cityModal">
+                            <img src="../../images/icons/maps-and-flags.svg" class="mr-2" alt="">
+                            <span class="d-none d-sm-block">Костанайская область</span>
+                        </a>
+                    </div>
+                    
+<div class="d-none d-lg-flex justify-content-end">
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="../../kz/couches/card@id=104.html">Қазақша</a>
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="card@id=104.html">Русский</a>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <nav class="navbar justify-content-between">
+                
+<div class="logo-city">
+<img src="card@id=104.html" alt="" width="50">
+
+                                   </div>
+
+<style>
+    .main-header .logo-city {
+        flex: 0 0 15rem!important;
+    }
+</style>
+                <a href="../../ru.1.html" class="navbar-brand">
+                    <img src="../../images/logo/logo.svg" alt="meteor_logo">
+                </a>
+
+                <ul class="d-none d-lg-flex navbar-nav flex-row">
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../sections.html">Спортивные секции</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../organizations.html">Спортивные объекты</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../couches.html">Тренерский состав</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../site/upcoming-events.html">Мероприятия</a>
+                    </li>
+                </ul>
+
+                <div class="burger-icon">
+                    <div id="burger-wrapper">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </div>
+
+                <a class="d-none d-lg-block btn main-btn personal-area-btn" href="../cabinet.html">
+                                            Войти в личный кабинет                                    </a>
+                <a class="d-block d-lg-none avatar-block" href="../cabinet.html">
+                    <img src="../../images/icons/user.svg" alt="">
+                </a>
+            </nav>
+        </div>
+    </div>
+
+</header>
+
+<div class="mobileMenu" id="mobileMenu" >
+    <div class="mobileMenu__wrapper">
+
+        <a href="card@id=104.html#" class="city-select btn main-outline-btn" data-toggle="modal" data-target="#cityModal">
+            <svg class="icon">
+                <use xlink:href="/images/sprite.svg#map"></use>
+            </svg>
+            <span>Костанайская область</span>
+        </a>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="../sections.html">Спортивные секции</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../organizations.html">Спортивные объекты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../couches.html">Тренерский состав</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../site/upcoming-events.html">Мероприятия</a>
+            </li>
+        </ul>
+
+        
+<div class="mobile-menu__choice-language d-lg-none">
+    <ul class="btn-group--lang">
+                    <li class="">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="../../kz/couches/card@id=104.html">Қазақша</a>
+            </li>
+                    <li class="active">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="card@id=104.html">Русский</a>
+            </li>
+            </ul>
+</div>
+
+        <a class="btn login-btn main-btn" href="../cabinet.html">
+                            Войти в личный кабинет                    </a>
+    </div>
+
+</div>
+
+
+
+<script>
+    var burger = document.querySelector('.burger') !== null;
+    if (burger) {
+        burger.addEventListener('click', function(){
+            document.querySelector('.burger span').classList.toggle('active');
+        })
+    }
+
+    var menu = document.querySelector('.menu') !== null;
+    if (menu) {
+        menu.classList.toggle("animate");
+    }
+</script>
+
+<main class="main bg-section-card">
+            <nav aria-label="breadcrumb" class="breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../ru.1.html">Главная</a></li><li class="breadcrumb-item"><a href="../couches.html">Тренерский состав</a></li><li class="breadcrumb-item active" aria-current="page">МАДЕНОВ САБЫР МУЛДАГАЛИЕВИЧ</li></ol>            </div>
+        </nav>
+    
+        
+<div class="sections-card__wrap">
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-auto mb-20 mb-lg-0">
+                                    <img src="../../img/cachedImages/preview/4258-2-7.jpg" alt="Photo"
+                         class="avatar-card__person">
+                                <div class="main-card__title-group main-card__title-50 d-lg-none d-inline-block ml-3">
+                    <span class="main-card__num">№104</span>
+                    <h4 class="main-card__title">МАДЕНОВ САБЫР МУЛДАГАЛИЕВИЧ</h4>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-lg-flex align-items-center justify-content-between mb-20 d-none">
+                    <h1 class="title">МАДЕНОВ САБЫР МУЛДАГАЛИЕВИЧ</h1>
+                    <span class="list-card__num">№104</span>
+                </div>
+
+                <div class="mb-30">
+                                    </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <ul class="description__list">
+                            <li class="row description__item">
+                                <div class="col-6 pr-lg-0">
+                                    <h6 class="description__title mb-0">Профильный вид спорта</h6>
+                                </div>
+                                <div class="col-6">
+                                    <p class="description__text">Гольф</p>
+                                </div>
+                            </li>
+                            <li class="row description__item">
+                                <div class="col-6 pr-lg-0">
+                                    <h6 class="description__title mb-0">Дата рождения</h6>
+                                </div>
+                                <div class="col-6">
+                                    <p class="description__text">08.12.1965</p>
+                                </div>
+                            </li>
+                            <li class="row description__item">
+                                <div class="col-6 pr-lg-0">
+                                    <h6 class="description__title mb-0">
+                                        Общий спортивный стаж:
+                                    </h6>
+                                </div>
+                                <div class="col-6">
+                                    <p class="description__text no-wrap">
+                                        20 лет                                    </p>
+                                </div>
+                            </li>
+                            <li class="row description__item">
+                                <div class="col-6 pr-lg-0">
+                                    <h6 class="description__title mb-0">Общий стаж по профильному виду спорта                                        :</h6>
+                                </div>
+                                <div class="col-6">
+                                    <p class="description__text no-wrap">
+                                        12 лет                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="description__list">
+                            <li class="row description__item">
+                                <div class="col-6 pr-lg-0">
+                                    <h6 class="description__title mb-0">Категория</h6>
+                                </div>
+                                <div class="col-6">
+                                    <p class="description__text"></p>
+                                </div>
+                            </li>
+                            <li class="row description__item">
+                                <div class="col-6 pr-lg-0">
+                                    <h6 class="description__title mb-0">Возрастные группы:</h6>
+                                </div>
+                                <div class="col-6">
+                                    <p class="description__text no-wrap">
+                                        от 6 лет                                    </p>
+                                </div>
+                            </li>
+
+                                                            <li class="row description__item">
+                                    <div class="col-6 pr-lg-0">
+                                        <h6 class="description__title mb-0">Интернет ресурсы:</h6>
+                                    </div>
+                                    <div class="col-6 d-flex flex-wrap">
+                                                                                                                            <a target="_blank" href="https://meteor-kostanay-region.e-orda.kz/ru/couches/golf_mektebi"
+                                               class="links-badge">
+                                                <svg class="links-badge__icon">
+                                                    <use xlink:href="/images/sprite.svg#instagram"></use>
+                                                </svg>
+                                                <p class="links-badge__text crop-text">instagram</p>
+                                            </a>
+                                                                            </div>
+                                </li>
+                            
+                            <li class="row description__item">
+                                <div class="col-6 pr-lg-0">
+                                    <h6 class="description__title mb-0">Контакты:</h6>
+                                </div>
+                                <div class="col-6">
+                                    <p class="description__text">+7 (747) 432-54-37</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="custom-hr">
+
+                
+                                    <h5 class="subtitle mb-20">Секции</h5>
+
+                    <div class="row">
+                                                    <div class="col-lg-6">
+                                <div class="card--sections">
+                                    <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                        <h5 class="title pr-lg-3 order-2 order-lg-1">Гольф (Маденов С.М.)</h5>
+                                                                                    <div class="list-count order-1 order-lg-2">
+                                                <span class="list-count-block bg-red">Бесплатно</span>
+                                            </div>
+                                                                            </div>
+                                    <div class="mb-3">
+                                                                                <p class="desc__text no-wrap">
+                                            от 5 до 9 лет                                                                                <span class="desc__text">Казахский, Русский</span>
+                                    </div>
+                                    <div class="mb-20">
+                                        <div class="links-badge links-badge__white">
+                                            <span class="links-badge__text">КГУ «Спортивная школа гольфа» Управления физической культуры и спорта акимата Костанайской области</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-lg-end">
+                                        <a href="../sections/card@id=35.html"
+                                           class="btn main-btn px-4 btn-md">
+                                            Подробнее                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                                            </div>
+
+                    <hr class="custom-hr mt-35 mb-35">
+                
+                
+                
+                
+                <h5 class="subtitle mb-20">Место работы</h5>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="description__item">
+                            <h6 class="description__title mb-2">Основное место работы:</h6>
+                            <p class="description__text">КГУ «Спортивная школа гольфа» Управления физической культуры и спорта акимата Костанайской области</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="description__item">
+                            <h6 class="description__title mb-2">Должность:</h6>
+                            <p class="description__text">Тренер</p>
+                        </div>
+                    </div>
+
+                                    </div>
+
+                
+                            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .no-wrap {
+        white-space: nowrap !important;
+    }
+    .slider-for img {
+        object-fit: contain!important;
+    }
+</style>
+
+</main>
+
+
+<footer class="footer footer-almaty">
+    <div class="container">
+        
+        <hr class="d-lg-block d-none "/>
+        <div class="text-center f-link">
+            <p class="f-body footer-copyright">Интернет-ресурс, его структура, правила форматно-логического контроля и размещенный медиа-контент, охраняется законом «Об авторском праве и смежных правах» Республики Казахстан. Эверест ЖМ, 2021©</p>
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="supportModal" tabindex="-1" role="dialog" aria-labelledby="supportModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="supportModalLabel">Обращение в управление спорта</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">ФИО:</label>
+                        <input type="text" class="form-control" id="sender-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Номер телефона                            :</label>
+                        <input type="text" class="form-control" id="sender-phone" data-mask="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label">Текст сообщения                            :</label>
+                        <textarea class="form-control" id="message-text" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary"
+                        id="send-message">Отправить сообщение</button>
+            </div>
+        </div>
+    </div>
+</div><script>var Messages = {"SNOW_MORE":"Загрузить еще","RECEIVE_VERIFY_CODE_SMS":"Получить код подтверждения через SMS","RECEIVE_VERIFY_CODE_EMAIL":"Получить код подтверждения через email","FAILED_SEND_VERIFY_CODE":"Не удалось отправить код подтверждения","SUCCESS_SEND_VERIFY_CODE":"Код подтверждения успешно отправлен","FAILED_TO_GET_DATA":"Данные не найдены","YOU_MUST_SELECT_A_TRAINING_PROFILE":"Необходимо выбрать профиль обучения","UNABLE_TO_APPLY_AGE_IS":"Невозможно продолжить подачу заявления. Возраст ребенка составляет:","GO_TO":"Перейти","NOTHING_IS_SELECTED":"Ничего не выбрано","ALL":"Все","NO_SUPPORT":"<div><h4 class=\"alert-heading\">Извините, Вы обратились в нерабочее время.</h4><p>График работы технической поддержки с 9:00 - 18:00 в рабочие дни.</p><hr><p class=\"mb-0\">После начала рабочего дня обновите страницу и попробуйте еще раз.<br>Спасибо</p></div>","ERROR":"Ошибка","UNABLE_TO_APPLY_CITY_CHECK":"Невозможно продолжить подачу заявления. Место прописки не соответствует городу оказания услуги","UNABLE_TO_APPLY_PARENT_AGE":"Невозможно продолжить подачу заявления. Возраст законного представителя не может быть меньше 18 лет","UNABLE_TO_APPLY_APPLICANT_AGE":"Невозможно продолжить подачу заявления. Возраст заявителя не может быть меньше 18 лет","ERROR_SAME_IINS":"ИИН ребенка и законного представителя не могут быть одинаковыми","YOU_MUST_SELECT_THE_CURRENT_ORGANIZATION":"Необходимо выбрать текущую организацию","TO_CHOOSE":"To chose","CHOSEN":"Выбрано","SHOW_MORE":"Показать еще..."}</script><div class="alert alert--hide"></div>
+
+
+            <script>var LHC_API = LHC_API||{};
+            LHC_API.args = {mode:'widget',lhc_base_url:'//support.e-orda.kz/index.php/',wheight:450,wwidth:350,pheight:520,pwidth:500,leaveamessage:true,department:["46"],check_messages:false,proactive:false,lang:'rus/'};
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.setAttribute('crossorigin','anonymous'); po.async = true;
+                var date = new Date();po.src = '//support.e-orda.kz/design/defaulttheme/js/widgetv2/index.js?'+(""+date.getFullYear() + date.getMonth() + date.getDate());
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+    
+<script src="../../assets/ad15b6a8/jquery.js@v=1721220178"></script>
+<script src="../../assets/71d79331/js/bootstrap.bundle.js@v=1721220178"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=38bc483f-f846-4395-9bc9-cdc3cca71845&amp;lang=ru_RU"></script>
+<script src="../../js/map.js@v=1686801454"></script>
+<script src="../../libs/slick/slick.min.js@v=1686801454"></script>
+<script src="../../libs/nice-select/jquery.nice-select.min.js@v=1686801454"></script>
+<script src="../../libs/bootstrap/bootstrap-multiselect.js@v=1686801454"></script>
+<script src="../../libs/fancybox/jquery.fancybox.min.js@v=1686801454"></script>
+<script src="../../libs/inputmask/jquery.maskedinput.min.js@v=1686801454"></script>
+<script src="../../js/script.js@v=1721219990"></script>
+<script src="../../js/defaultSearch.js@v=1693483620"></script>
+<script src="../../js/jquery.doubleScroll.js@v=1693483620"></script>
+<script src="../../assets/6d082268/yii.js@v=1721220178"></script>
+<script src="../../assets/666c9d38/jquery.inputmask.js@v=1721220178"></script>
+<script>jQuery(function ($) {
+    var lang = $('body').data('lang')
+    var d = new Date(2024,7,12,17,6,47);
+    function refreshTime() {
+        $.post("/" + lang + "/site/get-time", function(data) {
+            d = new Date(data.y, data.m, data.d, data.h, data.min, data.s);
+            update();
+        });
+    }  
+    
+    function update() {
+         var month = d.getMonth()+1 < 10 
+                    ? '0' + (d.getMonth()+1)
+                    : d.getMonth()+1;
+         var day = d.getDate() < 10 
+                    ? '0' + d.getDate() 
+                    : d.getDate();
+         var year = d.getFullYear();   
+            
+         var hours = d.getHours() == 0 
+                    ? '00'
+                    : d.getHours();
+            
+         var minutes = d.getMinutes() < 10 
+                    ? '0' + d.getMinutes() 
+                    : d.getMinutes();
+      
+        var seconds = d.getSeconds() < 10 
+                    ? '0' + d.getSeconds() 
+                    : d.getSeconds();     
+       
+       d.setSeconds(d.getSeconds() + 1);
+            $('#clock-text').text((year + '.' + month + '.' + day + ' ' + hours +':' + minutes + ':' + seconds ));
+    }
+    
+    update();
+    window.setInterval(update, 1000); 
+    window.setInterval(refreshTime, 1000*60*5);
+
+});</script></body>
+</html>

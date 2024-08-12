@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="kk-KK">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>Спорт секцияларының тізімі</title>
+    <style>
+        body {
+            padding: 0!important;
+        }
+
+        /*page-loader styles*/
+        .page-loader {
+            background-color: #ffffff96;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 9998;
+            display: none;
+        }
+        .page-loader .preloader-image-preview {
+            left: 50%;
+            top: 50%;
+            position: relative;
+            display: block;
+            margin: -64px 0 0 -64px;
+        }
+        .preloader-image-preview img {
+            width: 128px;
+            height: 128px;
+        }
+
+        /*empty-not-found error styles*/
+        .g-callout.g-callout-danger {
+            border-left-color: #E76E6E;
+            background: #FFE4E4;
+            margin-left: 15px;
+        }
+        .g-callout {
+            padding: .875rem .875rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-left: .25rem solid transparent;
+            font-size: .875rem;
+        }
+
+        /* btn load more */
+        .main-cards__show-more {
+            border: 2px solid #1787FF;
+            color: #1787FF;
+            font-weight: bold;
+        }
+
+        /* fit img */
+        .avatar-card img {
+            object-fit: cover;
+        }
+
+        /* images for file-uploads on forms */
+        .file-download-wrapper .files-container .file-info-icon.doc {
+            background-image: url(../images/doc.svg);
+        }
+        .file-download-wrapper .files-container .file-info-icon.zip {
+            background-image: url(../images/folder.svg);
+        }
+
+        /* cabinet images on password inputs */
+        .password-control {
+            background: url(../images/view.svg) 0 0 no-repeat;
+        }
+        .password-control.view {
+            background: url(../images/no-view.svg) no-repeat 0 0;
+        }
+
+        .cabinet .form-control {
+            border: 1px solid #01B5F0!important;
+        }
+
+        .btn.cabinet-btn {
+            background-color: #fff;
+            border: 1px solid #0074F0;
+            color: #0074F0;
+        }
+
+        /* tech support fake */
+        .fake-block {
+            cursor: pointer;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+            z-index: 2147483648;
+        }
+        .fake-block .fb-body {
+            right: 30px;
+            left: auto;
+            position: relative;
+            box-shadow: 0 12px 14px 8px rgba(0, 0, 0, 0.17);
+            background: linear-gradient(95deg, #3f51b5 20%, #7486e5 80%);
+            border-top-left-radius: 8px !important;
+            border-top-right-radius: 34px !important;
+            height: 40px;
+            width: auto;
+            min-width: 300px;
+        }
+        .fake-block .fb-body .fb-title {
+            color: white;
+            margin: 0 33px 0 16px;
+            line-height: 40px;
+        }
+        .fake-block .fb-body .fb-img {
+            right: 0;
+            position: absolute;
+            top: 0;
+            width: 33px;
+            border-radius: 0 24px 0 0 !important;
+        }
+        .fake-block .fb-body .fb-img .icon {
+            width: 32px !important;
+            height: 34px !important;
+            position: absolute;
+            overflow: visible;
+            right: 0;
+            top: 0;
+        }
+
+        .checkbox-circle.off .icon-table-red {
+            font-size: 18px;
+            width: 35px;
+            height: 35px;
+            border: 3px solid #FF9D9D;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .child-visit-status-selector, .child-visit-status-selector-mobile {
+            position: relative;
+        }
+
+        .child-visit-status-variant {
+            z-index: 3;
+            position: relative;
+        }
+
+        .child-visit-status-variant-block, .child-visit-status-variant-block-mobile {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 4;
+            cursor: pointer;
+        }
+
+        .grey-mode-timesheet-cell {
+            filter: gray;
+            filter: gray; filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+            -webkit-filter: grayscale(100%);
+        }
+
+        .scroll-width {
+            max-width: none!important;
+        }
+    </style>
+
+        <meta name="csrf-param" content="_csrf">
+<meta name="csrf-token" content="uXJYR68FvHnuPFjaYRtFIFnaMyC0tNTExINzTYI3xzTTFGA_3Wn0G5pPLKsIbi9na4ACc9_8kvKqsT8JxXrzXw==">
+
+<link href="../assets/71d79331/css/bootstrap.css@v=1721220178.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap&quot; rel=&quot;stylesheet" rel="stylesheet">
+<link href="../libs/slick/slick.css@v=1686801454.css" rel="stylesheet">
+<link href="../libs/slick/slick-theme.css@v=1686801454.css" rel="stylesheet">
+<link href="../libs/nice-select/nice-select.css@v=1686801454.css" rel="stylesheet">
+<link href="../libs/bootstrap/components.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../css/alert.css@v=1686801454.css" rel="stylesheet">
+<link href="../libs/fancybox/jquery.fancybox.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../css/main.css@v=1721219990.css" rel="stylesheet"></head>
+<!--class="meteor-almaty" включение метеор алматы-->
+<body class="" data-lang="kz" >
+
+
+<div class="page-loader" id="page-content-loader">
+    <div class="preloader-image-preview">
+        <img src="../images/loader.gif" alt="">
+    </div>
+</div>
+
+
+
+<header class="header">
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-8 col-lg-3 d-flex">
+                    <div class="dropdown mobile-dropdown align-self-center">
+                        <a class="dropdown-info dropdown-toggle" href="sections@SearchSectionsForm[vidy_sporta][]=180.html#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sometext d-none d-sm-inline-block">Пайдалы ақпарат</span>
+                            <span class="sometext d-inline-block d-sm-none">Ақпарат</span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="sections@SearchSectionsForm[vidy_sporta][]=180.html#">Жеке кабинетке қалай кіруге болады?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex clock-block">
+                    <div class="m-lg-auto align-self-center pl-lg-3">
+                        Сервердің эталондық уақыты: <span id="clock-text">2024.08.12 16:13:15</span>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-lg-4 d-flex">
+                    <div class="ml-auto align-self-center">
+                        <a href="sections@SearchSectionsForm[vidy_sporta][]=180.html#" class="city-select" data-toggle="modal" data-target="#cityModal">
+                            <img src="../images/icons/maps-and-flags.svg" class="mr-2" alt="">
+                            <span class="d-none d-sm-block">Қостанай облысы</span>
+                        </a>
+                    </div>
+                    
+<div class="d-none d-lg-flex justify-content-end">
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="sections@SearchSectionsForm[vidy_sporta][]=180.html">Қазақша</a>
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="../ru/sections@SearchSectionsForm[vidy_sporta][]=180.html">Русский</a>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <nav class="navbar justify-content-between">
+                
+<div class="logo-city">
+<img src="sections@SearchSectionsForm[vidy_sporta][]=180.html" alt="" width="50">
+
+                                   </div>
+
+<style>
+    .main-header .logo-city {
+        flex: 0 0 15rem!important;
+    }
+</style>
+                <a href="../kz.1.html" class="navbar-brand">
+                    <img src="../images/logo/logo.svg" alt="meteor_logo">
+                </a>
+
+                <ul class="d-none d-lg-flex navbar-nav flex-row">
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="sections.html">Спорт секциялары</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="organizations.html">Спорт объектілері</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="couches.html">Жаттықтырушылар құрамы</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="site/upcoming-events.html">Іс-шаралар</a>
+                    </li>
+                </ul>
+
+                <div class="burger-icon">
+                    <div id="burger-wrapper">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </div>
+
+                <a class="d-none d-lg-block btn main-btn personal-area-btn" href="cabinet.html">
+                                            Жеке кабинетке кіру                                    </a>
+                <a class="d-block d-lg-none avatar-block" href="cabinet.html">
+                    <img src="../images/icons/user.svg" alt="">
+                </a>
+            </nav>
+        </div>
+    </div>
+
+</header>
+
+<div class="mobileMenu" id="mobileMenu" >
+    <div class="mobileMenu__wrapper">
+
+        <a href="sections@SearchSectionsForm[vidy_sporta][]=180.html#" class="city-select btn main-outline-btn" data-toggle="modal" data-target="#cityModal">
+            <svg class="icon">
+                <use xlink:href="/images/sprite.svg#map"></use>
+            </svg>
+            <span>Қостанай облысы</span>
+        </a>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="sections.html">Спорт секциялары</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="organizations.html">Спорт объектілері</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="couches.html">Жаттықтырушылар құрамы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="site/upcoming-events.html">Іс-шаралар</a>
+            </li>
+        </ul>
+
+        
+<div class="mobile-menu__choice-language d-lg-none">
+    <ul class="btn-group--lang">
+                    <li class="active">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="sections@SearchSectionsForm[vidy_sporta][]=180.html">Қазақша</a>
+            </li>
+                    <li class="">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="../ru/sections@SearchSectionsForm[vidy_sporta][]=180.html">Русский</a>
+            </li>
+            </ul>
+</div>
+
+        <a class="btn login-btn main-btn" href="cabinet.html">
+                            Жеке кабинетке кіру                    </a>
+    </div>
+
+</div>
+
+
+
+<script>
+    var burger = document.querySelector('.burger') !== null;
+    if (burger) {
+        burger.addEventListener('click', function(){
+            document.querySelector('.burger span').classList.toggle('active');
+        })
+    }
+
+    var menu = document.querySelector('.menu') !== null;
+    if (menu) {
+        menu.classList.toggle("animate");
+    }
+</script>
+
+<main class="main bg-section-card">
+            <nav aria-label="breadcrumb" class="breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumb"><li class="breadcrumb-item"><a href="../kz.1.html">Басты бет</a></li><li class="breadcrumb-item active" aria-current="page">Спорт секцияларының тізімі</li></ol>            </div>
+        </nav>
+    
+        
+<section class="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <form action="https://meteor-kostanay-region.e-orda.kz/kz/sections/index" method="GET" id="filter-form" class="main-filter filter-block">
+                    <div class="main-filter__header">
+                        <h6 class="main-filter__title">Сүзгі</h6>
+                        <span class="close-filter"></span>
+                    </div>
+                    <div class="main-filter__body">
+                                                    <div class="main-filter__category">
+                                <p class="main-filter__category-title">Спорттың түрі</p>
+                                <div class="g-f-body">
+                                                                            <div class="mb-2 ">
+                                            <input class="custom-filter-checkbox open-sub-checkbox" id="check1" data-not-select-sub-checkboxes="true"
+                                                   checked                                                   type="checkbox">
+                                            <label class="mb-0" for="check1">Олимпиадалық емес спорт түрлері</label>
+                                                                                            <div class="sub-checkbox-wrapp pl-4 ">
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-12"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="12"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-12">Кикбоксинг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-16"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="16"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-16">Шахмат</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-17"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="17"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-17">Ашихара каратэ</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-20"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="20"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-20">Пауэрлифтинг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-21"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="21"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-21">Президенттік көпсайыс</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-22"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="22"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-22">Самбо</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-25"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="25"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-25">Гір спорты</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-27"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="27"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-27">Полиатлон</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-31"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="31"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-31">Пауэрлифтинг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-42"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="42"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-42">Шахмат</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-46"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="46"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-46">Сурдо бадминтон</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-51"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="51"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-51">Сурдо үстел теннисі</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-58"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="58"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-58">Грэпплинг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-60"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="60"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-60">Белбеу күрес</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-61"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="61"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-61">ММА</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-62"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="62"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-62">Джиу джитсу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-63"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="63"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-63">Пенчак силат</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-64"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="64"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-64">Муай тай</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-65"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="65"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-65">Панкратион</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-70"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="70"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-70">Мини футбол</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-76"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="76"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-76">Дойбы</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-79"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="79"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-79">NOMAD MMA</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-82"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="82"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-82"></label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-85"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="85"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-85">Сурдо еркін күрес</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-86"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="86"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-86">Сурдо грек-рим күресі</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-87"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="87"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-87">Джиу-джитсу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-89"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="89"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-89">Каратэ (WKF)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-90"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="90"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-90">Кекушинкай каратэ</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-91"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="91"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-91">Киокушинкай-кан каратэ</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-93"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="93"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-93">Сурдо жеңіл атлетика</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-95"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="95"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-95">Сурдо футбол</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-96"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="96"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-96">Жауынгерлік жекпе-жектің аралас түрлері (ММА)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-97"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="97"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-97">Муайтай</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-100"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="100"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-100">Арбадағы би (паралимпиадалық емес)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-102"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="102"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-102">Сурдо жузу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-104"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="104"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-104">Президенттік көпсайыс (Полиатлон)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-105"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="105"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-105">Регби 15</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-107"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="107"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-107">Спорттық самбо және жауынгерлік самбо</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-109"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="109"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-109">Сурдо таеквандо</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-110"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="110"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-110">Таеквон-до GTF</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-113"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="113"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-113">Допты хоккей</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-116"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="116"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-116">Шахмат (паралимпиадалық емес)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-117"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="117"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-117">Сурдо шахмат</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-118"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="118"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-118">Сурдо дойбы</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-119"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="119"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-119">Дойбы (паралимпиадалық емес)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-120"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="120"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-120">Грэпплинг ( A I G A нұсқасы)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-121"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="121"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-121">Жағажай волейбол (паралимпиадалық емес)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-122"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="122"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-122">Каратэ-До Кұкушинкай</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-123"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="123"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-123">Қол күресі (паралимпиадалық емес)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-124"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="124"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-124">Қол күресі</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-125"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="125"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-125">Паракаратэ (паралимпиадалық емес)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-126"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="126"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-126">Сурдо армрестлинг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-127"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="127"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-127">Сурдо дзюдо</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-128"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="128"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-128">Тоғызқұмалақ (паралимпиадалық емес)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-129"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="129"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-129">Тұрып ойнау волейболы (паралимпиадалық емес)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-133"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="133"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-133">Авиация спорты</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-134"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="134"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-134">Автомотоспорт</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-135"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="135"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-135">Американдық футбол</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-136"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="136"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-136">Аэробты гимнастика</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-137"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="137"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-137">Би спорты</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-138"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="138"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-138">Бильярд</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-139"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="139"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-139">Жылжымалы нысана көздеу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-140"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="140"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-140">К е м е модельдеу спорты</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-141"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="141"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-141">Киберспорт</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-142"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="142"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-142">Өрт сөндіру және өрттен құтқару спорты</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-143"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="143"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-143">Петанк</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-144"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="144"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-144">Пилондағы спорт</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-145"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="145"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-145">Радиоспорт</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-146"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="146"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-146">Спортинг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-147"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="147"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-147">Су асты спорты</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-148"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="148"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-148">Сурдо сноуборд</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-149"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="149"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-149">Сурдо футзал</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-150"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="150"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-150">Сурдо шанғы жарысы</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-151"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="151"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-151">Тәжірибелік ату</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-152"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="152"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-152">Ушу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-153"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="153"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-153">Футзал</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-154"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="154"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-154">Эстетикалық топтық гимнастика</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-168"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="168"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-168">Альпинизм</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-169"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="169"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-169">Биатл</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-170"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="170"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-170">Бодибилдинг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-171"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="171"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-171">Каратэ-до шотокан</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-172"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="172"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-172">Комбат дзю-дзюцу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-173"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="173"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-173">Қоян-қолтық ұрыс</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-174"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="174"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-174">Спорттық акробатика</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-175"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="175"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-175">Спорттық бағдарлау</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-176"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="176"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-176">Спорттық балық аулау</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-177"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="177"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-177">Сурдо керлинг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-178"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="178"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-178">Таэквондо ИТФ (І.T.F)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-179"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="179"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-179">Триатл</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-180"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="180"
+                                                                   checked                                                                   name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-180">Унифайт</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-181"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="181"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-181">Черлидинг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-182"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="182"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-182">Шинкиокушинкай каратэ</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-1-section-183"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="183"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-1-section-183">КҰкушин Будокай Каратэ</label>
+                                                        </div>
+                                                                                                    </div>
+                                                                                    </div>
+                                                                            <div class="mb-2 ">
+                                            <input class="custom-filter-checkbox open-sub-checkbox" id="check2" data-not-select-sub-checkboxes="true"
+                                                                                                      type="checkbox">
+                                            <label class="mb-0" for="check2">Жазғы олимпиадалық спорт түрлері</label>
+                                                                                            <div class="sub-checkbox-wrapp pl-4 d-none">
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-1"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="1"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-1">Футбол</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-2"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="2"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-2">Бадминтон</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-3"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="3"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-3">Үстел теннисі</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-4"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="4"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-4">Теннис</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-6"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="6"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-6">Волейбол</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-7"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="7"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-7">Грек-рим күрес</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-8"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="8"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-8">Дзюдо</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-9"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="9"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-9">Гольф</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-10"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="10"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-10">Баскетбол</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-13"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="13"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-13">Бокс</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-14"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="14"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-14">Велосипед спорты</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-15"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="15"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-15">Еркін күрес</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-19"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="19"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-19">Жеңіл атлетика</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-23"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="23"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-23">Ауыр атлетика</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-28"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="28"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-28">Жүзу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-29"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="29"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-29">Қол добы</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-57"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="57"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-57">Таеквон-до</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-59"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="59"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-59">Каратэ</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-66"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="66"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-66">Триатлон</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-67"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="67"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-67">Регби</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-68"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="68"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-68">Көркем гимнастика</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-69"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="69"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-69">Спорттық гимнастика</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-74"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="74"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-74">Ат спорты</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-75"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="75"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-75">Нысана көздеу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-98"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="98"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-98">Классикалық волейбол</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-101"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="101"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-101">Әртістік жүзу (үйлесімді жүзу)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-103"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="103"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-103">Ашық суда жүзу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-106"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="106"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-106">Регби 7</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-108"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="108"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-108">Таеквондо WTF</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-114"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="114"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-114">Көгалдағы хоккей</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-115"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="115"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-115">Батуттық гимнастика</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-130"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="130"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-130">Әйелдер күресі</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-131"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="131"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-131">Байдарка мен каноэде есу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-132"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="132"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-132">Стенд ату</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-155"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="155"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-155">Академиялық есу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-156"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="156"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-156">Велосипедтік мотокросс (BMX)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-157"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="157"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-157">Жағажай волейболы</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-158"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="158"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-158">Желкенді қайық спорты</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-159"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="159"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-159">Скейтбординг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-160"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="160"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-160">Спорттық құзға өрмелеу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-161"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="161"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-161">Суға секіру</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-162"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="162"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-162">Сноуборд</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-163"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="163"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-163">Шаңғымен тұғырдан секіру</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-164"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="164"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-164">Шаңғы қоссайысы</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-184"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="184"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-184">Велотрек</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-185"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="185"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-185">Есу слаломы</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-186"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="186"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-186">Қазіргі бессайыс</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-187"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="187"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-187">Маунтинбайк</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-188"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="188"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-188">Садақ ату</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-189"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="189"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-189">Фехтование</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-2-section-190"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="190"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-2-section-190">Су добы</label>
+                                                        </div>
+                                                                                                    </div>
+                                                                                    </div>
+                                                                            <div class="mb-2 ">
+                                            <input class="custom-filter-checkbox open-sub-checkbox" id="check3" data-not-select-sub-checkboxes="true"
+                                                                                                      type="checkbox">
+                                            <label class="mb-0" for="check3">Қысқы олимпиадалық спорт түрлері</label>
+                                                                                            <div class="sub-checkbox-wrapp pl-4 d-none">
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-3-section-11"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="11"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-3-section-11">Шаңғы жарысы</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-3-section-18"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="18"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-3-section-18">Конькимен жүгіру спорты</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-3-section-26"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="26"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-3-section-26">Керлинг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-3-section-30"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="30"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-3-section-30">Мәнерлеп сырғанау</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-3-section-55"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="55"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-3-section-55">Шайбалы хоккей</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-3-section-71"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="71"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-3-section-71">Хоккей</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-3-section-78"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="78"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-3-section-78">Биатлон</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-3-section-83"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="83"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-3-section-83">Шорт-трек</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-3-section-111"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="111"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-3-section-111">Конькимен мәнерлеп сырғанау</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-3-section-191"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="191"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-3-section-191">Тау шаңғысы спорты</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-3-section-192"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="192"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-3-section-192">Фристайл акробатика</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-3-section-193"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="193"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-3-section-193">Фристайл могул</label>
+                                                        </div>
+                                                                                                    </div>
+                                                                                    </div>
+                                                                            <div class="mb-2 ">
+                                            <input class="custom-filter-checkbox open-sub-checkbox" id="check4" data-not-select-sub-checkboxes="true"
+                                                                                                      type="checkbox">
+                                            <label class="mb-0" for="check4">Ұлттық спорт түрлері</label>
+                                                                                            <div class="sub-checkbox-wrapp pl-4 d-none">
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-5"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="5"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-5">Тоғызқұмалақ</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-24"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="24"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-24">Қазақ күресі</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-56"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="56"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-56">Асық ату</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-72"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="72"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-72">Қазақ күресі</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-77"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="77"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-77">Дәстүрлі садақ ату</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-88"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="88"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-88">Дәстүрлі садақ ату</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-165"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="165"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-165">Бәйге</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-166"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="166"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-166">Жамбы ату</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-167"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="167"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-167">Тенге ілу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-200"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="200"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-200">Жекпе-жек</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-201"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="201"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-201">Аударыспақ</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-202"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="202"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-202">Көкпар</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-4-section-203"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="203"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-4-section-203">Құсбегілік</label>
+                                                        </div>
+                                                                                                    </div>
+                                                                                    </div>
+                                                                            <div class="mb-2 ">
+                                            <input class="custom-filter-checkbox open-sub-checkbox" id="check5" data-not-select-sub-checkboxes="true"
+                                                                                                      type="checkbox">
+                                            <label class="mb-0" for="check5">Паралимпиадалық, сурдлимпиадалық және бейімдеу спорт түрлері</label>
+                                                                                            <div class="sub-checkbox-wrapp pl-4 d-none">
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-32"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="32"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-32">Пара волейбол</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-33"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="33"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-33">Пара дзюдо</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-34"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="34"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-34">Пара жеңіл атлетика</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-35"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="35"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-35">Пара шаңғы жарысы</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-36"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="36"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-36">Пара үстел теннисі</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-37"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="37"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-37">Пара пауэрлифтинг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-38"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="38"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-38">Пара жүзу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-39"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="39"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-39">Пара оқ ату</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-40"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="40"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-40">Пара таеквондо</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-41"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="41"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-41">Пара Арбада билеу</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-43"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="43"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-43">Бадминтон</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-44"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="44"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-44">Қармен жүгіру</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-45"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="45"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-45">Бочча</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-47"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="47"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-47">Еркін күрес СУРДО</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-48"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="48"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-48">Грек-рим күресі СУРДО</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-49"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="49"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-49">Жеңіл атлетика СУРДО</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-50"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="50"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-50">Шағын футбол СУРДО</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-52"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="52"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-52">Жузу СУРДО</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-53"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="53"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-53">Шайбамен хоккей СУРДО</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-54"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="54"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-54">Шахматы СУРДО</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-80"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="80"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-80">Дзюдо special olympics</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-81"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="81"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-81">Жеңіл атлетика special olympics</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-84"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="84"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-84">Пара биатлон</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-92"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="92"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-92">Пара ат спорты</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-94"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="94"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-94">Футбол 5x5 (көру қабілеті зақымданған)</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-99"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="99"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-99">Волейболды отырып ойнау</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-112"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="112"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-112">Пара мұздағы хоккей</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-194"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="194"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-194">Арбадағы керлинг</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-195"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="195"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-195">Арбадағы теннис</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-196"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="196"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-196">Голбол</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-197"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="197"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-197">Пара велоспорт</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-198"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="198"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-198">Пара каноэ</label>
+                                                        </div>
+                                                                                                            <div class="my-2 ">
+                                                            <input id="check-5-section-199"
+                                                                   class="custom-filter-checkbox sub-checkbox" type="checkbox" value="199"
+                                                                                                                                      name="SearchSectionsForm[vidy_sporta][]">
+                                                            <label for="check-5-section-199">Пара садақ ату</label>
+                                                        </div>
+                                                                                                    </div>
+                                                                                    </div>
+                                                                    </div>
+                            </div>
+                        
+                                                    <div class="main-filter__category">
+                                <p class="main-filter__category-title">Топтың құрамы</p>
+                                <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox main-filter__checkbox_all" id="main-filter__gender-all"
+                                           data-name="SearchSectionsForm[sostav_grupp][]">
+                                    <label class="main-filter__check-mark" for="main-filter__gender-all"></label>
+                                    <label for="main-filter__gender-all">Барлығы</label>
+                                </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__gender-1"
+                                               value="1"
+                                               name="SearchSectionsForm[sostav_grupp][]" >
+                                        <label class="main-filter__check-mark " for="main-filter__gender-1"></label>
+                                        <label for="main-filter__gender-1">Ерлер</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__gender-3"
+                                               value="3"
+                                               name="SearchSectionsForm[sostav_grupp][]" >
+                                        <label class="main-filter__check-mark " for="main-filter__gender-3"></label>
+                                        <label for="main-filter__gender-3">Ерлер, әйелдер</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__gender-2"
+                                               value="2"
+                                               name="SearchSectionsForm[sostav_grupp][]" >
+                                        <label class="main-filter__check-mark " for="main-filter__gender-2"></label>
+                                        <label for="main-filter__gender-2">Әйелдер</label>
+                                    </div>
+                                                            </div>
+                        
+                                                    <div class="main-filter__category">
+                                <p class="main-filter__category-title">Меншік нысаны</p>
+                                <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox main-filter__checkbox_all" id="main-filter__building-type-0" data-name="SearchSectionsForm[formy_sobstvennosti][]">
+                                    <label class="main-filter__check-mark" for="main-filter__building-type-0"></label>
+                                    <label for="main-filter__building-type-0">Барлығы</label>
+                                </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__building-type-1"
+                                               value="1"
+                                               name="SearchSectionsForm[formy_sobstvennosti][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__building-type-1"></label>
+                                        <label for="main-filter__building-type-1">Мемлекеттік</label>
+                                    </div>
+                                                            </div>
+                        
+                                                    <div class="main-filter__category">
+                                <p class="main-filter__category-title">Аудан</p>
+                                <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox main-filter__checkbox_all" id="main-filter__district-0" data-name="SearchSectionsForm[rayony][]">
+                                    <label class="main-filter__check-mark" for="main-filter__district-0"></label>
+                                    <label for="main-filter__district-0">Барлығы</label>
+                                </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__district-9"
+                                               value="9"
+                                               name="SearchSectionsForm[rayony][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__district-9"></label>
+                                        <label for="main-filter__district-9"></label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__district-10"
+                                               value="10"
+                                               name="SearchSectionsForm[rayony][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__district-10"></label>
+                                        <label for="main-filter__district-10">Алтынсарин ауданы</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__district-16"
+                                               value="16"
+                                               name="SearchSectionsForm[rayony][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__district-16"></label>
+                                        <label for="main-filter__district-16">Арқалық қаласы</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__district-13"
+                                               value="13"
+                                               name="SearchSectionsForm[rayony][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__district-13"></label>
+                                        <label for="main-filter__district-13">Денисов ауданы</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__district-2"
+                                               value="2"
+                                               name="SearchSectionsForm[rayony][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__district-2"></label>
+                                        <label for="main-filter__district-2">Жангелді ауданы</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__district-6"
+                                               value="6"
+                                               name="SearchSectionsForm[rayony][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__district-6"></label>
+                                        <label for="main-filter__district-6">Қарабалық ауданы</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__district-17"
+                                               value="17"
+                                               name="SearchSectionsForm[rayony][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__district-17"></label>
+                                        <label for="main-filter__district-17">Қарасу ауданы</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__district-7"
+                                               value="7"
+                                               name="SearchSectionsForm[rayony][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__district-7"></label>
+                                        <label for="main-filter__district-7">Қостанай ауданы</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__district-1"
+                                               value="1"
+                                               name="SearchSectionsForm[rayony][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__district-1"></label>
+                                        <label for="main-filter__district-1">Қостанай қаласы</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__district-8"
+                                               value="8"
+                                               name="SearchSectionsForm[rayony][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__district-8"></label>
+                                        <label for="main-filter__district-8">Рудный қаласы</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__district-15"
+                                               value="15"
+                                               name="SearchSectionsForm[rayony][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__district-15"></label>
+                                        <label for="main-filter__district-15">Сарыкөл ауданы</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__district-12"
+                                               value="12"
+                                               name="SearchSectionsForm[rayony][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__district-12"></label>
+                                        <label for="main-filter__district-12">Әулиекөл ауданы</label>
+                                    </div>
+                                                            </div>
+                        
+                                                    <div class="main-filter__category">
+                                <p class="main-filter__category-title">Мәртебесі</p>
+                                <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox main-filter__checkbox_all" id="main-filter__status-0" data-name="SearchSectionsForm[statuses][]">
+                                    <label class="main-filter__check-mark" for="main-filter__status-0"></label>
+                                    <label for="main-filter__status-0">Барлығы</label>
+                                </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__status-type-1"
+                                               value="1"
+                                               name="SearchSectionsForm[statuses][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__status-type-1"></label>
+                                        <label for="main-filter__status-type-1">Ашық жинағы</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__status-type-2"
+                                               value="2"
+                                               name="SearchSectionsForm[statuses][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__status-type-2"></label>
+                                        <label for="main-filter__status-type-2">Жабық жиын</label>
+                                    </div>
+                                                            </div>
+                        
+                                                    <div class="main-filter__category">
+                                <p class="main-filter__category-title">Тілі </p>
+                                <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox main-filter__checkbox_all" id="main-filter__language-0" data-name="SearchSectionsForm[langs][]">
+                                    <label class="main-filter__check-mark" for="main-filter__language-0"></label>
+                                    <label for="main-filter__language-0">Барлығы</label>
+                                </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__language-2"
+                                               value="2"
+                                               name="SearchSectionsForm[langs][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__language-2"></label>
+                                        <label for="main-filter__language-2">Орыс</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__language-3"
+                                               value="3"
+                                               name="SearchSectionsForm[langs][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__language-3"></label>
+                                        <label for="main-filter__language-3">Өзбек</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__language-1"
+                                               value="1"
+                                               name="SearchSectionsForm[langs][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__language-1"></label>
+                                        <label for="main-filter__language-1">Қазақ</label>
+                                    </div>
+                                                                                                        <div class="main-filter__input-group">
+                                        <input type="checkbox" class="main-filter__checkbox" id="main-filter__language-4"
+                                               value="4"
+                                               name="SearchSectionsForm[langs][]" >
+                                        <label class="main-filter__check-mark" for="main-filter__language-4"></label>
+                                        <label for="main-filter__language-4">Ағылшын</label>
+                                    </div>
+                                                            </div>
+                        
+                        
+                        <div class="main-filter__category">
+                            <p class="main-filter__category-title">Жасы</p>
+                            <div class="main-filter__input-group">
+                                <label for="main-filter__children-age-1">бастап</label>
+                                <input type="number" class="main-filter__num-input" id="main-filter__children-age-1"
+                                       name="SearchSectionsForm[vozrast][min]"
+                                       value="">
+                                <label for="main-filter__children-age-2">дейін</label>
+                                <input type="number" class="main-filter__num-input" id="main-filter__children-age-2"
+                                       name="SearchSectionsForm[vozrast][max]"
+                                       value="">
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="SearchSectionsForm[sorting]" value="az">                        <div class="main-filter__btn-group">
+                            <button type="submit" class="btn main-btn main-filter__btn main-filter__btn_submit applyFilter">Қолдану</button>
+                            <button type="reset" class="btn second-btn main-filter__btn main-filter__btn_cancel resetFilter">Алып тастау</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-9 mb-5">
+                <div id="df-search-pjax" data-pjax-container="" data-pjax-push-state data-pjax-timeout="1000">
+                <div class="search-bar d-flex flex-column">
+                    <h3 class="search-bar__title">Спорт секцияларының тізімі</h3>
+                    <form id="search-form" class="search-bar__form d-flex align-items-center" action="https://meteor-kostanay-region.e-orda.kz/kz/sections/index" method="get" data-pjax>                    <div class="search-bar__input-wrap d-flex align-items-center">
+                        <img src="../images/icons/i-search.svg" alt="Search">
+                        <label class="search-bar__label">
+                            <input type="text" class="search-bar__input" name="SearchSectionsForm[searchtext]" placeholder="Аты-жөні, спорт секциясының түрі, секцияның атауы бойынша жаттықтырушыны іздеу">                        </label>
+                    </div>
+                    <button type="submit" class="btn main-btn search-bar__btn applyFilter">Іздеу</button>
+                    </form>
+                    
+                    <a href="javascript:void(0);" class="btn second-light-btn btn-search-filter filter-toggle">
+                        <svg class="icon">
+                            <use xlink:href="/images/sprite.svg#filter"></use>
+                        </svg>
+                        Сүзгі                    </a>
+
+                    <div class="search-bar__total-count d-flex justify-content-end mt-3">
+                        Спорт секцияларының саны:
+                        <span class="search-bar__total-count-target">0</span>
+                    </div>
+                </div>
+                <div class="sort-select-group mb-30 d-flex flex-lg-row flex-column align-items-lg-center justify-content-between">
+                    <div class="layout-dropdown d-flex align-items-center order-2 order-lg-1" id="view-changes">
+                        <div class="dropdown-btn" data-toggle="dropdown" data-parent="parent">
+                            <svg class="icon">
+                                <use xlink:href="/images/sprite.svg#filter"></use>
+                            </svg>
+                        </div>
+
+                                                <div class="js-text">
+                                                            атауы (А-Я)                                                    </div>
+                                                    <h6 class="blank-title" style="margin-left: 0.6em">бойынша сұрыптау</h6>
+                        
+                        <div class="dropdown-menu">
+                            <div class="d-flex align-items-center dropdown-item" data-id="price-asc" data-df-sorting="price_l">
+                                <svg class="icon">
+                                    <use xlink:href="/images/sprite.svg#sort-up"></use>
+                                </svg>
+                                <span class="js-text">бағасы (ұлғаюы бойынша)</span>
+                            </div>
+                            <div class="d-flex align-items-center dropdown-item" data-id="price-desc" data-df-sorting="price_h">
+                                <svg class="icon">
+                                    <use xlink:href="/images/sprite.svg#sort-down"></use>
+                                </svg>
+                                <span class="js-text">бағасы (кемуі бойынша)</span>
+                            </div>
+                            <div class="d-flex align-items-center dropdown-item" data-id="title" data-df-sorting="az">
+                                <svg class="icon">
+                                    <use xlink:href="/images/sprite.svg#a-b"></use>
+                                </svg>
+                                <span class="js-text">атауы (А-Я)</span>
+                            </div>
+                            <div class="d-flex align-items-center dropdown-item" data-id="title-reverse" data-df-sorting="za">
+                                <svg class="icon">
+                                    <use xlink:href="/images/sprite.svg#b-a"></use>
+                                </svg>
+                                <span class="js-text">атауы (Я-А)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-view d-flex align-items-center order-1 order-lg-2 justify-content-center">
+                        <div class="page-view__btn page-view__btn_list page-view__btn_active page-view__list d-flex align-items-center">
+                            <div class="page-view__icon burger-icon">
+                                <div class="burger-icon__line burger-icon__line_1"></div>
+                                <div class="burger-icon__line burger-icon__line_2"></div>
+                                <div class="burger-icon__line burger-icon__line_3"></div>
+                            </div>
+                            Тізім                        </div>
+                        <div class="page-view__btn page-view__btn_map d-flex align-items-center openMapDf" data-df-coordinates-url="/kz/sections/coordinates">
+                            <svg class="icon page-view__icon page-view__icon-map">
+                                <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                            </svg>
+                            Карта                        </div>
+                    </div>
+                </div>
+
+                <div class="main-cards">
+                    <div id="sections-list">
+                        <div class="col-12">Ештеңе табылмады</div>                    </div>
+
+                    
+<div class="row">
+    <input type="hidden" id="lazy-url" name="url" value="/kz/sections/sections-lazy" form="filter-form">    <input type="hidden" id="lazy-form-id" name="lazy-form-id" value="filter-form" form="filter-form">    <input type="hidden" id="total-pages" name="total-pages" value="0" form="filter-form">    <input type="hidden" id="page-num" name="page-num" value="1" form="filter-form">    <input type="hidden" id="per-page" name="per-page" form="filter-form">
+    </div>                </div>
+                <div class="map-wrapper d-none">
+                    <div id="map"></div>
+                </div>
+                </div>            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+
+<footer class="footer footer-almaty">
+    <div class="container">
+        
+        <hr class="d-lg-block d-none "/>
+        <div class="text-center f-link">
+            <p class="f-body footer-copyright">Интернет-ресурс, оның құрылымы, форматты-логикалық бақылау ережелері жəне орналастырылған медиа-контент Қазақстан Республикасының «Авторлық құқық жəне сабақтас құқықтар туралы» заңымен қорғалады. Эверест ЖМ, 2021©</p>
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="supportModal" tabindex="-1" role="dialog" aria-labelledby="supportModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="supportModalLabel">Спорт басқармасына өтініш</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Тегі, аты, әкесінің аты:</label>
+                        <input type="text" class="form-control" id="sender-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Телефон нөмірі                            :</label>
+                        <input type="text" class="form-control" id="sender-phone" data-mask="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label">Хабарлама мәтіні                            :</label>
+                        <textarea class="form-control" id="message-text" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Күшін жою</button>
+                <button type="button" class="btn btn-primary"
+                        id="send-message">Хабарламаны жөнелту</button>
+            </div>
+        </div>
+    </div>
+</div><script>var Messages = {"SNOW_MORE":"Тағы жүктеу","RECEIVE_VERIFY_CODE_SMS":"SMS арқылы растау кодын алу","RECEIVE_VERIFY_CODE_EMAIL":"Email арқылы растау кодын алу","FAILED_SEND_VERIFY_CODE":"Растау коды жіберілмеді","SUCCESS_SEND_VERIFY_CODE":"Растау коды сәтті жіберілді","FAILED_TO_GET_DATA":"Деректер табылмады","YOU_MUST_SELECT_A_TRAINING_PROFILE":"Оқу бейінін таңдау қажет","UNABLE_TO_APPLY_AGE_IS":"Өтінішті беруді әрі қарай жалғастыру мүмкін емес. Жасы:","GO_TO":"Өту","NOTHING_IS_SELECTED":"Ештеңе таңдалмады","ALL":"Барлығы","NO_SUPPORT":"<div><h4 class=\"alert-heading\">Кешіріңіз, Сіз жұмыс емес уақытта хабарластыңыз.</h4><p>Техникалық қолдау қызметінің жұмыс кестесі - жұмыс күндері, сағат 9:00-ден бастап 18:00-ге дейін.</p><hr><p class=\"mb-0\">Жұмыс күні басталған соң парақшаны жаңартып көріңіз.<br>Рахмет</p></div>","ERROR":"Қате","UNABLE_TO_APPLY_CITY_CHECK":"Өтініш беруді жалғастыру мүмкін емес. Тіркелген мекенжайы қызмет көрсетілетін қалаға сәйкес келмейді","UNABLE_TO_APPLY_PARENT_AGE":"Өтініш беруді жалғастыру мүмкін емес. Заңды өкілдің жасы 18-ге толған болу керек","UNABLE_TO_APPLY_APPLICANT_AGE":"Өтініш беруді жалғастыру мүмкін емес. Өтініш берушінің жасы 18-ге толған болу керек","ERROR_SAME_IINS":"Баланың және заңды өкілдің жасы бірдей бола алмайды","YOU_MUST_SELECT_THE_CURRENT_ORGANIZATION":"Қазіргі ұйымды таңдау қажет","TO_CHOOSE":"To chose","CHOSEN":"Таңдалды","SHOW_MORE":"Тағы көрсету..."}</script><div class="alert alert--hide"></div>
+
+
+            <script>var LHC_API = LHC_API||{};
+            LHC_API.args = {mode:'widget',lhc_base_url:'//support.e-orda.kz/index.php/',wheight:450,wwidth:350,pheight:520,pwidth:500,leaveamessage:true,department:["46"],check_messages:false,proactive:false,lang:'rus/'};
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.setAttribute('crossorigin','anonymous'); po.async = true;
+                var date = new Date();po.src = '//support.e-orda.kz/design/defaulttheme/js/widgetv2/index.js?'+(""+date.getFullYear() + date.getMonth() + date.getDate());
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+    
+<script src="../assets/ad15b6a8/jquery.js@v=1721220178"></script>
+<script src="../assets/6d082268/yii.js@v=1721220178"></script>
+<script src="../assets/93c93100/jquery.pjax.js@v=1721220213"></script>
+<script src="../assets/6d082268/yii.activeForm.js@v=1721220178"></script>
+<script src="../assets/71d79331/js/bootstrap.bundle.js@v=1721220178"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=38bc483f-f846-4395-9bc9-cdc3cca71845&amp;lang=ru_RU"></script>
+<script src="../js/map.js@v=1686801454"></script>
+<script src="../libs/slick/slick.min.js@v=1686801454"></script>
+<script src="../libs/nice-select/jquery.nice-select.min.js@v=1686801454"></script>
+<script src="../libs/bootstrap/bootstrap-multiselect.js@v=1686801454"></script>
+<script src="../libs/fancybox/jquery.fancybox.min.js@v=1686801454"></script>
+<script src="../libs/inputmask/jquery.maskedinput.min.js@v=1686801454"></script>
+<script src="../js/script.js@v=1721219990"></script>
+<script src="../js/defaultSearch.js@v=1693483620"></script>
+<script src="../js/jquery.doubleScroll.js@v=1693483620"></script>
+<script src="../assets/666c9d38/jquery.inputmask.js@v=1721220178"></script>
+<script>jQuery(function ($) {
+jQuery('#search-form').yiiActiveForm([], []);
+jQuery(document).pjax("#df-search-pjax a", {"push":true,"replace":false,"timeout":1000,"scrollTo":false,"container":"#df-search-pjax"});
+jQuery(document).off("submit", "#df-search-pjax form[data-pjax]").on("submit", "#df-search-pjax form[data-pjax]", function (event) {jQuery.pjax.submit(event, {"push":true,"replace":false,"timeout":1000,"scrollTo":false,"container":"#df-search-pjax"});});
+    var lang = $('body').data('lang')
+    var d = new Date(2024,7,12,16,13,15);
+    function refreshTime() {
+        $.post("/" + lang + "/site/get-time", function(data) {
+            d = new Date(data.y, data.m, data.d, data.h, data.min, data.s);
+            update();
+        });
+    }  
+    
+    function update() {
+         var month = d.getMonth()+1 < 10 
+                    ? '0' + (d.getMonth()+1)
+                    : d.getMonth()+1;
+         var day = d.getDate() < 10 
+                    ? '0' + d.getDate() 
+                    : d.getDate();
+         var year = d.getFullYear();   
+            
+         var hours = d.getHours() == 0 
+                    ? '00'
+                    : d.getHours();
+            
+         var minutes = d.getMinutes() < 10 
+                    ? '0' + d.getMinutes() 
+                    : d.getMinutes();
+      
+        var seconds = d.getSeconds() < 10 
+                    ? '0' + d.getSeconds() 
+                    : d.getSeconds();     
+       
+       d.setSeconds(d.getSeconds() + 1);
+            $('#clock-text').text((year + '.' + month + '.' + day + ' ' + hours +':' + minutes + ':' + seconds ));
+    }
+    
+    update();
+    window.setInterval(update, 1000); 
+    window.setInterval(refreshTime, 1000*60*5);
+
+});</script></body>
+</html>

@@ -1,0 +1,107 @@
+const enrollmentAdultForm = {
+    init: function () {
+
+        let formName = 'EnrollmentAdultForm';
+
+        apiForm.setFormName(formName);
+        apiForm.listenUploadFileEvent();
+        apiForm.listenDeleteFileEvent();
+
+        $('[name = "' + formName + '[childIin]"]').on('keyup', function() {
+            // let iin = $(this).val();
+            // $(this).val(iin);
+        });
+
+        $('[data-validate-input="'+ formName.toLowerCase() +'-childiin"]').on('click', function (e) {
+            e.preventDefault();
+            $('.alert').hide();
+            $(':input[type="submit"]').prop('disabled', false);
+            $('#child-info').hide();
+            enrollmentAdultForm.clearChildInfo();
+
+            let iin = apiForm.selectInput('childIin').val();
+
+            apiForm.customLoadInfo({
+                iin: iin,
+                params: {
+                    Declarant: true,
+                    Representative: false
+                }
+            }, function(data) {
+
+                apiForm.setData(data.personal_data);
+
+                if (!apiForm.validateAge(18, 100, 'child', data.personal_data)) {
+                    Alert.error(Messages['UNABLE_TO_APPLY_APPLICANT_AGE']);
+                    return false;
+                }
+
+                apiForm.selectInput('childResAddress').val(data.personal_data.AddressOfRegistation);
+                if(data.personal_data.AddressOfRegistation !== '' && data.personal_data.AddressOfRegistation !== null) {
+                    apiForm.selectInput('childResAddress').attr('readonly', true);
+                    apiForm.selectInput('childResAddressFromApi').val('yes');
+                } else {
+                    apiForm.selectInput('childResAddress').attr('readonly', false);
+                    apiForm.selectInput('childResAddressFromApi').val('no');
+                }
+
+                apiForm.selectInput('childLastName').val(data.personal_data.LastName);
+                apiForm.selectInput('childFirstName').val(data.personal_data.FirstName);
+                apiForm.selectInput('childMiddleName').val(data.personal_data.MiddleName);
+                apiForm.selectInput('childBirthday').val(data.personal_data.BirthDate);
+                apiForm.selectInput('childGender').val(data.personal_data.Gender);
+                apiForm.selectInput('DocDate').val(data.personal_data.DocDate);
+                apiForm.selectInput('DocNumber').val(data.personal_data.DocNumber);
+
+                apiForm.fillAndShowInfoBlock($('#child-info'), data.personal_data);
+
+                apiForm.selectInput('childAge').val(data.personal_data.Age);
+            });
+
+        });
+
+
+        $(document).on('click', '.sectionOrder', function() {
+            let $block = $(this).closest('.section-info'),
+                orgName = $block.find('[data-input-name = "sectionOrgName"]').text(),
+                sectionLang = $block.find('[data-input-name = "sectionLang"]').text(),
+                sectionName = $block.find('[data-input-name = "sectionName"]').text(),
+                sectionId = $block.find('[data-input-name = "sectionId"]').text();
+
+            apiForm.selectInput('sectionOrgName').val(orgName);
+            apiForm.selectInput('sectionLang').val(sectionLang);
+            apiForm.selectInput('sectionName').val(sectionName);
+            apiForm.selectInput('sectionId').val(sectionId);
+
+            $('form.step3-form-4-send').submit();
+
+            return false;
+        });
+
+        $('#enrollmentadultform-childiin').on('change input', function() {
+            enrollmentAdultForm.clearChildInfo();
+        });
+    },
+    clearChildInfo: function () {
+        $('#child-info').hide();
+
+        $('#enrollmentadultform-childresaddress').val('');
+        $('#enrollmentadultform-childlastname').val('');
+        $('#enrollmentadultform-childfirstname').val('');
+        $('#enrollmentadultform-childmiddlename').val('');
+        $('#enrollmentadultform-childbirthday').val('');
+        $('#enrollmentadultform-childgender').val('');
+        $('#enrollmentadultform-childresaddressfromapi').val('');
+        $('#enrollmentadultform-childage').val('');
+        $('#enrollmentadultform-docdate').val('');
+        $('#enrollmentadultform-docnumber').val('');
+        $('#enrollmentadultform-referenceadmittance').attr('value', '');
+        $('#enrollmentadultform-reference88').attr('value', '');
+        $('#referenceAdmittance-file-label').addClass('d-none');
+        $('#reference88-file-label').addClass('d-none');
+    },
+};
+
+$(document).ready(function () {
+    enrollmentAdultForm.init();
+});

@@ -1,0 +1,183 @@
+$(document).ready(function() {
+    let $filterForm = $('#filter-form'),
+        $applyButton = $('.applyFilter'),
+        $resetButton = $('.resetFilter'),
+        $searchForm = $('#search-form'),
+        lastLoadPage = 1;
+
+    function pjaxRequest($form, $searchForm) {
+        let data = $filterForm.serializeArray();
+        let searchData = $searchForm.serializeArray();
+
+        let fullData = $.merge(data, searchData);
+
+        $.each(fullData, function() {
+            if (this.name === 'page-num') {
+                this.value = 0;
+            }
+        });
+
+        $.pjax({
+            url: $form.attr('action'),
+            data: fullData,
+            container: '#df-search-pjax',
+            timeout: 15000,
+            type: 'GET',
+            scrollTo: true
+        });
+    }
+
+    $('.check-all-points').on('click', function() {
+        $filterForm.find('[name = "' + $(this).attr('data-name') + '"]').prop('checked', $(this).is(':checked'));
+    });
+
+    /**
+     * Сброс фильтра
+     */
+    $resetButton.on('click', function() {
+        $filterForm.trigger('reset');
+        $filterForm.find('[type="checkbox"]').prop('checked', false);
+        $filterForm.find('.multiselect-selected-text').text(Messages['NOTHING_IS_SELECTED']);
+
+        $applyButton.click();
+    });
+
+    /**
+     * Применение фильтра
+     */
+    $applyButton.on('click', function() {
+        lastLoadPage = 1;
+
+        pjaxRequest($filterForm, $searchForm);
+
+        return false;
+    });
+
+    $(document).on('click', '[data-df-sorting]', function() {
+        let sortType = $(this).attr('data-df-sorting'),
+            $obj = $filterForm.find('[name $= "[sorting]"]');
+
+        $obj.val(sortType);
+
+        $applyButton.click();
+    });
+
+    $(document).on('click', '.openMapDf[data-df-coordinates-url]', function() {
+        mapdf.drawFromUrl($(this).attr('data-df-coordinates-url') + '?' + $filterForm.serialize())
+    });
+
+    const mapdf = {
+        _map: null,
+        _points: {},
+        addPoint: function(lat, long, desc) {
+            this._points.push({
+                coords: [lat, long],
+                desc: desc
+            });
+        },
+        drawFromUrl: function(url) {
+            let self = this;
+
+            $.get(url, function (data) {
+                self.draw(data);
+                self.setCoordinates(data);
+            });
+
+            return false;
+        },
+        draw: function(data) {
+            let self = this;
+
+            var lat_min = getMinMaxLat(data, 'min');
+            var lat_max = getMinMaxLat(data, 'max');
+            var lat_mid = (lat_max + lat_min) / 2;
+
+            var lng_min = getMinMaxLng(data, 'min');
+            var lng_max = getMinMaxLng(data, 'max');
+            var lng_mid = (lng_max + lng_min) / 2;
+
+            var lat_gen = lat_mid;
+            var lng_gen = lng_mid;
+
+            if(this._map == null) {
+                this._map = new ymaps.Map('map', {
+                    center: [lat_gen, lng_gen],
+                    zoom: 12,
+                    controls: ['zoomControl', 'typeSelector', 'fullscreenControl']
+                });
+            }
+        },
+
+        clearCoordinates: function () {
+            if (this._map) {
+                this._map.geoObjects.removeAll();
+            }
+        },
+
+        setCoordinates: function (data) {
+            let self = this;
+
+            this.clearCoordinates();
+
+            let clusterer = new ymaps.Clusterer({
+                preset: 'islands#invertedNightClusterIcons',
+                clusterDisableClickZoom: false
+            });
+
+            if (data.length > 0) {
+                $.each(data, function (key, item) {
+                    if (key === 1) {
+                        self._map.setCenter([item.lat, item.lng]);
+                    }
+                    let marker = new ymaps.Placemark([item.lat, item.lng], {
+                        hintContent: item.name,
+                        preset: 'islands#blueIcon',
+                        id: item.id,
+                        clusterCaption: item.name,
+                        balloonContentHeader: item.name,
+                        balloonContentBody: item.photo ? '<img src="'+item.photo+'" width="136" height="136" class="mb-2 mt-1"><br><a style="color: #0a6ebd; cursor:pointer;" onclick="window.open(\''+item.link+'\')">'+Messages["GO_TO"]+'</a>' : '<a style="color: #0a6ebd; cursor:pointer;" onclick="window.open(\''+item.link+'\')">'+Messages["GO_TO"]+'</a>'
+                    });
+
+                    marker.events.add('click', function () {
+                        window.open(item.link);
+                    });
+
+                    clusterer.add(marker);
+                });
+                self._map.geoObjects.add(clusterer);
+
+                return false;
+            }
+
+            return false;
+        },
+    };
+
+    function getMinMaxLat(data_obj, type) {
+        var array = [];
+        $.each(data_obj, function (key, item) {
+            if (item.lat > 0) {
+                array[array.length] = item.lat;
+            }
+        });
+        if (type == 'max') {
+            return Math.max.apply(Math, array);
+        } else {
+            return Math.min.apply(Math, array);
+        }
+    }
+
+    function getMinMaxLng(data_obj, type) {
+        var array = [];
+        $.each(data_obj, function (key, item) {
+            if (item.lng > 0) {
+                array[array.length] = item.lng;
+            }
+        });
+        if (type == 'max') {
+            return Math.max.apply(Math, array);
+        } else {
+            return Math.min.apply(Math, array);
+        }
+    }
+});

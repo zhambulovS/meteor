@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="273.5px" height="715px" viewBox="0 0 273.5 715" enable-background="new 0 0 273.5 715" xml:space="preserve">
+<path fill="#EF4136" d="M44.041,477.133L20,476.908l16.111,16.415L44.041,477.133z"/>
+<circle fill="#C4C4C4" cx="8" cy="130" r="8"/>
+<rect x="166.644" y="271.644" transform="matrix(-0.9528 -0.3038 0.3038 -0.9528 266.3303 613.1315)" fill="#FCEFA5" width="28.415" height="28.415"/>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="518.8045" y1="520.2449" x2="1098.5508" y2="-295.4902" gradientTransform="matrix(1 0 0 -1 -333.46 493.4)">
+	<stop  offset="0" style="stop-color:#0074F0"/>
+	<stop  offset="1" style="stop-color:#00E7F0"/>
+</linearGradient>
+<circle fill="none" stroke="url(#SVGID_1_)" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7,7" cx="458.5" cy="357.5" r="357"/>
+</svg>

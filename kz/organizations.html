@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="kk-KK">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>Спорт ұйымдарының тізімі</title>
+    <style>
+        body {
+            padding: 0!important;
+        }
+
+        /*page-loader styles*/
+        .page-loader {
+            background-color: #ffffff96;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 9998;
+            display: none;
+        }
+        .page-loader .preloader-image-preview {
+            left: 50%;
+            top: 50%;
+            position: relative;
+            display: block;
+            margin: -64px 0 0 -64px;
+        }
+        .preloader-image-preview img {
+            width: 128px;
+            height: 128px;
+        }
+
+        /*empty-not-found error styles*/
+        .g-callout.g-callout-danger {
+            border-left-color: #E76E6E;
+            background: #FFE4E4;
+            margin-left: 15px;
+        }
+        .g-callout {
+            padding: .875rem .875rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-left: .25rem solid transparent;
+            font-size: .875rem;
+        }
+
+        /* btn load more */
+        .main-cards__show-more {
+            border: 2px solid #1787FF;
+            color: #1787FF;
+            font-weight: bold;
+        }
+
+        /* fit img */
+        .avatar-card img {
+            object-fit: cover;
+        }
+
+        /* images for file-uploads on forms */
+        .file-download-wrapper .files-container .file-info-icon.doc {
+            background-image: url(../images/doc.svg);
+        }
+        .file-download-wrapper .files-container .file-info-icon.zip {
+            background-image: url(../images/folder.svg);
+        }
+
+        /* cabinet images on password inputs */
+        .password-control {
+            background: url(../images/view.svg) 0 0 no-repeat;
+        }
+        .password-control.view {
+            background: url(../images/no-view.svg) no-repeat 0 0;
+        }
+
+        .cabinet .form-control {
+            border: 1px solid #01B5F0!important;
+        }
+
+        .btn.cabinet-btn {
+            background-color: #fff;
+            border: 1px solid #0074F0;
+            color: #0074F0;
+        }
+
+        /* tech support fake */
+        .fake-block {
+            cursor: pointer;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+            z-index: 2147483648;
+        }
+        .fake-block .fb-body {
+            right: 30px;
+            left: auto;
+            position: relative;
+            box-shadow: 0 12px 14px 8px rgba(0, 0, 0, 0.17);
+            background: linear-gradient(95deg, #3f51b5 20%, #7486e5 80%);
+            border-top-left-radius: 8px !important;
+            border-top-right-radius: 34px !important;
+            height: 40px;
+            width: auto;
+            min-width: 300px;
+        }
+        .fake-block .fb-body .fb-title {
+            color: white;
+            margin: 0 33px 0 16px;
+            line-height: 40px;
+        }
+        .fake-block .fb-body .fb-img {
+            right: 0;
+            position: absolute;
+            top: 0;
+            width: 33px;
+            border-radius: 0 24px 0 0 !important;
+        }
+        .fake-block .fb-body .fb-img .icon {
+            width: 32px !important;
+            height: 34px !important;
+            position: absolute;
+            overflow: visible;
+            right: 0;
+            top: 0;
+        }
+
+        .checkbox-circle.off .icon-table-red {
+            font-size: 18px;
+            width: 35px;
+            height: 35px;
+            border: 3px solid #FF9D9D;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .child-visit-status-selector, .child-visit-status-selector-mobile {
+            position: relative;
+        }
+
+        .child-visit-status-variant {
+            z-index: 3;
+            position: relative;
+        }
+
+        .child-visit-status-variant-block, .child-visit-status-variant-block-mobile {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 4;
+            cursor: pointer;
+        }
+
+        .grey-mode-timesheet-cell {
+            filter: gray;
+            filter: gray; filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+            -webkit-filter: grayscale(100%);
+        }
+
+        .scroll-width {
+            max-width: none!important;
+        }
+    </style>
+
+        
+<link href="../assets/71d79331/css/bootstrap.css@v=1721220178.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap&quot; rel=&quot;stylesheet" rel="stylesheet">
+<link href="../libs/slick/slick.css@v=1686801454.css" rel="stylesheet">
+<link href="../libs/slick/slick-theme.css@v=1686801454.css" rel="stylesheet">
+<link href="../libs/nice-select/nice-select.css@v=1686801454.css" rel="stylesheet">
+<link href="../libs/bootstrap/components.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../css/alert.css@v=1686801454.css" rel="stylesheet">
+<link href="../libs/fancybox/jquery.fancybox.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../css/main.css@v=1721219990.css" rel="stylesheet"></head>
+<!--class="meteor-almaty" включение метеор алматы-->
+<body class="" data-lang="kz" >
+
+
+<div class="page-loader" id="page-content-loader">
+    <div class="preloader-image-preview">
+        <img src="../images/loader.gif" alt="">
+    </div>
+</div>
+
+
+
+<header class="header">
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-8 col-lg-3 d-flex">
+                    <div class="dropdown mobile-dropdown align-self-center">
+                        <a class="dropdown-info dropdown-toggle" href="organizations.html#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sometext d-none d-sm-inline-block">Пайдалы ақпарат</span>
+                            <span class="sometext d-inline-block d-sm-none">Ақпарат</span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="organizations.html#">Жеке кабинетке қалай кіруге болады?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex clock-block">
+                    <div class="m-lg-auto align-self-center pl-lg-3">
+                        Сервердің эталондық уақыты: <span id="clock-text">2024.08.12 16:10:26</span>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-lg-4 d-flex">
+                    <div class="ml-auto align-self-center">
+                        <a href="organizations.html#" class="city-select" data-toggle="modal" data-target="#cityModal">
+                            <img src="../images/icons/maps-and-flags.svg" class="mr-2" alt="">
+                            <span class="d-none d-sm-block">Қостанай облысы</span>
+                        </a>
+                    </div>
+                    
+<div class="d-none d-lg-flex justify-content-end">
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="organizations.html">Қазақша</a>
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="../ru/organizations.html">Русский</a>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <nav class="navbar justify-content-between">
+                
+<div class="logo-city">
+<img src="organizations.html" alt="" width="50">
+
+                                   </div>
+
+<style>
+    .main-header .logo-city {
+        flex: 0 0 15rem!important;
+    }
+</style>
+                <a href="../kz.1.html" class="navbar-brand">
+                    <img src="../images/logo/logo.svg" alt="meteor_logo">
+                </a>
+
+                <ul class="d-none d-lg-flex navbar-nav flex-row">
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="sections.html">Спорт секциялары</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="organizations.html">Спорт объектілері</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="couches.html">Жаттықтырушылар құрамы</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="site/upcoming-events.html">Іс-шаралар</a>
+                    </li>
+                </ul>
+
+                <div class="burger-icon">
+                    <div id="burger-wrapper">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </div>
+
+                <a class="d-none d-lg-block btn main-btn personal-area-btn" href="cabinet.html">
+                                            Жеке кабинетке кіру                                    </a>
+                <a class="d-block d-lg-none avatar-block" href="cabinet.html">
+                    <img src="../images/icons/user.svg" alt="">
+                </a>
+            </nav>
+        </div>
+    </div>
+
+</header>
+
+<div class="mobileMenu" id="mobileMenu" >
+    <div class="mobileMenu__wrapper">
+
+        <a href="organizations.html#" class="city-select btn main-outline-btn" data-toggle="modal" data-target="#cityModal">
+            <svg class="icon">
+                <use xlink:href="/images/sprite.svg#map"></use>
+            </svg>
+            <span>Қостанай облысы</span>
+        </a>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="sections.html">Спорт секциялары</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="organizations.html">Спорт объектілері</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="couches.html">Жаттықтырушылар құрамы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="site/upcoming-events.html">Іс-шаралар</a>
+            </li>
+        </ul>
+
+        
+<div class="mobile-menu__choice-language d-lg-none">
+    <ul class="btn-group--lang">
+                    <li class="active">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="organizations.html">Қазақша</a>
+            </li>
+                    <li class="">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="../ru/organizations.html">Русский</a>
+            </li>
+            </ul>
+</div>
+
+        <a class="btn login-btn main-btn" href="cabinet.html">
+                            Жеке кабинетке кіру                    </a>
+    </div>
+
+</div>
+
+
+
+<script>
+    var burger = document.querySelector('.burger') !== null;
+    if (burger) {
+        burger.addEventListener('click', function(){
+            document.querySelector('.burger span').classList.toggle('active');
+        })
+    }
+
+    var menu = document.querySelector('.menu') !== null;
+    if (menu) {
+        menu.classList.toggle("animate");
+    }
+</script>
+
+<main class="main bg-section-card">
+            <nav aria-label="breadcrumb" class="breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumb"><li class="breadcrumb-item"><a href="../kz.1.html">Басты бет</a></li><li class="breadcrumb-item active" aria-current="page">Спорт ұйымдарының тізімі</li></ol>            </div>
+        </nav>
+    
+        
+<section class="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <form action="organizations/index.html" method="GET" id="filter-form" class="main-filter filter-block">
+                    <div class="main-filter__header">
+                        <h6 class="main-filter__title">Сүзгі</h6>
+                        <span class="close-filter"></span>
+                    </div>
+                    <div class="main-filter__body">
+
+                        <div class="main-filter__category">
+                            <div class="form-group main-filter__multiselect">
+                                <label for="main-filter__organization-type-1" class="main-filter__category-title">Ұйымның түрі</label>
+                                <select class="form-control js-multiselect" id="main-filter__organization-type-1" name="SearchOrganizationForm[tipy_organizatsiy][]" multiple>
+                                                                                                                    <option value="4" >
+                                            Жаттығуларды өткізу орындары                                        </option>
+                                                                                                                    <option value="1" >
+                                            Спорт мектебі                                        </option>
+                                                                                                                    <option value="5" >
+                                            Спорттық мектеп-интернат                                        </option>
+                                                                                                                    <option value="2" >
+                                            Спорт нысаны                                        </option>
+                                                                                                                    <option value="6" >
+                                            Спорт федерациясы                                        </option>
+                                                                                                                    <option value="3" >
+                                            ОРДО                                        </option>
+                                                                    </select>
+                            </div>
+                        </div>
+
+                        <div class="main-filter__category">
+                            <div class="form-group main-filter__multiselect">
+                                <label for="main-filter__sport-type-1" class="main-filter__category-title">Спорттың түрі</label>
+                                <select class="form-control js-multiselect" name="SearchOrganizationForm[vidy_sporta][]" id="main-filter__sport-type-1" multiple>
+                                                                                                                    <option value="2" >
+                                            Жазғы олимпиадалық спорт түрлері                                        </option>
+                                                                                                                    <option value="3" >
+                                            Қысқы олимпиадалық спорт түрлері                                        </option>
+                                                                                                                    <option value="1" >
+                                            Олимпиадалық емес спорт түрлері                                        </option>
+                                                                                                                    <option value="4" >
+                                            Ұлттық спорт түрлері                                        </option>
+                                                                    </select>
+                            </div>
+                        </div>
+                        <div class="main-filter__category">
+                            <p class="main-filter__category-title">Меншік нысаны</p>
+                            <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox check-all-points" id="main-filter__own-type-all" data-name="SearchOrganizationForm[formy_sobstvenosti][]">
+                                <label class="main-filter__check-mark" for="main-filter__own-type-all"></label>
+                                <label for="main-filter__own-type-all">Барлығы</label>
+                            </div>
+
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" id="main-filter__own-type-1" value="1" name="SearchOrganizationForm[formy_sobstvenosti][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__own-type-1"></label>
+                                    <label for="main-filter__own-type-1">Мемлекеттік</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" id="main-filter__own-type-2" value="2" name="SearchOrganizationForm[formy_sobstvenosti][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__own-type-2"></label>
+                                    <label for="main-filter__own-type-2">Жеке меншік</label>
+                                </div>
+                                                    </div>
+                        <div class="main-filter__category">
+                            <p class="main-filter__category-title">Балаларды қабылдау</p>
+                            <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox check-all-points" id="main-filter__status-all" data-name="SearchOrganizationForm[statuses][]">
+                                <label class="main-filter__check-mark" for="main-filter__status-all"></label>
+                                <label for="main-filter__status-all">Барлығы</label>
+                            </div>
+
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="1" id="main-filter__status-1" name="SearchOrganizationForm[statuses][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__status-1"></label>
+                                    <label for="main-filter__status-1">Открыт набор каз</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="2" id="main-filter__status-2" name="SearchOrganizationForm[statuses][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__status-2"></label>
+                                    <label for="main-filter__status-2">Закрыт набор каз</label>
+                                </div>
+                                                    </div>
+                        <div class="main-filter__category">
+                            <p class="main-filter__category-title">Аудан</p>
+                            <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox check-all-points" id="main-filter__district-all" data-name="SearchOrganizationForm[rajony][]">
+                                <label class="main-filter__check-mark" for="main-filter__district-all"></label>
+                                <label for="main-filter__district-all">Барлығы</label>
+                            </div>
+
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="1" id="main-filter__district-1" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-1"></label>
+                                    <label for="main-filter__district-1-1">Қостанай қаласы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="2" id="main-filter__district-2" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-2"></label>
+                                    <label for="main-filter__district-2-2">Жангелді ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="3" id="main-filter__district-3" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-3"></label>
+                                    <label for="main-filter__district-3-3">Бейімбет Майлин</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="4" id="main-filter__district-4" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-4"></label>
+                                    <label for="main-filter__district-4-4">Жітіқара ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="5" id="main-filter__district-5" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-5"></label>
+                                    <label for="main-filter__district-5-5">Лисаковск қаласы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="6" id="main-filter__district-6" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-6"></label>
+                                    <label for="main-filter__district-6-6">Қарабалық ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="7" id="main-filter__district-7" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-7"></label>
+                                    <label for="main-filter__district-7-7">Қостанай ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="8" id="main-filter__district-8" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-8"></label>
+                                    <label for="main-filter__district-8-8">Рудный қаласы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="9" id="main-filter__district-9" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-9"></label>
+                                    <label for="main-filter__district-9-9"></label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="10" id="main-filter__district-10" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-10"></label>
+                                    <label for="main-filter__district-10-10">Алтынсарин ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="11" id="main-filter__district-11" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-11"></label>
+                                    <label for="main-filter__district-11-11">Меңдіқара ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="12" id="main-filter__district-12" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-12"></label>
+                                    <label for="main-filter__district-12-12">Әулиекөл ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="13" id="main-filter__district-13" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-13"></label>
+                                    <label for="main-filter__district-13-13">Денисов ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="14" id="main-filter__district-14" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-14"></label>
+                                    <label for="main-filter__district-14-14">Қамысты ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="15" id="main-filter__district-15" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-15"></label>
+                                    <label for="main-filter__district-15-15">Сарыкөл ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="16" id="main-filter__district-16" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-16"></label>
+                                    <label for="main-filter__district-16-16">Арқалық қаласы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="17" id="main-filter__district-17" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-17"></label>
+                                    <label for="main-filter__district-17-17">Қарасу ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="18" id="main-filter__district-18" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-18"></label>
+                                    <label for="main-filter__district-18-18">Амангелді ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="19" id="main-filter__district-19" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-19"></label>
+                                    <label for="main-filter__district-19-19">Ұзынкөл ауданы</label>
+                                </div>
+                                                                                            <div class="main-filter__input-group">
+                                    <input type="checkbox" class="main-filter__checkbox" value="20" id="main-filter__district-20" name="SearchOrganizationForm[rajony][]" >
+                                    <label class="main-filter__check-mark" for="main-filter__district-20"></label>
+                                    <label for="main-filter__district-20-20">Науырзым ауданы</label>
+                                </div>
+                                                    </div>
+                        <!--
+                        <div class="main-filter__category">
+                            <p class="main-filter__category-title">Возраст детей</p>
+                            <div class="main-filter__input-group">
+                                <label for="main-filter__children-age-1">От</label>
+                                <input type="number" min="1" max="18" class="main-filter__num-input" id="main-filter__children-age-1">
+                                <label for="main-filter__children-age-2">До</label>
+                                <input type="number" min="1" max="18" class="main-filter__num-input" id="main-filter__children-age-2">
+                            </div>
+                        </div>
+                        -->
+                        <input type="hidden" name="SearchOrganizationForm[sorting]">                        <div class="main-filter__btn-group">
+                            <button type="submit" class="btn main-btn main-filter__btn main-filter__btn_submit applyFilter">Қолдану</button>
+                            <button type="reset" class="btn second-btn main-filter__btn main-filter__btn_cancel resetFilter">Алып тастау</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-9">
+                <div id="df-search-pjax" data-pjax-container="" data-pjax-push-state data-pjax-timeout="1000">
+                <div class="search-bar d-flex flex-column">
+                    <h3 class="search-bar__title">Спорт ұйымдарының тізімі</h3>
+                    <form id="search-form" class="search-bar__form d-flex align-items-center" action="organizations/index.html" method="GET" data-pjax>                        <div class="search-bar__input-wrap d-flex align-items-center">
+                            <img src="../images/icons/i-search.svg" alt="Search" class="d-none d-lg-block">
+                            <label class="search-bar__label">
+                                <input type="text" class="search-bar__input" name="SearchOrganizationForm[searchtext]" placeholder="Спорт ұйымының атауы бойынша іздеу">                            </label>
+                        </div>
+                        <button type="submit" class="btn main-btn search-bar__btn applyFilter">Іздеу</button>
+                    </form>                    <div class="search-bar__tags d-flex align-items-center"></div>
+                    <a href="javascript:void(0);" class="btn second-light-btn btn-search-filter filter-toggle">
+                        <svg class="icon">
+                            <use xlink:href="/images/sprite.svg#filter"></use>
+                        </svg>
+                        Сүзгі                    </a>
+                    <div class="search-bar__total-count d-flex justify-content-end">
+                        Спорт ұйымдарының саны:
+                        <span class="search-bar__total-count-target">34</span>
+                    </div>
+                </div>
+
+                <div class="sort-select-group mb-30 d-flex flex-lg-row flex-column align-items-lg-center justify-content-between">
+                    <div class="layout-dropdown d-flex align-items-center order-2 order-lg-1" id="view-changes">
+                        <div class="dropdown-btn" data-toggle="dropdown" data-parent="parent">
+                            <svg class="icon">
+                                <use xlink:href="/images/sprite.svg#filter"></use>
+                            </svg>
+                        </div>
+
+                                                <div class="js-text">
+                                                    </div>
+                                                    <h6 class="blank-title" style="margin-left: 0.6em">бойынша сұрыптау</h6>
+                        
+                        <div class="dropdown-menu">
+
+                            <div class="d-flex align-items-center dropdown-item" data-id="title" data-df-sorting="az">
+                                <svg class="icon">
+                                    <use xlink:href="/images/sprite.svg#a-b"></use>
+                                </svg>
+                                <span class="js-text">атауы (А-Я)</span>
+                            </div>
+                            <div class="d-flex align-items-center dropdown-item" data-id="title-reverse" data-df-sorting="za">
+                                <svg class="icon">
+                                    <use xlink:href="/images/sprite.svg#b-a"></use>
+                                </svg>
+                                <span class="js-text">атауы (Я-А)</span>
+                            </div>
+                            <div class="d-flex align-items-center dropdown-item" data-id="state" data-df-sorting="gos">
+                                <svg class="icon">
+                                    <use xlink:href="/images/sprite.svg#school"></use>
+                                </svg>
+                                <span class="js-text">мемлекеттік</span>
+                            </div>
+                            <div class="d-flex align-items-center dropdown-item" data-id="private" data-df-sorting="chast">
+                                <svg class="icon">
+                                    <use xlink:href="/images/sprite.svg#building"></use>
+                                </svg>
+                                <span class="js-text">жеке меншік</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-view d-flex align-items-center order-1 order-lg-2 justify-content-center">
+                        <div class="page-view__btn page-view__btn_list page-view__btn_active page-view__list d-flex align-items-center">
+                            <div class="page-view__icon burger-icon">
+                                <div class="burger-icon__line burger-icon__line_1"></div>
+                                <div class="burger-icon__line burger-icon__line_2"></div>
+                                <div class="burger-icon__line burger-icon__line_3"></div>
+                            </div>
+                            Тізім                        </div>
+                        <div class="page-view__btn page-view__btn_map d-flex align-items-center openMapDf" data-df-coordinates-url="/kz/organizations/coordinates">
+                            <svg class="icon page-view__icon page-view__icon-map">
+                                <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                            </svg>
+                            Карта                        </div>
+                    </div>
+                </div>
+
+                <div class="main-cards">
+                    <div id="organizations-list">
+                        <div class="main-card d-flex align-items-start">
+                    <div class="card__sticker main-card__status_orange">
+            <span>Закрыт<br>набор</span>
+        </div>
+        <div class="main-card__img-box">
+                    <img src="../img/cachedImages/preview/3508-2-7.jpg"
+                 srcset="../img/cachedImages/preview/3508-2-7.jpg 2x" alt="Photo"
+                 class="main-card__img">
+            </div>
+    <div class="main-card__body d-flex flex-column">
+        <div class="main-card__title-group d-flex align-items-center justify-content-between">
+            <h4 class="main-card__title">Қостанай облысы әкімдігі дене шынықтыру және спорт басқармасының "Қарабалық аудандық  балалар-жасөспірімдер спорт мектебі" кмм</h4>
+        </div>
+        <div class="main-card__info d-flex flex-column">
+            <div class="main-card__info-el d-flex align-items-start">
+                <div class="main-card__info-title-group d-flex align-items-center">
+                    <svg class="icon main-card__info-map-flag">
+                        <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                    </svg>
+                    <p class="main-card__info-title">Орналасқан жері:</p>
+                </div>
+                <p class="main-card__text">Қарабаық ауылы, Космонавтов көшісі, 33 үй</p>
+            </div>
+            <div class="main-card__tags main-card__tags_organizations d-flex align-items-center">
+                <div class="main-card__tag main-card__tag_blue">Мемлекеттік</div>
+            </div>
+        </div>
+        <h6 class="main-card__footer-tags-title">Спорт түрлері</h6>
+        <div class="main-card__btn-bar d-lg-flex align-items-center justify-content-between">
+            <div class="main-card__tags d-flex align-items-center flex-wrap">
+                                            </div>
+            <a href="organizations/view-sport-school@id=6.html" data-pjax="0"
+               class="btn main-btn main-card__link main-card__tag_footer">
+                Толығырақ            </a>
+        </div>
+    </div>
+</div>
+<div class="main-card d-flex align-items-start">
+                    <div class="card__sticker main-card__status_blue">
+            <span>Открыт<br>набор</span>
+        </div>
+        <div class="main-card__img-box">
+                    <img src="../img/cachedImages/preview/55-3-7.jpg"
+                 srcset="../img/cachedImages/preview/55-3-7.jpg 2x" alt="Photo"
+                 class="main-card__img">
+            </div>
+    <div class="main-card__body d-flex flex-column">
+        <div class="main-card__title-group d-flex align-items-center justify-content-between">
+            <h4 class="main-card__title">Қостанай  облысы әкімдігінің дене шынықтыру және спот басқармасының "Қостанй аудандық балалар-жасөспірімдер спорт мектебі" КММ</h4>
+        </div>
+        <div class="main-card__info d-flex flex-column">
+            <div class="main-card__info-el d-flex align-items-start">
+                <div class="main-card__info-title-group d-flex align-items-center">
+                    <svg class="icon main-card__info-map-flag">
+                        <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                    </svg>
+                    <p class="main-card__info-title">Орналасқан жері:</p>
+                </div>
+                <p class="main-card__text">Костанайский ауданы,Тәуелсіздік көшесі, 53/5 үй</p>
+            </div>
+            <div class="main-card__tags main-card__tags_organizations d-flex align-items-center">
+                <div class="main-card__tag main-card__tag_blue">Мемлекеттік</div>
+            </div>
+        </div>
+        <h6 class="main-card__footer-tags-title">Спорт түрлері</h6>
+        <div class="main-card__btn-bar d-lg-flex align-items-center justify-content-between">
+            <div class="main-card__tags d-flex align-items-center flex-wrap">
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Бадминтон                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Баскетбол                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Бокс                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Еркін күрес                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Грек-рим күрес                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Волейбол                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Дзюдо                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Жеңіл атлетика                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Үстел теннисі                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Ауыр атлетика                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Футбол                    </div>
+                                                    <div class="main-card__tag main-card__tag_footer main-card__tag_show-more main-card__tag_show-more_func">
+                        Және...                     </div>
+                            </div>
+            <a href="organizations/view-sport-school@id=14.html" data-pjax="0"
+               class="btn main-btn main-card__link main-card__tag_footer">
+                Толығырақ            </a>
+        </div>
+    </div>
+</div>
+<div class="main-card d-flex align-items-start">
+                    <div class="card__sticker main-card__status_blue">
+            <span>Открыт<br>набор</span>
+        </div>
+        <div class="main-card__img-box">
+                    <img src="../img/cachedImages/preview/37-4-7.jpg"
+                 srcset="../img/cachedImages/preview/37-4-7.jpg 2x" alt="Photo"
+                 class="main-card__img">
+            </div>
+    <div class="main-card__body d-flex flex-column">
+        <div class="main-card__title-group d-flex align-items-center justify-content-between">
+            <h4 class="main-card__title">Қостанай облысы әкімддігінің дене шанақтыру және спорт баскармасының «Рудный қалалық № 1» балалар- жасөспірімдер спорт мектебі КММ
+</h4>
+        </div>
+        <div class="main-card__info d-flex flex-column">
+            <div class="main-card__info-el d-flex align-items-start">
+                <div class="main-card__info-title-group d-flex align-items-center">
+                    <svg class="icon main-card__info-map-flag">
+                        <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                    </svg>
+                    <p class="main-card__info-title">Орналасқан жері:</p>
+                </div>
+                <p class="main-card__text">Рудный қаласы, Гагарин қөшесі, 11 үй</p>
+            </div>
+            <div class="main-card__tags main-card__tags_organizations d-flex align-items-center">
+                <div class="main-card__tag main-card__tag_blue">Мемлекеттік</div>
+            </div>
+        </div>
+        <h6 class="main-card__footer-tags-title">Спорт түрлері</h6>
+        <div class="main-card__btn-bar d-lg-flex align-items-center justify-content-between">
+            <div class="main-card__tags d-flex align-items-center flex-wrap">
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Жеңіл атлетика                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Жүзу                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Баскетбол                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Футбол                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Конькимен жүгіру спорты                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Пауэрлифтинг                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Мини футбол                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Шахмат                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Тоғызқұмалақ                    </div>
+                                                    <div class="main-card__tag main-card__tag_footer main-card__tag_show-more main-card__tag_show-more_func">
+                        Және...                     </div>
+                            </div>
+            <a href="organizations/view-sport-school@id=20.html" data-pjax="0"
+               class="btn main-btn main-card__link main-card__tag_footer">
+                Толығырақ            </a>
+        </div>
+    </div>
+</div>
+<div class="main-card d-flex align-items-start">
+                    <div class="card__sticker main-card__status_orange">
+            <span>Закрыт<br>набор</span>
+        </div>
+        <div class="main-card__img-box">
+                    <img src="../img/cachedImages/preview/3567-1-7.jpg"
+                 srcset="../img/cachedImages/preview/3567-1-7.jpg 2x" alt="Photo"
+                 class="main-card__img">
+            </div>
+    <div class="main-card__body d-flex flex-column">
+        <div class="main-card__title-group d-flex align-items-center justify-content-between">
+            <h4 class="main-card__title">Қостанай облысы әкімдіг ідене шыңықтыру және спорт басқармасының «Жоғары спорт шеберлігі мектебі» кмм
+</h4>
+        </div>
+        <div class="main-card__info d-flex flex-column">
+            <div class="main-card__info-el d-flex align-items-start">
+                <div class="main-card__info-title-group d-flex align-items-center">
+                    <svg class="icon main-card__info-map-flag">
+                        <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                    </svg>
+                    <p class="main-card__info-title">Орналасқан жері:</p>
+                </div>
+                <p class="main-card__text">Қостанай қаласы, Тәуелсіздік көшесі, 83 үй, 323 кабинет</p>
+            </div>
+            <div class="main-card__tags main-card__tags_organizations d-flex align-items-center">
+                <div class="main-card__tag main-card__tag_blue">Мемлекеттік</div>
+            </div>
+        </div>
+        <h6 class="main-card__footer-tags-title">Спорт түрлері</h6>
+        <div class="main-card__btn-bar d-lg-flex align-items-center justify-content-between">
+            <div class="main-card__tags d-flex align-items-center flex-wrap">
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Триатлон                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Грек-рим күрес                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Шаңғы жарысы                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Конькимен жүгіру спорты                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Пауэрлифтинг                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Бадминтон                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Жеңіл атлетика                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Ауыр атлетика                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Велосипед спорты                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Еркін күрес                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Бокс                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Шорт-трек                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Дзюдо                    </div>
+                                                    <div class="main-card__tag main-card__tag_footer main-card__tag_show-more main-card__tag_show-more_func">
+                        Және...                     </div>
+                            </div>
+            <a href="organizations/view-sport-school@id=19.html" data-pjax="0"
+               class="btn main-btn main-card__link main-card__tag_footer">
+                Толығырақ            </a>
+        </div>
+    </div>
+</div>
+<div class="main-card d-flex align-items-start">
+                    <div class="card__sticker main-card__status_blue">
+            <span>Открыт<br>набор</span>
+        </div>
+        <div class="main-card__img-box">
+                    <img src="../img/cachedImages/preview/78-3-7.jpg"
+                 srcset="../img/cachedImages/preview/78-3-7.jpg 2x" alt="Photo"
+                 class="main-card__img">
+            </div>
+    <div class="main-card__body d-flex flex-column">
+        <div class="main-card__title-group d-flex align-items-center justify-content-between">
+            <h4 class="main-card__title">Қостанай облысы әкімдігі  дене шынықтыру және спорт басқармасының «Мүгедектер спорт клубы» кмм
+</h4>
+        </div>
+        <div class="main-card__info d-flex flex-column">
+            <div class="main-card__info-el d-flex align-items-start">
+                <div class="main-card__info-title-group d-flex align-items-center">
+                    <svg class="icon main-card__info-map-flag">
+                        <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                    </svg>
+                    <p class="main-card__info-title">Орналасқан жері:</p>
+                </div>
+                <p class="main-card__text">Қостанай қаласы, Тәуелсіздік көшесі, 83 үй</p>
+            </div>
+            <div class="main-card__tags main-card__tags_organizations d-flex align-items-center">
+                <div class="main-card__tag main-card__tag_blue">Мемлекеттік</div>
+            </div>
+        </div>
+        <h6 class="main-card__footer-tags-title">Спорт түрлері</h6>
+        <div class="main-card__btn-bar d-lg-flex align-items-center justify-content-between">
+            <div class="main-card__tags d-flex align-items-center flex-wrap">
+                                            </div>
+            <a href="organizations/view-sport-school@id=17.html" data-pjax="0"
+               class="btn main-btn main-card__link main-card__tag_footer">
+                Толығырақ            </a>
+        </div>
+    </div>
+</div>
+<div class="main-card d-flex align-items-start">
+                    <div class="card__sticker main-card__status_orange">
+            <span>Закрыт<br>набор</span>
+        </div>
+        <div class="main-card__img-box">
+                    <img src="../img/cachedImages/preview/3576-1-7.jpg"
+                 srcset="../img/cachedImages/preview/3576-1-7.jpg 2x" alt="Photo"
+                 class="main-card__img">
+            </div>
+    <div class="main-card__body d-flex flex-column">
+        <div class="main-card__title-group d-flex align-items-center justify-content-between">
+            <h4 class="main-card__title">Қостанай облысы әкімдігі дене шынықтыру және спорт басқармасының " Қостанай қаласының балалар-жасөспірімдер спорт мектебі " кмм</h4>
+        </div>
+        <div class="main-card__info d-flex flex-column">
+            <div class="main-card__info-el d-flex align-items-start">
+                <div class="main-card__info-title-group d-flex align-items-center">
+                    <svg class="icon main-card__info-map-flag">
+                        <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                    </svg>
+                    <p class="main-card__info-title">Орналасқан жері:</p>
+                </div>
+                <p class="main-card__text">Қостанай қаласы,  Тәуелсіздік көшесі, 132 үй</p>
+            </div>
+            <div class="main-card__tags main-card__tags_organizations d-flex align-items-center">
+                <div class="main-card__tag main-card__tag_blue">Мемлекеттік</div>
+            </div>
+        </div>
+        <h6 class="main-card__footer-tags-title">Спорт түрлері</h6>
+        <div class="main-card__btn-bar d-lg-flex align-items-center justify-content-between">
+            <div class="main-card__tags d-flex align-items-center flex-wrap">
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Мәнерлеп сырғанау                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Жүзу                    </div>
+                                            </div>
+            <a href="organizations/view-sport-school@id=35.html" data-pjax="0"
+               class="btn main-btn main-card__link main-card__tag_footer">
+                Толығырақ            </a>
+        </div>
+    </div>
+</div>
+<div class="main-card d-flex align-items-start">
+                    <div class="card__sticker main-card__status_blue">
+            <span>Открыт<br>набор</span>
+        </div>
+        <div class="main-card__img-box">
+                    <img src="../img/cachedImages/preview/8-4-7.jpg"
+                 srcset="../img/cachedImages/preview/8-4-7.jpg 2x" alt="Photo"
+                 class="main-card__img">
+            </div>
+    <div class="main-card__body d-flex flex-column">
+        <div class="main-card__title-group d-flex align-items-center justify-content-between">
+            <h4 class="main-card__title">Қостанай облысы әкімдігі дене шынықтыру және спорт басқармасының "№ 2 балалар-жасөспірімдер спорт мектебі" кмм</h4>
+        </div>
+        <div class="main-card__info d-flex flex-column">
+            <div class="main-card__info-el d-flex align-items-start">
+                <div class="main-card__info-title-group d-flex align-items-center">
+                    <svg class="icon main-card__info-map-flag">
+                        <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                    </svg>
+                    <p class="main-card__info-title">Орналасқан жері:</p>
+                </div>
+                <p class="main-card__text">Қостанай қаласы, Маяковский көшесі, 119 А үй</p>
+            </div>
+            <div class="main-card__tags main-card__tags_organizations d-flex align-items-center">
+                <div class="main-card__tag main-card__tag_blue">Мемлекеттік</div>
+            </div>
+        </div>
+        <h6 class="main-card__footer-tags-title">Спорт түрлері</h6>
+        <div class="main-card__btn-bar d-lg-flex align-items-center justify-content-between">
+            <div class="main-card__tags d-flex align-items-center flex-wrap">
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Бадминтон                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Волейбол                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Теннис                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Үстел теннисі                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Тоғызқұмалақ                    </div>
+                                                    <div class="main-card__tag main-card__tag_footer main-card__tag_show-more main-card__tag_show-more_func">
+                        Және...                     </div>
+                            </div>
+            <a href="organizations/view-sport-school@id=22.html" data-pjax="0"
+               class="btn main-btn main-card__link main-card__tag_footer">
+                Толығырақ            </a>
+        </div>
+    </div>
+</div>
+<div class="main-card d-flex align-items-start">
+                    <div class="card__sticker main-card__status_blue">
+            <span>Открыт<br>набор</span>
+        </div>
+        <div class="main-card__img-box">
+                    <img src="../img/cachedImages/preview/3500-2-7.jpg"
+                 srcset="../img/cachedImages/preview/3500-2-7.jpg 2x" alt="Photo"
+                 class="main-card__img">
+            </div>
+    <div class="main-card__body d-flex flex-column">
+        <div class="main-card__title-group d-flex align-items-center justify-content-between">
+            <h4 class="main-card__title">Қостанай облысы әкімдігі дене шынықтыру және спорт басқармасының "Владимир Матвиенко атындағы олимпиадалық резерв балалар-жасөспірімдер мектебі" КММ</h4>
+        </div>
+        <div class="main-card__info d-flex flex-column">
+            <div class="main-card__info-el d-flex align-items-start">
+                <div class="main-card__info-title-group d-flex align-items-center">
+                    <svg class="icon main-card__info-map-flag">
+                        <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                    </svg>
+                    <p class="main-card__info-title">Орналасқан жері:</p>
+                </div>
+                <p class="main-card__text">Қостанай қаласы, Алтансарин көшесі, 124 үй</p>
+            </div>
+            <div class="main-card__tags main-card__tags_organizations d-flex align-items-center">
+                <div class="main-card__tag main-card__tag_blue">Мемлекеттік</div>
+            </div>
+        </div>
+        <h6 class="main-card__footer-tags-title">Спорт түрлері</h6>
+        <div class="main-card__btn-bar d-lg-flex align-items-center justify-content-between">
+            <div class="main-card__tags d-flex align-items-center flex-wrap">
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Грек-рим күрес                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Еркін күрес                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Каратэ                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Таеквон-до                    </div>
+                                                    <div class="main-card__tag main-card__tag_footer main-card__tag_show-more main-card__tag_show-more_func">
+                        Және...                     </div>
+                            </div>
+            <a href="organizations/view-sport-school@id=226.html" data-pjax="0"
+               class="btn main-btn main-card__link main-card__tag_footer">
+                Толығырақ            </a>
+        </div>
+    </div>
+</div>
+<div class="main-card d-flex align-items-start">
+                    <div class="card__sticker main-card__status_blue">
+            <span>Открыт<br>набор</span>
+        </div>
+        <div class="main-card__img-box">
+                    <img src="../img/cachedImages/preview/66-3-7.jpg"
+                 srcset="../img/cachedImages/preview/66-3-7.jpg 2x" alt="Photo"
+                 class="main-card__img">
+            </div>
+    <div class="main-card__body d-flex flex-column">
+        <div class="main-card__title-group d-flex align-items-center justify-content-between">
+            <h4 class="main-card__title">Қостанай облысы әкімдігі дене шынықтыру және спорт басқармасының "Қадырбек Оспанов атындағы № 1 балалар-жасөспірімдер спорт мектебі" кмм</h4>
+        </div>
+        <div class="main-card__info d-flex flex-column">
+            <div class="main-card__info-el d-flex align-items-start">
+                <div class="main-card__info-title-group d-flex align-items-center">
+                    <svg class="icon main-card__info-map-flag">
+                        <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                    </svg>
+                    <p class="main-card__info-title">Орналасқан жері:</p>
+                </div>
+                <p class="main-card__text">Қостанай қаласы, Н. Назарбаев даңғылығы, 137а үй ; Прошленная көш. 40</p>
+            </div>
+            <div class="main-card__tags main-card__tags_organizations d-flex align-items-center">
+                <div class="main-card__tag main-card__tag_blue">Мемлекеттік</div>
+            </div>
+        </div>
+        <h6 class="main-card__footer-tags-title">Спорт түрлері</h6>
+        <div class="main-card__btn-bar d-lg-flex align-items-center justify-content-between">
+            <div class="main-card__tags d-flex align-items-center flex-wrap">
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Баскетбол                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Жүзу                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Триатлон                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Велосипед спорты                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Қол добы                    </div>
+                                                    <div class="main-card__tag main-card__tag_footer main-card__tag_show-more main-card__tag_show-more_func">
+                        Және...                     </div>
+                            </div>
+            <a href="organizations/view-sport-school@id=23.html" data-pjax="0"
+               class="btn main-btn main-card__link main-card__tag_footer">
+                Толығырақ            </a>
+        </div>
+    </div>
+</div>
+<div class="main-card d-flex align-items-start">
+                    <div class="card__sticker main-card__status_blue">
+            <span>Открыт<br>набор</span>
+        </div>
+        <div class="main-card__img-box">
+                    <img src="../img/cachedImages/preview/7-3-7.jpg"
+                 srcset="../img/cachedImages/preview/7-3-7.jpg 2x" alt="Photo"
+                 class="main-card__img">
+            </div>
+    <div class="main-card__body d-flex flex-column">
+        <div class="main-card__title-group d-flex align-items-center justify-content-between">
+            <h4 class="main-card__title">Қостанай облысы әкімдігі дене шынықтыру және спорт басқармасының «№3 балалар-жасөспірімдер спорт мектебі» кмм</h4>
+        </div>
+        <div class="main-card__info d-flex flex-column">
+            <div class="main-card__info-el d-flex align-items-start">
+                <div class="main-card__info-title-group d-flex align-items-center">
+                    <svg class="icon main-card__info-map-flag">
+                        <use xlink:href="/images/sprite.svg#i-map-flag"></use>
+                    </svg>
+                    <p class="main-card__info-title">Орналасқан жері:</p>
+                </div>
+                <p class="main-card__text">Қостанай қаласы, Гашек көшесі, 1а/1 үй</p>
+            </div>
+            <div class="main-card__tags main-card__tags_organizations d-flex align-items-center">
+                <div class="main-card__tag main-card__tag_blue">Мемлекеттік</div>
+            </div>
+        </div>
+        <h6 class="main-card__footer-tags-title">Спорт түрлері</h6>
+        <div class="main-card__btn-bar d-lg-flex align-items-center justify-content-between">
+            <div class="main-card__tags d-flex align-items-center flex-wrap">
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Шаңғы жарысы                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Керлинг                    </div>
+                                    <div class="main-card__tag main-card__tag_footer ">
+                        Конькимен жүгіру спорты                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Мәнерлеп сырғанау                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Биатлон                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Хоккей                    </div>
+                                    <div class="main-card__tag main-card__tag_footer main-card__tag_hidden main-card__tag_hide">
+                        Шорт-трек                    </div>
+                                                    <div class="main-card__tag main-card__tag_footer main-card__tag_show-more main-card__tag_show-more_func">
+                        Және...                     </div>
+                            </div>
+            <a href="organizations/view-sport-school@id=11.html" data-pjax="0"
+               class="btn main-btn main-card__link main-card__tag_footer">
+                Толығырақ            </a>
+        </div>
+    </div>
+</div>                    </div>
+
+                    
+<div class="row">
+    <input type="hidden" id="lazy-url" name="url" value="/kz/organizations/organization-lazy" form="filter-form">    <input type="hidden" id="lazy-form-id" name="lazy-form-id" value="filter-form" form="filter-form">    <input type="hidden" id="total-pages" name="total-pages" value="4" form="filter-form">    <input type="hidden" id="page-num" name="page-num" value="1" form="filter-form">    <input type="hidden" id="per-page" name="per-page" form="filter-form">
+            <div class="btn main-outline-btn main-cards__show-more"
+             id="lazy-show-more"
+             onclick="Scrollable.showMore('lazy-show-more', 'organizations-list')">
+            Тағы жүктеу        </div>
+    </div>                </div>
+                <div class="map-wrapper d-none">
+                    <div id="map"></div>
+                </div>
+                </div>            </div>
+        </div>
+    </div>
+</section>
+
+
+</main>
+
+
+<footer class="footer footer-almaty">
+    <div class="container">
+        
+        <hr class="d-lg-block d-none "/>
+        <div class="text-center f-link">
+            <p class="f-body footer-copyright">Интернет-ресурс, оның құрылымы, форматты-логикалық бақылау ережелері жəне орналастырылған медиа-контент Қазақстан Республикасының «Авторлық құқық жəне сабақтас құқықтар туралы» заңымен қорғалады. Эверест ЖМ, 2021©</p>
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="supportModal" tabindex="-1" role="dialog" aria-labelledby="supportModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="supportModalLabel">Спорт басқармасына өтініш</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Тегі, аты, әкесінің аты:</label>
+                        <input type="text" class="form-control" id="sender-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Телефон нөмірі                            :</label>
+                        <input type="text" class="form-control" id="sender-phone" data-mask="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label">Хабарлама мәтіні                            :</label>
+                        <textarea class="form-control" id="message-text" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Күшін жою</button>
+                <button type="button" class="btn btn-primary"
+                        id="send-message">Хабарламаны жөнелту</button>
+            </div>
+        </div>
+    </div>
+</div><script>var Messages = {"SNOW_MORE":"Тағы жүктеу","RECEIVE_VERIFY_CODE_SMS":"SMS арқылы растау кодын алу","RECEIVE_VERIFY_CODE_EMAIL":"Email арқылы растау кодын алу","FAILED_SEND_VERIFY_CODE":"Растау коды жіберілмеді","SUCCESS_SEND_VERIFY_CODE":"Растау коды сәтті жіберілді","FAILED_TO_GET_DATA":"Деректер табылмады","YOU_MUST_SELECT_A_TRAINING_PROFILE":"Оқу бейінін таңдау қажет","UNABLE_TO_APPLY_AGE_IS":"Өтінішті беруді әрі қарай жалғастыру мүмкін емес. Жасы:","GO_TO":"Өту","NOTHING_IS_SELECTED":"Ештеңе таңдалмады","ALL":"Барлығы","NO_SUPPORT":"<div><h4 class=\"alert-heading\">Кешіріңіз, Сіз жұмыс емес уақытта хабарластыңыз.</h4><p>Техникалық қолдау қызметінің жұмыс кестесі - жұмыс күндері, сағат 9:00-ден бастап 18:00-ге дейін.</p><hr><p class=\"mb-0\">Жұмыс күні басталған соң парақшаны жаңартып көріңіз.<br>Рахмет</p></div>","ERROR":"Қате","UNABLE_TO_APPLY_CITY_CHECK":"Өтініш беруді жалғастыру мүмкін емес. Тіркелген мекенжайы қызмет көрсетілетін қалаға сәйкес келмейді","UNABLE_TO_APPLY_PARENT_AGE":"Өтініш беруді жалғастыру мүмкін емес. Заңды өкілдің жасы 18-ге толған болу керек","UNABLE_TO_APPLY_APPLICANT_AGE":"Өтініш беруді жалғастыру мүмкін емес. Өтініш берушінің жасы 18-ге толған болу керек","ERROR_SAME_IINS":"Баланың және заңды өкілдің жасы бірдей бола алмайды","YOU_MUST_SELECT_THE_CURRENT_ORGANIZATION":"Қазіргі ұйымды таңдау қажет","TO_CHOOSE":"To chose","CHOSEN":"Таңдалды","SHOW_MORE":"Тағы көрсету..."}</script><div class="alert alert--hide"></div>
+
+
+            <script>var LHC_API = LHC_API||{};
+            LHC_API.args = {mode:'widget',lhc_base_url:'//support.e-orda.kz/index.php/',wheight:450,wwidth:350,pheight:520,pwidth:500,leaveamessage:true,department:["46"],check_messages:false,proactive:false,lang:'rus/'};
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.setAttribute('crossorigin','anonymous'); po.async = true;
+                var date = new Date();po.src = '//support.e-orda.kz/design/defaulttheme/js/widgetv2/index.js?'+(""+date.getFullYear() + date.getMonth() + date.getDate());
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+    
+<script src="../assets/ad15b6a8/jquery.js@v=1721220178"></script>
+<script src="../assets/6d082268/yii.js@v=1721220178"></script>
+<script src="../assets/93c93100/jquery.pjax.js@v=1721220213"></script>
+<script src="../assets/6d082268/yii.activeForm.js@v=1721220178"></script>
+<script src="../assets/71d79331/js/bootstrap.bundle.js@v=1721220178"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=38bc483f-f846-4395-9bc9-cdc3cca71845&amp;lang=ru_RU"></script>
+<script src="../js/map.js@v=1686801454"></script>
+<script src="../libs/slick/slick.min.js@v=1686801454"></script>
+<script src="../libs/nice-select/jquery.nice-select.min.js@v=1686801454"></script>
+<script src="../libs/bootstrap/bootstrap-multiselect.js@v=1686801454"></script>
+<script src="../libs/fancybox/jquery.fancybox.min.js@v=1686801454"></script>
+<script src="../libs/inputmask/jquery.maskedinput.min.js@v=1686801454"></script>
+<script src="../js/script.js@v=1721219990"></script>
+<script src="../js/defaultSearch.js@v=1693483620"></script>
+<script src="../js/jquery.doubleScroll.js@v=1693483620"></script>
+<script src="../assets/666c9d38/jquery.inputmask.js@v=1721220178"></script>
+<script>jQuery(function ($) {
+jQuery('#search-form').yiiActiveForm([], []);
+jQuery(document).pjax("#df-search-pjax a", {"push":true,"replace":false,"timeout":1000,"scrollTo":false,"container":"#df-search-pjax"});
+jQuery(document).off("submit", "#df-search-pjax form[data-pjax]").on("submit", "#df-search-pjax form[data-pjax]", function (event) {jQuery.pjax.submit(event, {"push":true,"replace":false,"timeout":1000,"scrollTo":false,"container":"#df-search-pjax"});});
+    var lang = $('body').data('lang')
+    var d = new Date(2024,7,12,16,10,26);
+    function refreshTime() {
+        $.post("/" + lang + "/site/get-time", function(data) {
+            d = new Date(data.y, data.m, data.d, data.h, data.min, data.s);
+            update();
+        });
+    }  
+    
+    function update() {
+         var month = d.getMonth()+1 < 10 
+                    ? '0' + (d.getMonth()+1)
+                    : d.getMonth()+1;
+         var day = d.getDate() < 10 
+                    ? '0' + d.getDate() 
+                    : d.getDate();
+         var year = d.getFullYear();   
+            
+         var hours = d.getHours() == 0 
+                    ? '00'
+                    : d.getHours();
+            
+         var minutes = d.getMinutes() < 10 
+                    ? '0' + d.getMinutes() 
+                    : d.getMinutes();
+      
+        var seconds = d.getSeconds() < 10 
+                    ? '0' + d.getSeconds() 
+                    : d.getSeconds();     
+       
+       d.setSeconds(d.getSeconds() + 1);
+            $('#clock-text').text((year + '.' + month + '.' + day + ' ' + hours +':' + minutes + ':' + seconds ));
+    }
+    
+    update();
+    window.setInterval(update, 1000); 
+    window.setInterval(refreshTime, 1000*60*5);
+
+});</script></body>
+</html>

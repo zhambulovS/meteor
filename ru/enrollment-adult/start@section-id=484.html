@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>Зачисление спортивного контингента 18+ в спортивные школы, спортивные школы для инвалидов</title>
+    <style>
+        body {
+            padding: 0!important;
+        }
+
+        /*page-loader styles*/
+        .page-loader {
+            background-color: #ffffff96;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 9998;
+            display: none;
+        }
+        .page-loader .preloader-image-preview {
+            left: 50%;
+            top: 50%;
+            position: relative;
+            display: block;
+            margin: -64px 0 0 -64px;
+        }
+        .preloader-image-preview img {
+            width: 128px;
+            height: 128px;
+        }
+
+        /*empty-not-found error styles*/
+        .g-callout.g-callout-danger {
+            border-left-color: #E76E6E;
+            background: #FFE4E4;
+            margin-left: 15px;
+        }
+        .g-callout {
+            padding: .875rem .875rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-left: .25rem solid transparent;
+            font-size: .875rem;
+        }
+
+        /* btn load more */
+        .main-cards__show-more {
+            border: 2px solid #1787FF;
+            color: #1787FF;
+            font-weight: bold;
+        }
+
+        /* fit img */
+        .avatar-card img {
+            object-fit: cover;
+        }
+
+        /* images for file-uploads on forms */
+        .file-download-wrapper .files-container .file-info-icon.doc {
+            background-image: url(../../images/doc.svg);
+        }
+        .file-download-wrapper .files-container .file-info-icon.zip {
+            background-image: url(../../images/folder.svg);
+        }
+
+        /* cabinet images on password inputs */
+        .password-control {
+            background: url(../../images/view.svg) 0 0 no-repeat;
+        }
+        .password-control.view {
+            background: url(../../images/no-view.svg) no-repeat 0 0;
+        }
+
+        .cabinet .form-control {
+            border: 1px solid #01B5F0!important;
+        }
+
+        .btn.cabinet-btn {
+            background-color: #fff;
+            border: 1px solid #0074F0;
+            color: #0074F0;
+        }
+
+        /* tech support fake */
+        .fake-block {
+            cursor: pointer;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+            z-index: 2147483648;
+        }
+        .fake-block .fb-body {
+            right: 30px;
+            left: auto;
+            position: relative;
+            box-shadow: 0 12px 14px 8px rgba(0, 0, 0, 0.17);
+            background: linear-gradient(95deg, #3f51b5 20%, #7486e5 80%);
+            border-top-left-radius: 8px !important;
+            border-top-right-radius: 34px !important;
+            height: 40px;
+            width: auto;
+            min-width: 300px;
+        }
+        .fake-block .fb-body .fb-title {
+            color: white;
+            margin: 0 33px 0 16px;
+            line-height: 40px;
+        }
+        .fake-block .fb-body .fb-img {
+            right: 0;
+            position: absolute;
+            top: 0;
+            width: 33px;
+            border-radius: 0 24px 0 0 !important;
+        }
+        .fake-block .fb-body .fb-img .icon {
+            width: 32px !important;
+            height: 34px !important;
+            position: absolute;
+            overflow: visible;
+            right: 0;
+            top: 0;
+        }
+
+        .checkbox-circle.off .icon-table-red {
+            font-size: 18px;
+            width: 35px;
+            height: 35px;
+            border: 3px solid #FF9D9D;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .child-visit-status-selector, .child-visit-status-selector-mobile {
+            position: relative;
+        }
+
+        .child-visit-status-variant {
+            z-index: 3;
+            position: relative;
+        }
+
+        .child-visit-status-variant-block, .child-visit-status-variant-block-mobile {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 4;
+            cursor: pointer;
+        }
+
+        .grey-mode-timesheet-cell {
+            filter: gray;
+            filter: gray; filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+            -webkit-filter: grayscale(100%);
+        }
+
+        .scroll-width {
+            max-width: none!important;
+        }
+    </style>
+
+        <meta name="csrf-param" content="_csrf">
+<meta name="csrf-token" content="70ZiHK6RWg6cKdlqNXcAuMi18RdEoi_tddY6mAcR_MGFIFpk3P0SbOharRtcAmr_-u_ARC_qadsb5HbcQFzIqg==">
+
+<link href="../../assets/71d79331/css/bootstrap.css@v=1721220178.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap&quot; rel=&quot;stylesheet" rel="stylesheet">
+<link href="../../libs/slick/slick.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/slick/slick-theme.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/nice-select/nice-select.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/bootstrap/components.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../../css/alert.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/fancybox/jquery.fancybox.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../../css/main.css@v=1721219990.css" rel="stylesheet"></head>
+<!--class="meteor-almaty" включение метеор алматы-->
+<body class="" data-lang="ru" >
+
+
+<div class="page-loader" id="page-content-loader">
+    <div class="preloader-image-preview">
+        <img src="../../images/loader.gif" alt="">
+    </div>
+</div>
+
+
+
+<header class="header">
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-8 col-lg-3 d-flex">
+                    <div class="dropdown mobile-dropdown align-self-center">
+                        <a class="dropdown-info dropdown-toggle" href="start@section-id=484.html#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sometext d-none d-sm-inline-block">Полезная информация</span>
+                            <span class="sometext d-inline-block d-sm-none">Информация</span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="start@section-id=484.html#">Как войти в Личный кабинет?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex clock-block">
+                    <div class="m-lg-auto align-self-center pl-lg-3">
+                        Эталонное время сервера: <span id="clock-text">2024.08.12 16:38:33</span>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-lg-4 d-flex">
+                    <div class="ml-auto align-self-center">
+                        <a href="start@section-id=484.html#" class="city-select" data-toggle="modal" data-target="#cityModal">
+                            <img src="../../images/icons/maps-and-flags.svg" class="mr-2" alt="">
+                            <span class="d-none d-sm-block">Костанайская область</span>
+                        </a>
+                    </div>
+                    
+<div class="d-none d-lg-flex justify-content-end">
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="../../kz/enrollment-adult/start@section-id=484.html">Қазақша</a>
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="start@section-id=484.html">Русский</a>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <nav class="navbar justify-content-between">
+                
+<div class="logo-city">
+<img src="start@section-id=484.html" alt="" width="50">
+
+                                   </div>
+
+<style>
+    .main-header .logo-city {
+        flex: 0 0 15rem!important;
+    }
+</style>
+                <a href="../../ru.1.html" class="navbar-brand">
+                    <img src="../../images/logo/logo.svg" alt="meteor_logo">
+                </a>
+
+                <ul class="d-none d-lg-flex navbar-nav flex-row">
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../sections.html">Спортивные секции</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../organizations.html">Спортивные объекты</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../couches.html">Тренерский состав</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../site/upcoming-events.html">Мероприятия</a>
+                    </li>
+                </ul>
+
+                <div class="burger-icon">
+                    <div id="burger-wrapper">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </div>
+
+                <a class="d-none d-lg-block btn main-btn personal-area-btn" href="../cabinet.html">
+                                            Войти в личный кабинет                                    </a>
+                <a class="d-block d-lg-none avatar-block" href="../cabinet.html">
+                    <img src="../../images/icons/user.svg" alt="">
+                </a>
+            </nav>
+        </div>
+    </div>
+
+</header>
+
+<div class="mobileMenu" id="mobileMenu" >
+    <div class="mobileMenu__wrapper">
+
+        <a href="start@section-id=484.html#" class="city-select btn main-outline-btn" data-toggle="modal" data-target="#cityModal">
+            <svg class="icon">
+                <use xlink:href="/images/sprite.svg#map"></use>
+            </svg>
+            <span>Костанайская область</span>
+        </a>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="../sections.html">Спортивные секции</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../organizations.html">Спортивные объекты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../couches.html">Тренерский состав</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../site/upcoming-events.html">Мероприятия</a>
+            </li>
+        </ul>
+
+        
+<div class="mobile-menu__choice-language d-lg-none">
+    <ul class="btn-group--lang">
+                    <li class="">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="../../kz/enrollment-adult/start@section-id=484.html">Қазақша</a>
+            </li>
+                    <li class="active">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="start@section-id=484.html">Русский</a>
+            </li>
+            </ul>
+</div>
+
+        <a class="btn login-btn main-btn" href="../cabinet.html">
+                            Войти в личный кабинет                    </a>
+    </div>
+
+</div>
+
+
+
+<script>
+    var burger = document.querySelector('.burger') !== null;
+    if (burger) {
+        burger.addEventListener('click', function(){
+            document.querySelector('.burger span').classList.toggle('active');
+        })
+    }
+
+    var menu = document.querySelector('.menu') !== null;
+    if (menu) {
+        menu.classList.toggle("animate");
+    }
+</script>
+
+<main class="main bg-section-card">
+            <nav aria-label="breadcrumb" class="breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../ru.1.html">Главная</a></li><li class="breadcrumb-item active" aria-current="page">Зачисление спортивного контингента 18+ в спортивные школы, спортивные школы для инвалидов</li></ol>            </div>
+        </nav>
+    
+            <div class="container">
+            <header class="body-header">
+                                    <h1 class="body-title">Зачисление спортивного контингента 18+ в спортивные школы, спортивные школы для инвалидов</h1>
+                                            </header>
+        </div>
+        
+<div class="container pb-lg-5">
+    <div class="row pb-lg-5">
+        <div class="col-lg-7">
+            <div class="faq">
+                <div class="faq-lists collapse-title" data-toggle="collapse" data-target="#mobile-wrap">
+                    <h5 class="title-uppercase">ПАСПОРТ ГОСУДАРСТВЕННОЙ УСЛУГИ</h5>
+                    <div class="dot-arrow">
+                        <svg class="icon">
+                            <use xlink:href="/images/sprite.svg#prev"></use>
+                        </svg>
+                    </div>
+                </div>
+                <div id="mobile-wrap" class="collapse collapse-mobile-wrap">
+                    <div class="faq-lists">
+                        <h6>НАЗВАНИЕ УСЛУГИ</h6><p>Зачисление спортивного контингента 18+.</p>                    </div>
+                    <div class="faq-lists">
+                        <h6>УСЛУГОДАТЕЛЬ</h6><p>Государственная услуга оказывается детско-юношескими спортивными школами, спортивными школами для лиц с инвалидностью.</p>                    </div>
+                    <div class="faq-lists">
+                        <h6>УСЛУГОПОЛУЧАТЕЛЬ</h6><p>Физические лица, достигшие совершеннолетия.</p>                    </div>
+                    <div class="faq-lists">
+                        <h6>РЕЗУЛЬТАТ ОКАЗАНИЯ УСЛУГИ</h6><p>Копия заявления с отметкой о принятии с указанием даты и фамилии сотрудника канцелярии услугодателя, мотивированный ответ об отказе в оказании государственной услуги.</p>                    </div>
+                    <div class="faq-lists">
+                        <h6>СРОК ОКАЗАНИЯ УСЛУГИ</h6><p>С момента сдачи документов в канцелярию услугодателя или через портал – 4 (четыре) часа.</p>                    </div>
+                    <div class="faq-lists">
+                        <h6>СТОИМОСТЬ УСЛУГИ</h6><p>Бесплатно</p>                    </div>
+                    <div class="faq-lists">
+                        <h6>ГДЕ МОЖНО ПОЛУЧИТЬ УСЛУГУ</h6><p>Прием документов и выдача результата оказания государственной услуги осуществляются через канцелярию услугодателя либо веб-портал "электронного правительства" <a href="https://www.egov.kz" target="_blank">www.egov.kz</a>. Для получения услуги в бумажном виде необходимо лично обратиться в канцелярию услугодателя. Настоящий интернет-портал является представительством той же канцелярии. Поэтому заявление, поданное с помощью данного портала аналогично бумажному.</p>                    </div>
+                    <div class="faq-lists faq-lists--attachment">
+                        <h6>ПЕРЕЧЕНЬ ТРЕБУЕМЫХ ДОКУМЕНТОВ</h6>
+<p>Для подачи электронного заявления через настоящий интернет-портал необходимы:</p>
+<ol>
+<li>скан-копия медицинской справки, выданной участковым врачом, с указанием допуска к занятиям по выбранному виду спорта по форме 027/у;</li>
+<li>скан-копия справки об инвалидности (при инвалидности).</li>
+</ol>                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="step-info">
+                <h5 class="title-uppercase mb-30">Процедура подачи заявления</h5>
+                <p>Для подачи заявления нужно пройти несколько шагов:</p>
+                <div class="step-passport">
+                    <div class="step-passport-item">
+                        <h6>Шаг 1</h6>
+                        <p>Контактные данные претендента на зачисление</p>
+                    </div>
+                    <div class="step-passport-item">
+                        <h6>Шаг 2</h6>
+                        <p>Сведения о претенденте на зачисление</p>
+                    </div>
+                    <div class="step-passport-item">
+                        <h6>Шаг 3</h6>
+                        <p>Выбор организации и секции</p>
+                    </div>
+                    <div class="step-passport-item">
+                        <h6>Шаг 4</h6>
+                        <p>Согласие на получение уведомлений</p>
+                    </div>
+                    <div class="step-passport-item">
+                        <h6>Шаг 5</h6>
+                        <p>Проверка введенных данных</p>
+                    </div>
+                </div>
+                <form>
+                    <div class="mb-30">
+                        <input class="custom-checkbox step-agree-checkbox" id="id1" type="checkbox">
+                        <label class="mb-0" for="id1">Я подтверждаю факт ознакомления с <a href="start@section-id=484.html">правилами подачи заявления</a> на зачисление в детско-юношеские спортивные школы, спортивные школы для инвалидов, понимаю правила зачисления, и согласен с ними</label>
+                    </div>
+                    <div class="mb-30">
+                        <input class="custom-checkbox step-agree-checkbox" id="id2" type="checkbox">
+                        <label class="mb-0" for="id2">Я даю согласие на сбор и обработку персональных данных, на использование сведений, составляющих охраняемых законом тайну, содержащихся в информационных системах, согласно действующего законодательства</label>
+                    </div>
+                    <div class="mb-30">
+                        <input class="custom-checkbox step-agree-checkbox" id="id3" type="checkbox">
+                        <label class="mb-0" for="id3">Я даю согласие на использование своих контактных данных для получения сведений, оповещений и уведомлений в процессе подачи заявления на зачисление в детско-юношеские спортивные школы, спортивные школы для инвалидов</label>
+                    </div>
+                    <div class="mb-30">
+                        <input class="custom-checkbox step-agree-checkbox" id="id4" type="checkbox">
+                        <label class="mb-0" for="id4">Я подтверждаю, что ознакомлен с правилами работы интернет-портала, Личного кабинета и обязуюсь их выполнять и не нарушать</label>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <a href="step1-mobile-app@safe=1.html" class="btn main-btn btn-md px-4 btn-disabled">Подать заявление</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <hr class="custom-hr-blue">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="collapse-list__wrap">
+                <div class="collapse-list__item">
+                    <div class="collapse-list__item-show" data-toggle="collapse" data-target="#info-1">
+                        <h6>1. КАК ПРОИСХОДИТ ЗАПИСЬ?</h6>
+                        <div class="dot-arrow">
+                            <svg class="icon">
+                                <use xlink:href="/images/sprite.svg#prev"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="info-1" class="collapse state-passport">
+                        <div class="state-passport-item pb-0">
+                            <h6 class="font-weight-bold mb-3">Кто может подать заявление?</h6>
+                            <p>Заявление принимается только от претендента на зачисление.</p>
+                            <h6 class="font-weight-bold mb-3">Как формируется контингент?</h6>
+                            <p>В спортивную школу зачисляются учащиеся общеобразовательных школ и других учебных заведений при условии их соответствия спортивному нормативу по выбранному виду спорта и возрасту учащихся для зачисления в группы начальной подготовки по видам спорта.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse-list__item">
+                    <div class="collapse-list__item-show" data-toggle="collapse" data-target="#info-2">
+                        <h6>2. КАК ПОДАТЬ ЗАЯВЛЕНИЕ?</h6>
+                        <div class="dot-arrow">
+                            <svg class="icon">
+                                <use xlink:href="/images/sprite.svg#prev"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="info-2" class="collapse state-passport">
+                        <div class="state-passport-item pb-0">
+                            <h6 class="font-weight-bold mb-3">Где можно получить услугу?</h6>
+                            <p>Прием документов и выдача результата оказания государственной услуги осуществляются через канцелярию услугодателя либо веб-портал "электронного правительства" <a href="https://www.egov.kz" target="_blank">www.egov.kz</a>. Для получения услуги в бумажном виде необходимо лично обратиться в канцелярию услугодателя. Настоящий интернет-портал является представительством той же канцелярии. Поэтому заявление, поданное с помощью данного портала аналогично бумажному.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="collapse-list__wrap">
+                <div class="collapse-list__item">
+                    <div class="collapse-list__item-show" data-toggle="collapse" data-target="#info-3">
+                        <h6>3. ЧТО ДЕЛАТЬ ЕСЛИ ВЫ НЕ СМОГЛИ ЗАПИСАТЬСЯ?</h6>
+                        <div class="dot-arrow">
+                            <svg class="icon">
+                                <use xlink:href="/images/sprite.svg#prev"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="info-3" class="collapse state-passport">
+                        <div class="state-passport-item pb-0">
+                            <h6 class="font-weight-bold mb-3">В каких случаях может быть отказано в записи ребенка в организацию образования?</h6>
+                            <p>В случаях представления услугополучателем неполного пакета документов согласно перечню и (или) документов с истекшим сроком действия услугодатель отказывает в приеме заявления и выдает услугополучателю мотивированный отказ в приеме заявления.</p>
+                            <h6 class="font-weight-bold mb-3">Куда обратиться в случае неправомерного отказа?</h6>
+                            <p>Жалоба подается в письменной форме по почте или в электронном виде, либо нарочно через канцелярию услугодателя, местного исполнительного органа, уполномоченного органа или в виде видеообращения, а также посредством портала.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse-list__item">
+                    <div class="collapse-list__item-show" data-toggle="collapse" data-target="#info-4">
+                        <h6>4. ЧТО ЕЩЕ НУЖНО ЗНАТЬ?</h6>
+                        <div class="dot-arrow">
+                            <svg class="icon">
+                                <use xlink:href="/images/sprite.svg#prev"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="info-4" class="collapse state-passport">
+                        <div class="state-passport-item pb-0">
+                            <h6 class="font-weight-bold mb-3">В течение какого времени регистрируется заявление?</h6>
+                            <p>Регистрация заявления происходит в течение 15 минут.</p>
+                            <h6 class="font-weight-bold mb-3">Когда начинается прием документов?</h6>
+                            <p>Прием документов в группы начальной подготовки первого года обучения по видам спорта проводится в течение учебного года через канцелярию детско-юношеских спортивных школ, спортивных школ для лиц с инвалидностью либо веб-портал "электронного правительства" <a href="https://www.egov.kz" target="_blank">www.egov.kz</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+
+
+<footer class="footer footer-almaty">
+    <div class="container">
+        
+        <hr class="d-lg-block d-none "/>
+        <div class="text-center f-link">
+            <p class="f-body footer-copyright">Интернет-ресурс, его структура, правила форматно-логического контроля и размещенный медиа-контент, охраняется законом «Об авторском праве и смежных правах» Республики Казахстан. Эверест ЖМ, 2021©</p>
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="supportModal" tabindex="-1" role="dialog" aria-labelledby="supportModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="supportModalLabel">Обращение в управление спорта</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">ФИО:</label>
+                        <input type="text" class="form-control" id="sender-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Номер телефона                            :</label>
+                        <input type="text" class="form-control" id="sender-phone" data-mask="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label">Текст сообщения                            :</label>
+                        <textarea class="form-control" id="message-text" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary"
+                        id="send-message">Отправить сообщение</button>
+            </div>
+        </div>
+    </div>
+</div><script>var Messages = {"SNOW_MORE":"Загрузить еще","RECEIVE_VERIFY_CODE_SMS":"Получить код подтверждения через SMS","RECEIVE_VERIFY_CODE_EMAIL":"Получить код подтверждения через email","FAILED_SEND_VERIFY_CODE":"Не удалось отправить код подтверждения","SUCCESS_SEND_VERIFY_CODE":"Код подтверждения успешно отправлен","FAILED_TO_GET_DATA":"Данные не найдены","YOU_MUST_SELECT_A_TRAINING_PROFILE":"Необходимо выбрать профиль обучения","UNABLE_TO_APPLY_AGE_IS":"Невозможно продолжить подачу заявления. Возраст ребенка составляет:","GO_TO":"Перейти","NOTHING_IS_SELECTED":"Ничего не выбрано","ALL":"Все","NO_SUPPORT":"<div><h4 class=\"alert-heading\">Извините, Вы обратились в нерабочее время.</h4><p>График работы технической поддержки с 9:00 - 18:00 в рабочие дни.</p><hr><p class=\"mb-0\">После начала рабочего дня обновите страницу и попробуйте еще раз.<br>Спасибо</p></div>","ERROR":"Ошибка","UNABLE_TO_APPLY_CITY_CHECK":"Невозможно продолжить подачу заявления. Место прописки не соответствует городу оказания услуги","UNABLE_TO_APPLY_PARENT_AGE":"Невозможно продолжить подачу заявления. Возраст законного представителя не может быть меньше 18 лет","UNABLE_TO_APPLY_APPLICANT_AGE":"Невозможно продолжить подачу заявления. Возраст заявителя не может быть меньше 18 лет","ERROR_SAME_IINS":"ИИН ребенка и законного представителя не могут быть одинаковыми","YOU_MUST_SELECT_THE_CURRENT_ORGANIZATION":"Необходимо выбрать текущую организацию","TO_CHOOSE":"To chose","CHOSEN":"Выбрано","SHOW_MORE":"Показать еще..."}</script><div class="alert alert--hide"></div>
+
+
+            <script>var LHC_API = LHC_API||{};
+            LHC_API.args = {mode:'widget',lhc_base_url:'//support.e-orda.kz/index.php/',wheight:450,wwidth:350,pheight:520,pwidth:500,leaveamessage:true,department:["46"],check_messages:false,proactive:false,lang:'rus/'};
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.setAttribute('crossorigin','anonymous'); po.async = true;
+                var date = new Date();po.src = '//support.e-orda.kz/design/defaulttheme/js/widgetv2/index.js?'+(""+date.getFullYear() + date.getMonth() + date.getDate());
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+    
+<script src="../../assets/ad15b6a8/jquery.js@v=1721220178"></script>
+<script src="../../assets/71d79331/js/bootstrap.bundle.js@v=1721220178"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=38bc483f-f846-4395-9bc9-cdc3cca71845&amp;lang=ru_RU"></script>
+<script src="../../js/map.js@v=1686801454"></script>
+<script src="../../libs/slick/slick.min.js@v=1686801454"></script>
+<script src="../../libs/nice-select/jquery.nice-select.min.js@v=1686801454"></script>
+<script src="../../libs/bootstrap/bootstrap-multiselect.js@v=1686801454"></script>
+<script src="../../libs/fancybox/jquery.fancybox.min.js@v=1686801454"></script>
+<script src="../../libs/inputmask/jquery.maskedinput.min.js@v=1686801454"></script>
+<script src="../../js/script.js@v=1721219990"></script>
+<script src="../../js/defaultSearch.js@v=1693483620"></script>
+<script src="../../js/jquery.doubleScroll.js@v=1693483620"></script>
+<script src="../../assets/6d082268/yii.js@v=1721220178"></script>
+<script src="../../assets/666c9d38/jquery.inputmask.js@v=1721220178"></script>
+<script>jQuery(function ($) {
+    var lang = $('body').data('lang')
+    var d = new Date(2024,7,12,16,38,33);
+    function refreshTime() {
+        $.post("/" + lang + "/site/get-time", function(data) {
+            d = new Date(data.y, data.m, data.d, data.h, data.min, data.s);
+            update();
+        });
+    }  
+    
+    function update() {
+         var month = d.getMonth()+1 < 10 
+                    ? '0' + (d.getMonth()+1)
+                    : d.getMonth()+1;
+         var day = d.getDate() < 10 
+                    ? '0' + d.getDate() 
+                    : d.getDate();
+         var year = d.getFullYear();   
+            
+         var hours = d.getHours() == 0 
+                    ? '00'
+                    : d.getHours();
+            
+         var minutes = d.getMinutes() < 10 
+                    ? '0' + d.getMinutes() 
+                    : d.getMinutes();
+      
+        var seconds = d.getSeconds() < 10 
+                    ? '0' + d.getSeconds() 
+                    : d.getSeconds();     
+       
+       d.setSeconds(d.getSeconds() + 1);
+            $('#clock-text').text((year + '.' + month + '.' + day + ' ' + hours +':' + minutes + ':' + seconds ));
+    }
+    
+    update();
+    window.setInterval(update, 1000); 
+    window.setInterval(refreshTime, 1000*60*5);
+
+});</script></body>
+</html>

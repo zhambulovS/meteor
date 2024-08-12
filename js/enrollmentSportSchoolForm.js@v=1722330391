@@ -1,0 +1,212 @@
+const enrollmentSportSchoolForm = {
+    init: function () {
+
+        let formName = 'EnrollmentSportSchoolForm',
+            self = this;
+
+        apiForm.setFormName(formName);
+        apiForm.listenUploadFileEvent();
+        apiForm.listenDeleteFileEvent();
+
+        $('[name = "' + formName + '[parentIin]"]').on('keyup', function() {
+            // let iin = $(this).val();
+            //
+            // $(this).val(iin);
+        });
+
+        $('[data-validate-input="'+ formName.toLowerCase() +'-parentiin"]').on('click', function (e) {
+            e.preventDefault();
+            $('.alert').hide();
+            $(':input[type="submit"]').prop('disabled', false);
+            $('#parent-info').hide();
+            enrollmentSportSchoolForm.clearParentInfo();
+            enrollmentSportSchoolForm.clearChildInfo();
+
+            let iin = apiForm.selectInput('parentIin').val();
+
+            apiForm.customLoadInfo({
+                iin: iin,
+                params: {
+                    Declarant: true
+                }
+            }, function(data) {
+                apiForm.setData(data.personal_data);
+
+                if (!apiForm.validateAge(18, 150, 'parent', data.personal_data)) {
+                    return false;
+                }
+
+                apiForm.selectInput('parentResAddress').val(data.personal_data.AddressOfRegistation);
+
+                apiForm.selectInput('parentLastName').val(data.personal_data.LastName);
+                apiForm.selectInput('parentFirstName').val(data.personal_data.FirstName);
+                apiForm.selectInput('parentMiddleName').val(data.personal_data.MiddleName);
+                apiForm.selectInput('parentBirthday').val(data.personal_data.BirthDate);
+                apiForm.selectInput('parentGender').val(data.personal_data.Gender);
+
+                apiForm.fillAndShowInfoBlock($('#parent-info'));
+            });
+        });
+
+        $('[name = "' + formName + '[childIin]"]').on('keyup', function() {
+            let iin = $(this).val();
+            // $(this).val(iin);
+
+            let zajavitel_iin = apiForm.selectInput('parentIin').val();
+            if(iin === zajavitel_iin) {
+                Alert.error(Messages['ERROR_SAME_IINS']);
+                return false;
+            }
+        });
+
+        $('[data-validate-input="'+ formName.toLowerCase() +'-childiin"]').on('click', function (e) {
+            e.preventDefault();
+            $('.alert').hide();
+            $(':input[type="submit"]').prop('disabled', false);
+            $('#child-info').hide();
+            enrollmentSportSchoolForm.clearChildInfo(false);
+
+            let iin = apiForm.selectInput('childIin').val();
+            let zajavitel_iin = apiForm.selectInput('parentIin').val();
+
+            if(iin === zajavitel_iin) {
+                Alert.error(Messages['ERROR_SAME_IINS']);
+                return false;
+            } else {
+                apiForm.customLoadInfo({
+                    iin: iin,
+                    params: {
+                        Declarant: false,
+                        ZajavitelIin: apiForm.selectInput('parentIin').val(),
+                        Representative: true,
+                        BirthCertificate: true
+                    },
+                }, function(data) {
+                    apiForm.setData(data.personal_data);
+
+                    if (!apiForm.validateAge(1, 18, 'child',data.personal_data)) {
+                        return false;
+                    }
+
+                    apiForm.selectInput('childResAddress').val(data.personal_data.AddressOfRegistation);
+                    if(data.personal_data.AddressOfRegistation !== '' && data.personal_data.AddressOfRegistation !== null) {
+                        apiForm.selectInput('childResAddress').attr('readonly', true);
+                        apiForm.selectInput('childResAddressFromApi').val('yes');
+                    } else {
+                        apiForm.selectInput('childResAddress').attr('readonly', false);
+                        apiForm.selectInput('childResAddressFromApi').val('no');
+                    }
+
+
+                    apiForm.selectInput('childLastName').val(data.personal_data.LastName);
+                    apiForm.selectInput('childFirstName').val(data.personal_data.FirstName);
+                    apiForm.selectInput('childMiddleName').val(data.personal_data.MiddleName);
+                    apiForm.selectInput('childBirthday').val(data.personal_data.BirthDate);
+                    apiForm.selectInput('childGender').val(data.personal_data.Gender);
+
+                    apiForm.fillAndShowInfoBlock($('#child-info'), data.personal_data);
+
+                    apiForm.selectInput('childBirthDocNum').val(data.BirthCertificate.number);
+                    apiForm.selectInput('childBirthDocDate').val(data.BirthCertificate.date);
+                    apiForm.selectInput('childAge').val(data.personal_data.Age);
+
+                    apiForm.selectInput('kinshipStatus').val(data.Representative.Status);
+                    $('.kinship-block').removeClass('d-none');
+
+                    if(data.Representative.Status === 'Success') {
+                        $('.kinship-file-input').addClass('d-none');
+                        //$('.child-birth-doc').addClass('d-none');
+
+                        apiForm.selectInput('kinshipType').val(data.Representative.Type);
+                        apiForm.selectInput('kinshipNumber').val(data.Representative.Number);
+                        apiForm.selectInput('kinshipDate').val(data.Representative.IssueDate);
+
+                        apiForm.selectInput('kinshipNumber').attr('readonly', true);
+
+                        $('#check_issue_date').val(data.Representative.IssueDate);
+                        $('#check_issue_date').attr('readonly', true);
+                        $('#check_issue_date').attr('disabled', true);
+                    } else {
+                        //$('.child-birth-doc').removeClass('d-none');
+                        $('.kinship-file-input').removeClass('d-none');
+
+                        apiForm.selectInput('kinshipType').val('');
+                        apiForm.selectInput('kinshipNumber').val('');
+                        apiForm.selectInput('kinshipDate').val('');
+
+                        apiForm.selectInput('kinshipNumber').attr('readonly', false);
+
+                        $('#check_issue_date').val('');
+                        $('#check_issue_date').attr('readonly', false);
+                        $('#check_issue_date').attr('disabled', false);
+                    }
+                });
+            }
+        });
+
+
+        $(document).on('click', '.sectionOrder', function() {
+            let $block = $(this).closest('.section-info'),
+                orgName = $block.find('[data-input-name = "sectionOrgName"]').text(),
+                sectionLang = $block.find('[data-input-name = "sectionLang"]').text(),
+                sectionName = $block.find('[data-input-name = "sectionName"]').text(),
+                sectionId = $block.find('[data-input-name = "sectionId"]').text();
+
+            apiForm.selectInput('sectionOrgName').val(orgName);
+            apiForm.selectInput('sectionLang').val(sectionLang);
+            apiForm.selectInput('sectionName').val(sectionName);
+            apiForm.selectInput('sectionId').val(sectionId);
+
+            $('form.step3-form-4-send').submit();
+
+            return false;
+        });
+
+        $('#enrollmentsportschoolform-parentiin').on('change input', function() {
+            enrollmentSportSchoolForm.clearParentInfo();
+            enrollmentSportSchoolForm.clearChildInfo();
+        });
+        $('#enrollmentsportschoolform-childiin').on('change input', function() {
+            enrollmentSportSchoolForm.clearChildInfo(false);
+        });
+    },
+    clearChildInfo: function (clearIin = true) {
+        $('#child-info').hide();
+        if (clearIin) {
+            $('#enrollmentsportschoolform-childiin').val('');
+        }
+        $('#enrollmentsportschoolform-childresaddress').val('');
+        $('#enrollmentsportschoolform-childlastname').val('');
+        $('#enrollmentsportschoolform-childfirstname').val('');
+        $('#enrollmentsportschoolform-childmiddlename').val('');
+        $('#enrollmentsportschoolform-childbirthday').val('');
+        $('#enrollmentsportschoolform-childgender').val('');
+        $('#enrollmentsportschoolform-childresaddressfromapi').val('');
+        $('#enrollmentsportschoolform-childbirthdocnum').val('');
+        $('#enrollmentsportschoolform-childbirthdocdate').val('');
+        $('#enrollmentsportschoolform-childage').val('');
+        $('#enrollmentsportschoolform-kinshiptype').val('');
+        $('#enrollmentsportschoolform-kinshipnumber').val('');
+        $('#enrollmentsportschoolform-kinshipdate').val('');
+        $('#check_issue_date').val('');
+        $('#enrollmentsportschoolform-kinshipdoc').attr('value', '');
+        $('#enrollmentsportschoolform-referenceadmittance').attr('value', '');
+        $('#enrollmentsportschoolform-reference88').attr('value', '');
+        $('#kinship-file-label').addClass('d-none');
+        $('#referenceAdmittance-file-label').addClass('d-none');
+        $('#reference88-file-label').addClass('d-none');
+    },
+    clearParentInfo: function () {
+        $('#parent-info').hide();
+        $('#enrollmentsportschoolform-parentlastname').val('');
+        $('#enrollmentsportschoolform-parentfirstname').val('');
+        $('#enrollmentsportschoolform-parentmiddlename').val('');
+        $('#enrollmentsportschoolform-parentbirthday').val('');
+        $('#enrollmentsportschoolform-parentgender').val('');
+        $('#enrollmentsportschoolform-parentresaddress').val('');
+    },
+};
+
+$(document).ready(function () {
+    enrollmentSportSchoolForm.init();
+});

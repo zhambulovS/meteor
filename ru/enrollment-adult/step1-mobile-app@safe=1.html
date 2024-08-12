@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>Зачисление спортивного контингента 18+ в спортивные школы, спортивные школы для инвалидов</title>
+    <style>
+        body {
+            padding: 0!important;
+        }
+
+        /*page-loader styles*/
+        .page-loader {
+            background-color: #ffffff96;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 9998;
+            display: none;
+        }
+        .page-loader .preloader-image-preview {
+            left: 50%;
+            top: 50%;
+            position: relative;
+            display: block;
+            margin: -64px 0 0 -64px;
+        }
+        .preloader-image-preview img {
+            width: 128px;
+            height: 128px;
+        }
+
+        /*empty-not-found error styles*/
+        .g-callout.g-callout-danger {
+            border-left-color: #E76E6E;
+            background: #FFE4E4;
+            margin-left: 15px;
+        }
+        .g-callout {
+            padding: .875rem .875rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-left: .25rem solid transparent;
+            font-size: .875rem;
+        }
+
+        /* btn load more */
+        .main-cards__show-more {
+            border: 2px solid #1787FF;
+            color: #1787FF;
+            font-weight: bold;
+        }
+
+        /* fit img */
+        .avatar-card img {
+            object-fit: cover;
+        }
+
+        /* images for file-uploads on forms */
+        .file-download-wrapper .files-container .file-info-icon.doc {
+            background-image: url(../../images/doc.svg);
+        }
+        .file-download-wrapper .files-container .file-info-icon.zip {
+            background-image: url(../../images/folder.svg);
+        }
+
+        /* cabinet images on password inputs */
+        .password-control {
+            background: url(../../images/view.svg) 0 0 no-repeat;
+        }
+        .password-control.view {
+            background: url(../../images/no-view.svg) no-repeat 0 0;
+        }
+
+        .cabinet .form-control {
+            border: 1px solid #01B5F0!important;
+        }
+
+        .btn.cabinet-btn {
+            background-color: #fff;
+            border: 1px solid #0074F0;
+            color: #0074F0;
+        }
+
+        /* tech support fake */
+        .fake-block {
+            cursor: pointer;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+            z-index: 2147483648;
+        }
+        .fake-block .fb-body {
+            right: 30px;
+            left: auto;
+            position: relative;
+            box-shadow: 0 12px 14px 8px rgba(0, 0, 0, 0.17);
+            background: linear-gradient(95deg, #3f51b5 20%, #7486e5 80%);
+            border-top-left-radius: 8px !important;
+            border-top-right-radius: 34px !important;
+            height: 40px;
+            width: auto;
+            min-width: 300px;
+        }
+        .fake-block .fb-body .fb-title {
+            color: white;
+            margin: 0 33px 0 16px;
+            line-height: 40px;
+        }
+        .fake-block .fb-body .fb-img {
+            right: 0;
+            position: absolute;
+            top: 0;
+            width: 33px;
+            border-radius: 0 24px 0 0 !important;
+        }
+        .fake-block .fb-body .fb-img .icon {
+            width: 32px !important;
+            height: 34px !important;
+            position: absolute;
+            overflow: visible;
+            right: 0;
+            top: 0;
+        }
+
+        .checkbox-circle.off .icon-table-red {
+            font-size: 18px;
+            width: 35px;
+            height: 35px;
+            border: 3px solid #FF9D9D;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .child-visit-status-selector, .child-visit-status-selector-mobile {
+            position: relative;
+        }
+
+        .child-visit-status-variant {
+            z-index: 3;
+            position: relative;
+        }
+
+        .child-visit-status-variant-block, .child-visit-status-variant-block-mobile {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 4;
+            cursor: pointer;
+        }
+
+        .grey-mode-timesheet-cell {
+            filter: gray;
+            filter: gray; filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+            -webkit-filter: grayscale(100%);
+        }
+
+        .scroll-width {
+            max-width: none!important;
+        }
+    </style>
+
+        <meta name="csrf-param" content="_csrf">
+<meta name="csrf-token" content="1CHTWhdZYP6jUjiT7kB6wKMfNPzXQxjy7x0yKrpP5w--R-siZTUonNchTOKHNRCHkUUFr7wLXsSBL35u_QLTZA==">
+
+<link href="../../assets/71d79331/css/bootstrap.css@v=1721220178.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap&quot; rel=&quot;stylesheet" rel="stylesheet">
+<link href="../../libs/slick/slick.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/slick/slick-theme.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/nice-select/nice-select.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/bootstrap/components.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../../css/alert.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/fancybox/jquery.fancybox.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../../css/main.css@v=1721219990.css" rel="stylesheet"></head>
+<!--class="meteor-almaty" включение метеор алматы-->
+<body class="" data-lang="ru" >
+
+
+<div class="page-loader" id="page-content-loader">
+    <div class="preloader-image-preview">
+        <img src="../../images/loader.gif" alt="">
+    </div>
+</div>
+
+
+
+<header class="header">
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-8 col-lg-3 d-flex">
+                    <div class="dropdown mobile-dropdown align-self-center">
+                        <a class="dropdown-info dropdown-toggle" href="step1-mobile-app@safe=1.html#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sometext d-none d-sm-inline-block">Полезная информация</span>
+                            <span class="sometext d-inline-block d-sm-none">Информация</span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="step1-mobile-app@safe=1.html#">Как войти в Личный кабинет?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex clock-block">
+                    <div class="m-lg-auto align-self-center pl-lg-3">
+                        Эталонное время сервера: <span id="clock-text">2024.08.12 16:15:37</span>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-lg-4 d-flex">
+                    <div class="ml-auto align-self-center">
+                        <a href="step1-mobile-app@safe=1.html#" class="city-select" data-toggle="modal" data-target="#cityModal">
+                            <img src="../../images/icons/maps-and-flags.svg" class="mr-2" alt="">
+                            <span class="d-none d-sm-block">Костанайская область</span>
+                        </a>
+                    </div>
+                    
+<div class="d-none d-lg-flex justify-content-end">
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="../../kz/enrollment-adult/step1-mobile-app@safe=1.html">Қазақша</a>
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="step1-mobile-app@safe=1.html">Русский</a>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <nav class="navbar justify-content-between">
+                
+<div class="logo-city">
+<img src="step1-mobile-app@safe=1.html" alt="" width="50">
+
+                                   </div>
+
+<style>
+    .main-header .logo-city {
+        flex: 0 0 15rem!important;
+    }
+</style>
+                <a href="../../ru.1.html" class="navbar-brand">
+                    <img src="../../images/logo/logo.svg" alt="meteor_logo">
+                </a>
+
+                <ul class="d-none d-lg-flex navbar-nav flex-row">
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../sections.html">Спортивные секции</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../organizations.html">Спортивные объекты</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../couches.html">Тренерский состав</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../site/upcoming-events.html">Мероприятия</a>
+                    </li>
+                </ul>
+
+                <div class="burger-icon">
+                    <div id="burger-wrapper">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </div>
+
+                <a class="d-none d-lg-block btn main-btn personal-area-btn" href="../cabinet.html">
+                                            Войти в личный кабинет                                    </a>
+                <a class="d-block d-lg-none avatar-block" href="../cabinet.html">
+                    <img src="../../images/icons/user.svg" alt="">
+                </a>
+            </nav>
+        </div>
+    </div>
+
+</header>
+
+<div class="mobileMenu" id="mobileMenu" >
+    <div class="mobileMenu__wrapper">
+
+        <a href="step1-mobile-app@safe=1.html#" class="city-select btn main-outline-btn" data-toggle="modal" data-target="#cityModal">
+            <svg class="icon">
+                <use xlink:href="/images/sprite.svg#map"></use>
+            </svg>
+            <span>Костанайская область</span>
+        </a>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="../sections.html">Спортивные секции</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../organizations.html">Спортивные объекты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../couches.html">Тренерский состав</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../site/upcoming-events.html">Мероприятия</a>
+            </li>
+        </ul>
+
+        
+<div class="mobile-menu__choice-language d-lg-none">
+    <ul class="btn-group--lang">
+                    <li class="">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="../../kz/enrollment-adult/step1-mobile-app@safe=1.html">Қазақша</a>
+            </li>
+                    <li class="active">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="step1-mobile-app@safe=1.html">Русский</a>
+            </li>
+            </ul>
+</div>
+
+        <a class="btn login-btn main-btn" href="../cabinet.html">
+                            Войти в личный кабинет                    </a>
+    </div>
+
+</div>
+
+
+
+<script>
+    var burger = document.querySelector('.burger') !== null;
+    if (burger) {
+        burger.addEventListener('click', function(){
+            document.querySelector('.burger span').classList.toggle('active');
+        })
+    }
+
+    var menu = document.querySelector('.menu') !== null;
+    if (menu) {
+        menu.classList.toggle("animate");
+    }
+</script>
+
+<main class="main bg-section-card">
+            <nav aria-label="breadcrumb" class="breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../ru.1.html">Главная</a></li><li class="breadcrumb-item active" aria-current="page">Зачисление спортивного контингента 18+ в спортивные школы, спортивные школы для инвалидов</li></ol>            </div>
+        </nav>
+    
+            <div class="container">
+            <header class="body-header">
+                                    <h1 class="body-title">Зачисление спортивного контингента 18+ в спортивные школы, спортивные школы для инвалидов</h1>
+                                            </header>
+        </div>
+        
+
+<div class="container pb-lg-5">
+    <div class="row pb-lg-5">
+        <div class="col-12">
+            <ul class="e-step-list row">
+    <!-- При активном шаге к элементу спика li добавлять класс .active,
+     При выполненном шаге к элементу спика li добавлять класс .complete и убирать .active-->
+    <li class="col e-step-item  active">
+        <div class="e-step-number">Шаг 1</div>
+        <div class="e-step-title">
+            <span>Контактные данные претендента на зачисление</span>
+        </div>
+    </li>
+    <li class="col e-step-item  ">
+        <div class="e-step-number">Шаг 2</div>
+        <div class="e-step-title">
+            <span>Сведения о претенденте на зачисление</span>
+        </div>
+    </li>
+    <li class="col e-step-item  ">
+        <div class="e-step-number">Шаг 3</div>
+        <div class="e-step-title">
+            <span>Выбор организации и секции</span>
+        </div>
+    </li>
+    <li class="col e-step-item  ">
+        <div class="e-step-number">Шаг 4</div>
+        <div class="e-step-title">
+            <span>Согласие на получение уведомлений</span>
+        </div>
+    </li>
+    <li class="col e-step-item  ">
+        <div class="e-step-number">Шаг 5</div>
+        <div class="e-step-title">
+            <span>Проверка введенных данных</span>
+        </div>
+    </li>
+</ul>        </div>
+
+                    
+<div class="col-12">
+    <form id="w0" class="register-form" action="https://meteor-kostanay-region.e-orda.kz/ru/enrollment-adult/send-code" method="post">
+<input type="hidden" name="_csrf" value="1CHTWhdZYP6jUjiT7kB6wKMfNPzXQxjy7x0yKrpP5w--R-siZTUonNchTOKHNRCHkUUFr7wLXsSBL35u_QLTZA==">
+    <div class="e-step-form">
+        <div class="e-step-formTitle d-none d-lg-block">
+            <h4>Действующий номер мобильного телефона</h4>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-lg-9">
+                <small class="d-block mb-3">Номер телефона <span class="text-required">*</span></small>
+                <div class="form-inline align-items-end row">
+                    <div class="form-group flex-column align-items-start col-lg-8">
+                        <label class="font-weight-bold mb-3" for="contact-phone">
+                            Укажите номер мобильного телефона, на который система отправит код подтверждения                        </label>
+                        <input type="tel"
+                               id="contact-phone"
+                               class="input form-control w-100"
+                               placeholder="Введите номер телефона"
+                               name="EnrollmentAdultForm[contactPhone]"
+                               data-mask="tel">
+                    </div>
+                    <div class="col-lg-4">
+                        <button type="submit" class="btn btn-sms btn-block">
+                            Отправить код подтверждения                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-lg-flex flex-start mt-35 btn-group--footer">
+            <a class="btn main-outline-btn btn-md px-4 mr-2" href="start.html">Отмена</a>            <button type="submit" class="btn main-btn btn-md px-4" disabled>
+                Далее            </button>
+        </div>
+    </div>
+    </form></div>
+            </div>
+
+    <hr class="custom-hr-blue">
+    
+<div class="row">
+    <div class="col-lg-6">
+        <div class="page-info">
+            <h3>Как установить приложение ed24.kz?</h3>
+            <hr>
+            <p class="mb-3">Коды подтверждения и любые уведомления отправляются на мобильное приложение <span class="badge-blue">ed24.kz</span>. Если у вас нет приложения, то установите его</p>
+            <p class="mb-3">Вы можете сканировать QR-код для перехода в маркет приложений или найти приложение в маркете по его названию (ed24.kz)</p>
+
+            <div class="flex-group w-80">
+                <div class="d-flex flex-column">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC5UlEQVR4nO2c227jMAxE4yL//8vumx1UKsEznLRAO+dpYevSDMgVRUo+HjPO8/zu1XEcX9pcT+wDFr3W7hrneX5M+v83Ihbgef2rY8kXq0l3PKLjj8WrwvuQP8q/NJYFiFiA5/qo4widV+uTdWTkWZqHFtBfGssCRCzAxg01kEmjMLUYZ50drXSUWBYgYgFsbthZjzr+2HEoFNMaHTOWBYhYgI0banY7dI0igu04uLYa0l8aywJELMDthsNE4gXa3KEtIdoAdnyWEssCRCzAYd9MoU2iVtTo8I5NYiwLELEAzOa1CqCWvXSVJ4wLbiwLELEAtzcVLjaM/Vzl+87snUlRJeWVWBYgYgE2QWmnule8QhmVDq4B5/XHWBYgYgEOzcXu/rNy+Q+4mJbY2U4RywJELMDmMNtawltxlSe0MBUdpSsaF1NsX8WyABELsNkbbhpJYSr7O0wL5TDGLsZ5xLIQEQtQFSxcYarmqq5ea/fsDX+CiAWYZko3I7rrhlrO07V0vjaOZQEiFqDKlLoCvLWxHZf3ZTW0EbEAVab0Yrjds7uqqzxRNM7ecErEArSu/bou+iHXGA6IFsHmVjeWBYhYgKerIn+h1TKGxREtd5QbFm8kYgHE2/fDCFY7yK3Nrt2Byt5wSsQCtDKla5u7/9u2e9qCi6D5nFgWIGIBqtv3w52X1njtVRzCKRp3AuAiTN16eiwLELEAtrrh8Fia64LG++ZKioYRsQDVRzC0RdBeKRi+WpED6VgWIGIBns1Tzd896aDtOtH/Bp3ZV2gqOJYFiFiAaa4D1TLuWaUci72ySdfZWBYgYgFaNyw23UwH3n4lHVpMkfK9jYgFsH2121UBRHnRzoAud37EshARC2D7XPBKx6E6RQRXgrRoXNx0TlAqErEAfjccnrRxbeW0c3d1ZB7LAkQsgO2r3Rd290Glh+KJdqXxtU0sCxCxAP6vdqMB7cdE0Un1DglKRSIWwP/V7j/MJ45Z8bw93iuCAAAAAElFTkSuQmCC" width="100" class="img-qr mb-3">
+                    <a href="https://play.google.com/store/apps/details?id=kz.ed24" target="_blank">
+                        <img src="../../images/ic-googleplay.png" width="101" class="img-app">
+                    </a>
+                </div>
+                <div class="d-lg-block d-none m-auto">
+                    <span class="link-border">или</span>
+                </div>
+                <div class="d-flex flex-column">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACiklEQVR4nO2cwY7kIAwFk9X8/y/33qKRQF6XbTKaVdWxQ5P003MDNuT+fD6X5Pjz0w/wm1AsgGIBFAugWICv9aP7vjs9rsPr02HmUnD34Otrm/FfcekshGIBNmH4gOarq+2D6FtvEQRUpsPMLTLEwauzAIoFiMLwAY1Q6yU0MGWiphbytV/xHZ0FUCxAKgxrBBPOTISujWshNojOAigW4GAYTi330NLyKDoLoFiAVBjWTJ5Z7gWNmx2u9ENVZwEUCxCF4dRMLzMprX2yPmpmeC2jswCKBbhfmM6hJeFDLaCO/hydBVAsQLdu2EyHZgp/qDwxNeBu0VkAxQJswhCZMzPS1VIrmehD42N/dqqzAIoFiEbD5nrtze00tT8KmmjVWQDFAmzWhrVgqcXjylT9vbn8dDNbF8UCRCmajO1rQVfL1aB+ThQZdRZAsQCpMESR1X2g3kBZG6ZN0cyjWAA2Kd18v71RM99PM2XULJdcOguhWABWvp/KXk6t8tClfolfZwEUC8AmpW9OU5vF+qlh+js6C6BYgGhSGjCV2KklUWvVjWaG59JZCMUCFAsWATTv8c+ea5XE5r226CyAYgHeOPab6XD88EVALTl86SyEYgG6B53GZ4Pndn1nGjsajqFYgIMnLKbO5NbqFKiNdcN5FAvwxpvZ1p5RIDQXm4NJXZ0FUCzAwTezZQIquNSMx8yldY93/HWdBVAswMEUTeBtFCNTWdA+OgugWICDr4RaaVYlUOPm8eEtOgugWIA3whBV7WszxloWiC4SdRZAsQAH38wWgNaGzeGsdvDKtWEXxQIUN7MFNDeYBY0fpt7OEdxii84CKBbgjTez/TfoLIBiARQLoFgAxQIoFuAvb/ZAwi/LTL8AAAAASUVORK5CYII=" width="100" class="img-qr mb-3">
+                    <a href="https://apps.apple.com/kz/app/ed24-kz/id1634746407" target="_blank">
+                        <img src="../../images/ic-appstore.png" width="101" class="img-app">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="collapse-list__wrap">
+            <div class="collapse-list__item">
+                <div class="collapse-list__item-show" data-toggle="collapse" data-target="#info-1">
+                    <h6>Зачем указывать номер телефона?</h6>
+                    <div class="dot-arrow">
+                        <svg class="icon">
+                            <use xlink:href="/images/sprite.svg#prev"></use>
+                        </svg>
+                    </div>
+                </div>
+                <div id="info-1" class="collapse state-passport">
+                    <div class="state-passport-item pb-0">
+                        <p>Номер телефона необходим для того, чтобы в будущем система отправляла вам информационные уведомления в приложение ED24, в том числе, для того, чтобы в случае необходимости с вами мог связаться услугодатель.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="collapse-list__item">
+                <div class="collapse-list__item-show" data-toggle="collapse" data-target="#info-2">
+                    <h6>Что такое “Код подтверждения” и как его получить?</h6>
+                    <div class="dot-arrow">
+                        <svg class="icon">
+                            <use xlink:href="/images/sprite.svg#prev"></use>
+                        </svg>
+                    </div>
+                </div>
+                <div id="info-2" class="collapse state-passport">
+                    <div class="state-passport-item pb-0">
+                        <p>Код подтверждения - одноразовый четырехзначный пароль, отправляемый в приложение ED24, чтобы убедиться в том, что указанный номер активен и действительно принадлежит вам.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+</main>
+
+
+<footer class="footer footer-almaty">
+    <div class="container">
+        
+        <hr class="d-lg-block d-none "/>
+        <div class="text-center f-link">
+            <p class="f-body footer-copyright">Интернет-ресурс, его структура, правила форматно-логического контроля и размещенный медиа-контент, охраняется законом «Об авторском праве и смежных правах» Республики Казахстан. Эверест ЖМ, 2021©</p>
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="supportModal" tabindex="-1" role="dialog" aria-labelledby="supportModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="supportModalLabel">Обращение в управление спорта</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">ФИО:</label>
+                        <input type="text" class="form-control" id="sender-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Номер телефона                            :</label>
+                        <input type="text" class="form-control" id="sender-phone" data-mask="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label">Текст сообщения                            :</label>
+                        <textarea class="form-control" id="message-text" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary"
+                        id="send-message">Отправить сообщение</button>
+            </div>
+        </div>
+    </div>
+</div><script>var Messages = {"SNOW_MORE":"Загрузить еще","RECEIVE_VERIFY_CODE_SMS":"Получить код подтверждения через SMS","RECEIVE_VERIFY_CODE_EMAIL":"Получить код подтверждения через email","FAILED_SEND_VERIFY_CODE":"Не удалось отправить код подтверждения","SUCCESS_SEND_VERIFY_CODE":"Код подтверждения успешно отправлен","FAILED_TO_GET_DATA":"Данные не найдены","YOU_MUST_SELECT_A_TRAINING_PROFILE":"Необходимо выбрать профиль обучения","UNABLE_TO_APPLY_AGE_IS":"Невозможно продолжить подачу заявления. Возраст ребенка составляет:","GO_TO":"Перейти","NOTHING_IS_SELECTED":"Ничего не выбрано","ALL":"Все","NO_SUPPORT":"<div><h4 class=\"alert-heading\">Извините, Вы обратились в нерабочее время.</h4><p>График работы технической поддержки с 9:00 - 18:00 в рабочие дни.</p><hr><p class=\"mb-0\">После начала рабочего дня обновите страницу и попробуйте еще раз.<br>Спасибо</p></div>","ERROR":"Ошибка","UNABLE_TO_APPLY_CITY_CHECK":"Невозможно продолжить подачу заявления. Место прописки не соответствует городу оказания услуги","UNABLE_TO_APPLY_PARENT_AGE":"Невозможно продолжить подачу заявления. Возраст законного представителя не может быть меньше 18 лет","UNABLE_TO_APPLY_APPLICANT_AGE":"Невозможно продолжить подачу заявления. Возраст заявителя не может быть меньше 18 лет","ERROR_SAME_IINS":"ИИН ребенка и законного представителя не могут быть одинаковыми","YOU_MUST_SELECT_THE_CURRENT_ORGANIZATION":"Необходимо выбрать текущую организацию","TO_CHOOSE":"To chose","CHOSEN":"Выбрано","SHOW_MORE":"Показать еще..."}</script><div class="alert alert--hide"></div>
+
+
+            <script>var LHC_API = LHC_API||{};
+            LHC_API.args = {mode:'widget',lhc_base_url:'//support.e-orda.kz/index.php/',wheight:450,wwidth:350,pheight:520,pwidth:500,leaveamessage:true,department:["46"],check_messages:false,proactive:false,lang:'rus/'};
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.setAttribute('crossorigin','anonymous'); po.async = true;
+                var date = new Date();po.src = '//support.e-orda.kz/design/defaulttheme/js/widgetv2/index.js?'+(""+date.getFullYear() + date.getMonth() + date.getDate());
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+    
+<script src="../../assets/ad15b6a8/jquery.js@v=1721220178"></script>
+<script src="../../assets/6d082268/yii.js@v=1721220178"></script>
+<script src="../../assets/666c9d38/jquery.inputmask.js@v=1721220178"></script>
+<script src="../../js/apiForm.js@v=1697103874"></script>
+<script src="../../js/enrollmentAdultForm.js@v=1722330391"></script>
+<script src="../../assets/6d082268/yii.activeForm.js@v=1721220178"></script>
+<script src="../../assets/71d79331/js/bootstrap.bundle.js@v=1721220178"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=38bc483f-f846-4395-9bc9-cdc3cca71845&amp;lang=ru_RU"></script>
+<script src="../../js/map.js@v=1686801454"></script>
+<script src="../../libs/slick/slick.min.js@v=1686801454"></script>
+<script src="../../libs/nice-select/jquery.nice-select.min.js@v=1686801454"></script>
+<script src="../../libs/bootstrap/bootstrap-multiselect.js@v=1686801454"></script>
+<script src="../../libs/fancybox/jquery.fancybox.min.js@v=1686801454"></script>
+<script src="../../libs/inputmask/jquery.maskedinput.min.js@v=1686801454"></script>
+<script src="../../js/script.js@v=1721219990"></script>
+<script src="../../js/defaultSearch.js@v=1693483620"></script>
+<script src="../../js/jquery.doubleScroll.js@v=1693483620"></script>
+<script>jQuery(function ($) {
+jQuery('#w0').yiiActiveForm([], {"errorSummary":".alert.alert-danger","errorCssClass":"is-invalid","successCssClass":"is-valid","validationStateOn":"input"});
+	
+ $(function(){
+        $("#phone").mask("7(***) ***-**-**");
+    });
+
+    var lang = $('body').data('lang')
+    var d = new Date(2024,7,12,16,15,37);
+    function refreshTime() {
+        $.post("/" + lang + "/site/get-time", function(data) {
+            d = new Date(data.y, data.m, data.d, data.h, data.min, data.s);
+            update();
+        });
+    }  
+    
+    function update() {
+         var month = d.getMonth()+1 < 10 
+                    ? '0' + (d.getMonth()+1)
+                    : d.getMonth()+1;
+         var day = d.getDate() < 10 
+                    ? '0' + d.getDate() 
+                    : d.getDate();
+         var year = d.getFullYear();   
+            
+         var hours = d.getHours() == 0 
+                    ? '00'
+                    : d.getHours();
+            
+         var minutes = d.getMinutes() < 10 
+                    ? '0' + d.getMinutes() 
+                    : d.getMinutes();
+      
+        var seconds = d.getSeconds() < 10 
+                    ? '0' + d.getSeconds() 
+                    : d.getSeconds();     
+       
+       d.setSeconds(d.getSeconds() + 1);
+            $('#clock-text').text((year + '.' + month + '.' + day + ' ' + hours +':' + minutes + ':' + seconds ));
+    }
+    
+    update();
+    window.setInterval(update, 1000); 
+    window.setInterval(refreshTime, 1000*60*5);
+
+});</script></body>
+</html>

@@ -1,0 +1,433 @@
+"use strict";
+
+const apiForm = {
+    _data: null,
+    _formName: null,
+    _selectedInputsCache: {},
+    setData: function(data) {
+        this._data = data;
+    },
+    setFormName: function(name) {
+        this._formName = name;
+    },
+
+    selectInput: function(name) {
+        if (name in this._selectedInputsCache) {
+            return this._selectedInputsCache[name];
+        } else {
+            let $input = $('[name="'+ this._formName +'['+ name +']"]');
+
+            if ($input.length > 0) {
+                this._selectedInputsCache[name] = $input;
+
+                return $input;
+            }
+
+            return null;
+        }
+    },
+    /**
+     * Отправка кода подтверждения для номера или email
+     * @param type
+     * @param field
+     * @returns {boolean}
+     */
+    sendCode: function(type, field) {
+        let phone = $('#' + field),
+            requestUrl = '/' + this.lang + '/api-form/send-verification-code/',
+            button = $('*[data-validate-input=' + field + ']');
+
+        $('.alert').hide();
+        PageLoader.show();
+
+        button.prop('disabled', true);
+
+        let timer = setInterval(() => {
+            let minElem = button.find('.min'),
+                secElem = button.find('.sec'),
+                timerSplit = button.find('.timerSplit');
+
+            if (minElem.length > 0 && secElem.length > 0) {
+                let min = parseInt(minElem.text()),
+                    sec = parseInt(secElem.text());
+
+                if (min > 0) {
+                    if (sec <= 1) {
+                        minElem.empty();
+                        timerSplit.remove();
+                        secElem.text(60);
+                    } else {
+                        if (sec <= 10) {
+                            secElem.text('0' + (sec-1));
+                        } else {
+                            secElem.text(sec-1);
+                        }
+                    }
+                } else {
+                    if (sec > 1) {
+                        secElem.text(sec-1);
+                    } else {
+                        button.prop('disabled', false);
+
+                        if (type == 1) {
+                            button.text(Messages['RECEIVE_VERIFY_CODE_SMS']);
+                        } else {
+                            button.text(Messages['RECEIVE_VERIFY_CODE_EMAIL']);
+                        }
+                        clearInterval(timer);
+                    }
+                }
+            } else {
+                button.empty();
+                button.append($('<span/>', {
+                    'class': 'min',
+                    'text': 1
+                })).append($('<span/>', {
+                    'class': 'timerSplit',
+                    'text': ':'
+                })).append($('<span/>', {
+                    'class': 'sec',
+                    'text': 30
+                })).append($('<span/>', {
+                    'class': 'secname',
+                    'text': ' секунд'
+                }));
+            }
+        }, 1000);
+
+        $.ajax({
+            url: requestUrl,
+            data: {
+                type: type,
+                requisite: phone.val()
+            },
+            type: 'POST',
+            success: function(data) {
+                if (data.status == 'success') {
+                    phone.prop('readonly', true);
+                    Alert.success(Messages['SUCCESS_SEND_VERIFY_CODE']);
+                } else {
+                    button.prop('readonly', false);
+                    let error = data.value;
+
+                    if (error === '') {
+                        error = Messages['FAILED_SEND_VERIFY_CODE'];
+                    }
+                    Alert.error(error);
+                }
+
+                PageLoader.hide();
+            },
+        });
+
+        return false;
+    },
+    listenUploadFileEvent: function() {
+        $(document).on('change', '.download-input', function () {
+            let filename = (this.files.item(0)) ? this.files.item(0).name : null,
+                id = $(this).attr('id'),
+                ext = (filename) ? filename.split('.').pop() : null,
+                $fileContainer = $('.files-container[for="' + id + '"]'),
+                inputWrap = $('.field-' + id),
+                fileClass = null;
+
+
+            inputWrap.removeClass('has-error');
+            inputWrap.find('.invalid-feedback').remove();
+
+            if (filename) {
+                switch (ext) {
+                    case 'pdf':
+                        fileClass = 'pdf';
+                        break;
+                    case 'doc':
+                    case 'docx':
+                        fileClass = 'doc';
+                        break;
+                    case 'jpg':
+                    case 'jpeg':
+                        fileClass = 'img';
+                        break;
+                    case 'zip':
+                    case 'rar':
+                        fileClass = 'zip';
+                        break;
+                    default:
+                        fileClass = '';
+                        break;
+                }
+
+                //$('#'+this.id+'-label').html(filename);
+                $('[type="hidden"][name="'+ $(this).attr('name') +'"]').val(filename);
+
+                $fileContainer.find('.file-info-name').text(filename);
+                $fileContainer
+                    .find('.file-info-icon')
+                    .attr('class', '')
+                    .addClass('file-info-icon')
+                    .addClass(fileClass);
+                $fileContainer.removeClass('d-none');
+
+            } else {
+                //$('#'+this.id+'-label').html(Messages['CLICK_BUTTON_FOR_UPLOAD_FILE']);
+                $('[type="hidden"][name="'+ $(this).attr('name') +'"]').val('');
+            }
+
+        });
+    },
+    listenDeleteFileEvent: function() {
+        $(document).on('click', '.delete-icon', function () {
+            let id = $(this).attr('for'),
+                $fileContainer = $('.files-container[for="' + id + '"]'),
+                inputWrap = $('.field-' + id);
+
+            $fileContainer.find('.file-info-name').text('');
+            $fileContainer.addClass('d-none');
+
+            let isFieldRequired = inputWrap.data('required');
+            inputWrap.find('[type="hidden"]').val('');
+            if (isFieldRequired !== false) {
+                inputWrap.addClass('has-error');
+            }
+            $('.' + id + '-delete-input-flag').val(true);
+
+            $('#'+id).attr('value', null);
+        });
+    },
+    clearInputs: function($form, clearRadio = true, ...blocksForHide) {
+        let $loadFilesInputs = $form.find('.download-file');
+
+        $form.trigger('reset');
+
+        $form.find('[type="text"]').val('');
+
+        if (clearRadio) {
+            $form.find('[type="radio"]').prop('checked', false);
+            $form.find('[type="radio"][value="0"]').prop('checked', true);
+            $form.find('[type="radio"]').trigger('change');
+        }
+
+        $form.find('select option[selected]').prop('selected', false);
+
+        if (blocksForHide.length > 0) {
+            for (let elem of blocksForHide) {
+                elem.addClass('d-none');
+            }
+        }
+
+        $loadFilesInputs.val('');
+        $loadFilesInputs.attr('value', null);
+        $loadFilesInputs.trigger('change');
+
+        $('.alert').hide();
+    },
+    clearFormInputs: function(...inputsToClear) {
+        if (inputsToClear.length > 0) {
+            for (let elem of inputsToClear) {
+                elem.val('');
+                elem.prop('readonly', false);
+            }
+        }
+    },
+    hideBlocks: function(...blocksForHide) {
+        if (blocksForHide.length > 0) {
+            for (let elem of blocksForHide) {
+                elem.addClass('d-none');
+            }
+        }
+    },
+    /**
+     * Заполнение поля с адресом
+     * @param input
+     * @param data
+     * @private
+     */
+    _fillRegistrationAddressInput: function(input, data) {
+        input.val(data.AddressOfRegistation);
+        // Валидация поля с адресом
+        $(input['0'].form).yiiActiveForm('validateAttribute', input.attr('id'));
+
+    },
+    /**
+     * Получение информации по иин
+     * @param iin
+     * @param callback
+     * @param params
+     * @returns {boolean}
+     * @private
+     */
+    _getInfoByIin: function(iin, callback = null, params = {}) {
+        let url = '/' + this.lang + '/api-form/load-info-by-iin/',
+            data = {},
+            self = this;
+
+        if (typeof iin == 'object') {
+            data = {
+                iin: iin[0],
+                secondIin: iin[1]
+            };
+        } else {
+            data = {
+                iin: iin
+            };
+        }
+
+        $('.alert').hide();
+        PageLoader.show();
+
+        $.ajax({
+            url: url,
+            data: data,
+            type: 'POST',
+            success: function(data) {
+                if (data.length <= 0) {
+                    PageLoader.hide();
+
+                    Alert.error(Messages['FAILED_TO_GET_DATA']);
+                    return false;
+                }
+                if (data.status && data.status === 'error') {
+                    PageLoader.hide();
+
+                    Alert.error(data.message);
+                    return false;
+                }
+                callback(data);
+
+                PageLoader.hide();
+            }
+        });
+
+        return false;
+    },
+
+    customLoadInfo: function(params, callback) {
+        $('.alert').hide();
+        PageLoader.show();
+        params.params.Phone = $('#contact-phone').val()
+
+        $.ajax({
+            url: '/' + this.lang + '/api-form/load-info-by-iin/',
+            data: params,
+            type: 'GET',
+            success: function(data) {
+                if (data.length <= 0) {
+                    Alert.error(Messages['FAILED_TO_GET_DATA']);
+                    PageLoader.hide();
+                    return false;
+                }
+                if (data.status && data.status === 'error') {
+                    PageLoader.hide();
+
+                    Alert.error(data.message);
+                    return false;
+                }
+                callback(data);
+
+                PageLoader.hide();
+            },
+            error: function () {
+                Alert.error(Messages['FAILED_TO_GET_DATA']);
+                PageLoader.hide();
+            }
+        });
+
+        return false;
+    },
+
+    validateAge: function(min, max, applicant,data = null) {
+        data = (!data) ? this._data : data;
+
+        if (data.Age < min || data.Age > max) {
+            $(':input[type="submit"]').prop('disabled', true);
+
+            if(applicant === 'parent') {
+                Alert.error(Messages['UNABLE_TO_APPLY_PARENT_AGE']);
+            } else if(applicant === 'applicant') {
+                Alert.error(Messages['UNABLE_TO_APPLY_APPLICANT_AGE']);
+            } else if(applicant === 'child') {
+                Alert.error(Messages['UNABLE_TO_APPLY_AGE_IS'] + ' ' + data.Age);
+            }
+
+            return false;
+        }
+
+        return true;
+    },
+
+    fillHiddenInput: function(props, data = null) {
+        data = (!data) ? this._data : data;
+
+        props.forEach(function(prop) {
+            let $hiddenInput = $('[data-api-key = "' + prop + '"]'),
+                fillingData;
+
+            if (prop.indexOf('.') !== -1) {
+                let spl = prop.split('.');
+
+                fillingData = data[spl[0]];
+
+                for (let i = 1; i < spl.length; i++) {
+                    fillingData = fillingData[spl[i]];
+                }
+
+            } else {
+                fillingData = data[prop];
+            }
+
+            if (typeof fillingData === 'boolean') {
+                fillingData = fillingData ? 1 : 0;
+            }
+
+            if ($hiddenInput.length > 0) {
+                $hiddenInput.val(fillingData);
+            }
+        });
+    },
+    fillAndShowInfoBlock: function(block, data = null) {
+        data = (!data) ? this._data : data;
+
+        let FirstName = data.FirstName,
+            LastName = data.LastName,
+            MiddleName = data.MiddleName ? data.MiddleName : '',
+            BirthDate = data.BirthDate,
+            resultStr;
+
+        resultStr = LastName + ' ' + FirstName + ' ' + MiddleName + ', ' + BirthDate;
+
+        block.html(resultStr);
+
+        block.removeClass('d-none');
+        block.show();
+    },
+
+    ///////////////////////////////////////////////
+    /**
+     * Текущий язык
+     */
+    lang: $('body').data('lang'),
+    /**
+     * Получение списка полов
+     */
+    gender: ['', 'мужской', 'женский'],
+};
+$('[data-mask="tel"], [data-mask="email"]').on('keyup', function (event, attribute) {
+
+    let button = $('button[data-validate-input=' + this.id + '], button[data-validate-checkbox=' + this.id + ']'),
+        $form = $(button['0'].form),
+        $input = $(this);
+
+    if ($(this).inputmask('isComplete')) {
+        $form.yiiActiveForm('validateAttribute', $(this).attr('id'))
+
+        setTimeout(function() {
+            if ($input.hasClass('is-valid')) {
+                button.prop('disabled', false);
+            } else {
+                button.prop('disabled', true);
+            }
+        }, 500);
+    } else {
+        button.prop('disabled', true);
+    }
+});

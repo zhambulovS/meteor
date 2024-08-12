@@ -1,0 +1,997 @@
+PageLoader = {
+    loaderID: '#page-content-loader',
+    show: function () {
+        $(this.loaderID).show();
+    },
+    hide: function () {
+        $(this.loaderID).hide();
+    }
+};
+
+app = {
+    setLanguage: function (pathName) {
+        location.replace(pathName + location.search);
+    }
+};
+
+// Alert
+$(document).on('click', '.alert__close', function () {
+    $(this).parent('.alert').fadeOut(500);
+});
+Alert = {
+    alert: $('.alert'),
+    alertClose: '<span class="icon-close alert__close"></span>',
+    success: function (text) {
+        this.alert.hide();
+        this.alert.removeClass('alert--error').addClass('alert--success');
+        this.alert.html(text + this.alertClose);
+        this.show();
+    },
+    error: function (text) {
+        this.alert.hide();
+        this.alert.removeClass('alert--success').addClass('alert--error');
+        this.alert.html(text + this.alertClose);
+        this.show();
+    },
+    show: function () {
+        // this.alert.removeClass('alert--hide');
+        this.alert.fadeIn('500');
+    },
+    hide: function () {
+        this.alert.fadeOut('500');
+    }
+};
+
+document.addEventListener('DOMContentLoaded', ready);
+
+function ready() {
+
+    //global variables
+    const svgSpritePath = 'images/sprite.svg#';
+
+    // for layout dropdown
+    handleLayoutDropdown();
+
+    function handleLayoutDropdown() {
+        const dropdownContainer = document.querySelector('#view-changes');
+
+        if (dropdownContainer) {
+            const dropdownBtnText = dropdownContainer.querySelector('.js-text'),
+
+                dropdownItems = dropdownContainer.querySelectorAll('.dropdown-item'),
+                dropdownItemsArr = [...dropdownItems];
+
+            dropdownItemsArr.forEach(item => {
+                item.addEventListener('click', () => {
+                    const itemDataId = item.getAttribute('data-id');
+                    const dropdownItemsText = item.querySelector('.js-text').textContent;
+
+                    dropdownBtnText.textContent = dropdownItemsText;
+                    if (dropdownBtnText !== '') {
+                        const blankTitle = document.querySelector('#view-changes').querySelector('.blank-title');
+
+                        blankTitle.classList.add('js-text');
+                    }
+                })
+            })
+        }
+    }
+
+    // Показать больше тегов, "Виды спорта", на странице /sections/organizations/
+    registerOrganizationsShowMoreTags();
+
+    function registerOrganizationsShowMoreTags() {
+        $(document).on('click', '.main-card__tag_show-more_func', function () {
+            let $el = $(this);
+
+            ($el.html()).trim() === 'Еще...' ? $el.html('Свернуть') : $el.html('Еще...');
+
+            let $hiddens = $el.closest('.main-card__tags').find('.main-card__tag_hidden');
+
+            $hiddens.toggleClass('main-card__tag_hide')
+
+        });
+        /*
+        const showMoreBtns = document.querySelectorAll('.main-card__tag_show-more_func');
+
+        if (showMoreBtns) {
+            showMoreBtns.forEach(btn => {
+               const btnParent = btn.closest('.main-card__tags');
+               btn.addEventListener('click', () => {
+                   btn.innerHTML === 'Еще...' ? btn.innerHTML = 'Свернуть' : btn.innerHTML = 'Еще...'
+                   const hiddenTags = btnParent.querySelectorAll('.main-card__tag_hidden');
+                   btnParent.closest('.main-card__btn-bar').classList.toggle('a-start');
+                   hiddenTags.forEach(tag => {
+                      tag.classList.toggle('main-card__tag_hide');
+                   });
+                });
+            });
+        }*/
+    }
+
+    // Полузнок в главном фильтре
+    mainFilterPriceSlider();
+
+    function mainFilterPriceSlider() {
+        const rangeInput = document.querySelector('.multi-range-slider');
+
+        if (rangeInput) {
+            let inputLeft = document.getElementById("input-left");
+            let inputRight = document.getElementById("input-right");
+
+            let thumbLeft = document.querySelector(".slider > .thumb.left");
+            let thumbRight = document.querySelector(".slider > .thumb.right");
+            let range = document.querySelector(".slider > .range");
+
+            function setLeftValue() {
+                let _this = inputLeft,
+                    min = parseInt(_this.min),
+                    max = parseInt(_this.max);
+
+                _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
+
+                let minVal = document.getElementById("min-value");
+                if (minVal) {
+                    minVal.innerHTML = _this.value;
+                }
+
+                let percent = ((_this.value - min) / (max - min)) * 100;
+
+                thumbLeft.style.left = percent + "%";
+                range.style.left = percent + "%";
+            }
+
+            setLeftValue();
+
+            function setRightValue() {
+                let _this = inputRight,
+                    min = parseInt(_this.min),
+                    max = parseInt(_this.max);
+
+                _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
+
+                let maxVal = document.getElementById("max-value");
+                if (maxVal) {
+                    maxVal.innerHTML = _this.value;
+                }
+
+
+                let percent = ((_this.value - min) / (max - min)) * 100;
+
+                thumbRight.style.right = (100 - percent) + "%";
+                range.style.right = (100 - percent) + "%";
+            }
+
+            setRightValue();
+
+            inputLeft.addEventListener("input", setLeftValue);
+            inputRight.addEventListener("input", setRightValue);
+
+            inputLeft.addEventListener("mousedown", function () {
+                thumbLeft.classList.add("active");
+            });
+            inputLeft.addEventListener("mouseup", function () {
+                thumbLeft.classList.remove("active");
+            });
+
+            inputRight.addEventListener("mousedown", function () {
+                thumbRight.classList.add("active");
+            });
+            inputRight.addEventListener("mouseup", function () {
+                thumbRight.classList.remove("active");
+            });
+
+        }
+    }
+
+    // Логика чекбоксов в главном фильтре
+    mainFilterCheckAll();
+
+    function mainFilterCheckAll() {
+        const checkAllBtn = document.querySelectorAll('.main-filter__checkbox_all');
+
+        checkAll(checkAllBtn);
+
+        function checkAll(checkboxesAll) {
+            checkboxesAll.forEach(checkboxAll => {
+                const parent = checkboxAll.closest('.main-filter__category');
+                const checkboxes = parent.querySelectorAll('.main-filter__checkbox');
+                let boxCount = 0; // Счетчик чекнутых боксов
+
+                checkboxes.forEach(box => {
+                    checkboxAll.addEventListener('change', () => {
+                        let isChecked = checkboxAll.checked; // Сохраняем состояние чекбокса "Все"
+                        box.checked = isChecked; // Присваиваем состояние остальным чекбоксам
+                        isChecked ? boxCount = checkboxes.length - 1 : boxCount = 0; // Обновляем счечтик вместе с чеками
+                    });
+                    if (!box.classList.contains('main-filter__checkbox_all')) {
+                        box.addEventListener('change', () => {
+                            box.checked ? boxCount++ : boxCount--; // Считаем сколько боксов чекнуто
+                            (checkboxes.length - 1) === boxCount ? checkboxAll.checked = true : checkboxAll.checked = false; // Если чекнуты все, то чекнуть "все"
+                        });
+                    }
+                });
+            });
+        }
+    }
+
+    // Переключение вида список - карта на страницах реестра секций и организаций
+    registerShowMap();
+
+    function registerShowMap() {
+        $(document).on('click', '.page-view__btn_list', function() {
+            let cards = document.querySelector('.main-cards'),
+                map = document.querySelector('.map-wrapper');
+
+            cards.classList.remove('d-none');
+            map.classList.add('d-none');
+
+            $(this).addClass('page-view__btn_active');
+            $('.page-view__btn_map').removeClass('page-view__btn_active');
+        });
+
+        $(document).on('click', '.page-view__btn_map', function() {
+            let cards = document.querySelector('.main-cards'),
+                map = document.querySelector('.map-wrapper');
+
+            cards.classList.add('d-none');
+            map.classList.remove('d-none');
+
+            $('.page-view__btn_list').removeClass('page-view__btn_active');
+            $(this).addClass('page-view__btn_active');
+        });
+
+        /*
+        const listBtn = document.querySelector('.page-view__btn_list'),
+            mapBtn = document.querySelector('.page-view__btn_map');
+
+        if (listBtn && mapBtn) {
+            const cards = document.querySelector('.main-cards'),
+                map = document.querySelector('.map-wrapper');
+            listBtn.addEventListener('click', () => {
+                cards.classList.remove('d-none');
+                map.classList.add('d-none');
+
+                listBtn.classList.add('page-view__btn_active');
+                mapBtn.classList.remove('page-view__btn_active');
+            });
+            mapBtn.addEventListener('click', () => {
+                cards.classList.add('d-none');
+                map.classList.remove('d-none');
+
+                listBtn.classList.remove('page-view__btn_active');
+                mapBtn.classList.add('page-view__btn_active');
+            });
+        }*/
+    }
+
+    // Фильтр на странице карточки организации
+    registerContentFilter();
+
+    function registerContentFilter() {
+        const wrapper = document.querySelector('.js-content-filter-wrap');
+
+        if (wrapper) {
+            const adultBtn = wrapper.querySelector('.js-adult-btn'),
+                childBtn = wrapper.querySelector('.js-child-btn'),
+                partnerBtn = wrapper.querySelector('.js-partner-btn'),
+                adultContents = wrapper.querySelectorAll('[data-filter = forAdult]'),
+                childContents = wrapper.querySelectorAll('[data-filter = forChild]'),
+                partnerContents = wrapper.querySelectorAll('[data-filter = forPartner]'),
+                cards = wrapper.querySelectorAll('.main-card'),
+                links = wrapper.querySelectorAll('.nav-item');
+
+            if (adultContents || childContents || partnerContents) {
+                // 1. При клике на кнопку, добавить ей класс active, а у всех остальных забрать
+                // 2. Перебрать все карточки и показать только те, что соответствуют этой кнопке
+                // 3. Нужно найти все слайдеры в карточке и вызвать инициализацию слика
+
+                // При открытии страницы, показать карточки категории "Для взрослых"
+                cards.forEach(card => {
+                    if (card.getAttribute('data-filter') === 'forAdult') {
+                        card.classList.remove('d-none');
+                    }
+                });
+
+                registerContentSwitch(adultBtn);
+                registerContentSwitch(childBtn);
+                registerContentSwitch(partnerBtn);
+
+                function registerContentSwitch(button) {
+                    button.addEventListener('click', () => {
+                        links.forEach(link => { // Перебираем все кнопки и вешаем класс на нажатую кнопку
+                            if (link.dataset.link === button.dataset.link) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        });
+
+                        cards.forEach(card => {
+                            if (card.dataset.filter === button.dataset.link) { // Перебираем все карточки и показываем те, что соответствуют нажатой кнопке по data-*
+                                card.classList.remove('d-none');
+                                $('.slider-custom').slick('refresh'); // Обновление слик слайдера при переходе на другой фильтр
+                            } else {
+                                card.classList.add('d-none');
+                            }
+                        });
+                    });
+                }
+            }
+        }
+    }
+
+    // Выбор тега при клике, в модальном окне "Подать заявление на зачисление"
+    registerModalTags();
+
+    function registerModalTags() {
+        const wrapper = document.querySelector('.settings-modal__tags');
+
+        if (wrapper) {
+            wrapper.addEventListener('click', (e) => {
+                const tags = wrapper.querySelectorAll('.settings-modal__tag');
+                const target = e.target;
+
+                document.getElementById("profileId").value = target.id;
+                Alert.hide();
+
+                tags.forEach(tag => {
+                    tag.classList.remove('settings-modal__tag_active');
+                });
+                if (target !== wrapper) {
+                    target.classList.add('settings-modal__tag_active');
+                }
+            });
+        }
+    }
+
+    // styled select
+    initNiceSelect();
+
+    function initNiceSelect() {
+        let niceSelectItem = document.querySelectorAll('.jq-custom-select');
+
+        if (niceSelectItem && niceSelectItem.length !== 0) {
+            $(niceSelectItem).niceSelect();
+        }
+    }
+
+    // documentation http://davidstutz.de/bootstrap-multiselect/#configuration-options
+    if ($('.js-multiselect').length) {
+        $('.js-multiselect').multiselect({
+            includeSelectAllOption: true,
+            selectAllText: Messages['ALL'],
+            nonSelectedText: Messages['NOTHING_IS_SELECTED'],
+            nSelectedText: ' - выбрано',
+            allSelectedText: Messages['ALL'],
+            selectAllNumber: false,
+            buttonWidth: '100%'
+        });
+    }
+
+    registerSearchTags(); // Удаление тегов под поисковой строкой
+    function registerSearchTags() {
+        const closeTagsBtn = document.querySelectorAll('.search-bar__tag-close');
+
+        if (closeTagsBtn) {
+            closeTagsBtn.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btn.closest('.search-bar__tag').remove();
+                });
+            });
+        }
+    }
+
+
+    // carousel
+    const sliderCounterInit = () => {
+        let $status = $('.slider__counter');
+        let $slickElement = $('.slider');
+        let $slick = $('.slider-for');
+        let $nav = $('.slider-nav');
+        let $original = $('.slider-for--inner');
+        let $miniture = $('.slider-nav--inner');
+        let $custom = $('.slider-custom');
+
+        $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+            let target = event.target.dataset.counter;
+            let i = (currentSlide ? currentSlide : 0) + 1;
+            $('.slider__counter[data-counter="' + target + '"]').html('<span>' + i + '</span>' + ' / ' + slick.slideCount);
+
+        });
+
+
+        /*     $('.slider').on('setPosition', function () {
+                 $(this).find('.slick-slide').height('auto');
+                 var slickTrack = $(this).find('.slick-track');
+                 var slickTrackHeight = $(slickTrack).height();
+                 $(this).find('.slick-slide').css('height', slickTrackHeight + 'px');
+             });*/
+
+        $($slick).slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            fade: true,
+            arrows: false,
+            asNavFor: '.slider-nav'
+        });
+
+        $($nav).slick({
+            infinite: true,
+            slidesToShow: 8,
+            slidesToScroll: 1,
+            dots: false,
+            swipe:true,
+            focusOnSelect: true,
+            asNavFor: '.slider-for',
+            prevArrow: `<button class="carousel-controls carousel-controls__prev">
+                        <svg class="carousel-controls__icon">
+                            <use xlink:href="/images/sprite.svg#prev"></use>
+                        </svg>
+                    </button>`,
+            nextArrow: `<button class="carousel-controls carousel-controls__next">
+                        <svg class="carousel-controls__icon">
+                            <use xlink:href="/images/sprite.svg#next"></use>
+                        </svg>
+                    </button>`
+        });
+
+        $($original).slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            fade: true,
+            swipe:true,
+            arrows: false,
+            asNavFor: '.slider-nav--inner'
+        });
+
+        $($miniture).slick({
+            infinite: true,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            dots: false,
+            focusOnSelect: true,
+            asNavFor: '.slider-for--inner',
+            prevArrow: `<button class="carousel-controls carousel-controls__prev">
+                        <svg class="carousel-controls__icon">
+                            <use xlink:href="/images/sprite.svg#prev"></use>
+                        </svg>
+                    </button>`,
+            nextArrow: `<button class="carousel-controls carousel-controls__next">
+                        <svg class="carousel-controls__icon">
+                            <use xlink:href="/images/sprite.svg#next"></use>
+                        </svg>
+                    </button>`
+        });
+
+        $($custom).slick({
+            infinite: true,
+            slidesToShow: 1,
+            swipe:true,
+            dots: false,
+            prevArrow: `<button class="carousel-controls carousel-controls__prev">
+                        <svg class="carousel-controls__icon">
+                            <use xlink:href="/images/sprite.svg#prev"></use>
+                        </svg>
+                    </button>`,
+            nextArrow: `<button class="carousel-controls carousel-controls__next">
+                        <svg class="carousel-controls__icon">
+                            <use xlink:href="/images/sprite.svg#next"></use>
+                        </svg>
+                    </button>`
+        });
+
+        /* carouselNoImageCheck();
+         function carouselNoImageCheck() {
+             const carousels = document.querySelectorAll('.count-carousel'); // Находим все слайдеры на странице
+
+             if (carousels) {
+                 carousels.forEach(carousel => { // Перебираем слайдеры
+                     const carouselCount = carousel.querySelector('.slider__counter'); // Находим счетчик
+
+                     if (carouselCount.textContent.slice(-1) === '0') { // Если в счетчике 1/0, то скрываем весь слайдер
+                         carousel.style.display = "none"
+                     }
+                 });
+             }
+         }*/
+
+    };
+    sliderCounterInit();
+
+    // Скрыть счетчик, если в слайдере 0 или 1 фото
+    sliderImgCountSettings();
+
+    function sliderImgCountSettings() {
+        const sliders = document.querySelectorAll('.count-carousel');
+
+        if (sliders) {
+            sliders.forEach(slider => {
+                const countBox = slider.querySelector('.slider__counter');
+                if (parseInt(countBox.textContent.slice(-1)) <= 1) {
+                    countBox.style.display = 'none';
+                }
+            });
+        }
+    }
+
+    // crop text
+    (function () {
+        const cropElement = document.querySelectorAll('.crop-text'),
+            size = 12;
+        endCharacter = '...';
+
+        cropElement.forEach(el => {
+            let text = el.innerHTML;
+
+            if (el.innerHTML.length > size) {
+                text = text.substr(0, size);
+                el.innerHTML = text + endCharacter;
+            }
+        });
+    }());
+
+    // Скрытие символов в номере телефона
+    cabinetSettingsHidePhone();
+
+    function cabinetSettingsHidePhone() {
+        const phones = document.querySelectorAll('.cabinet-settings__phone');
+
+        if (phones) {
+            phones.forEach(phone => {
+                let phoneArr = phone.textContent.split('');
+                for (let i = 0; i < phoneArr.length; i++) {
+                    if (i >= 9 && i <= 14 && i !== 12) {
+                        phoneArr[i] = '*';
+                    }
+                }
+                phone.innerHTML = phoneArr.join('');
+            });
+        }
+    }
+
+    // Arrow Rotate Collapse
+    (function ready() {
+        arrowRotate();
+        arrowRotateTitle();
+        arrowRotateSubmenu();
+
+        function arrowRotate() {
+            const collapseShowBtn = document.querySelectorAll('.collapse-list__item-show'),
+                collapseBlock = document.querySelectorAll('.state-passport');
+
+            Array.prototype.forEach.call(collapseShowBtn, function (item, i) {
+                if (collapseBlock[i].classList.contains('show')) {
+                    item.classList.toggle('arrow-rotate');
+                }
+
+                item.addEventListener('click', function () {
+                    item.classList.toggle('arrow-rotate');
+                });
+            })
+        }
+
+        function arrowRotateTitle() {
+            const collapseShowBtn = document.querySelectorAll('.collapse-title'),
+                collapseBlock = document.querySelectorAll('.collapse-mobile-wrap');
+
+            Array.prototype.forEach.call(collapseShowBtn, function (item, i) {
+                if (collapseBlock[i].classList.contains('show')) {
+                    item.classList.toggle('arrow-rotate');
+                }
+
+                item.addEventListener('click', function () {
+                    item.classList.toggle('arrow-rotate');
+                });
+            })
+        }
+
+        function arrowRotateSubmenu() {
+            const collapseShowBtn = document.querySelectorAll('.collapse-aside__item'),
+                collapseBlock = document.querySelectorAll('.collapse-aside__submenu');
+
+            Array.prototype.forEach.call(collapseShowBtn, function (item, i) {
+                if (collapseBlock[i].classList.contains('show')) {
+                    item.classList.toggle('arrow-rotate');
+                }
+
+                item.addEventListener('click', function () {
+                    item.classList.toggle('arrow-rotate');
+                });
+            })
+        }
+    })();
+
+    //add Photo
+    addPhoto();
+
+    function addPhoto() {
+        let inputTypeFile = document.querySelector(".object__add-photo input[type=file]");
+        let inputTypeFileLabel = document.querySelector(".object__add-photo .object__label");
+        let addPreview = document.querySelector(".object__add-photo .buttons-bar__add .js-text");
+
+        if (inputTypeFile || inputTypeFileLabel) {
+            inputTypeFile.addEventListener("change", function () {
+
+                if (this.files[0]) {
+                    let fr = new FileReader();
+
+                    fr.addEventListener("load", function () {
+                        inputTypeFileLabel.style.backgroundImage = "url(" + fr.result + ")";
+                        inputTypeFileLabel.classList.add('remove-pseudo-classes');
+                        addPreview.textContent = 'Изменить';
+                    }, false);
+
+                    fr.readAsDataURL(this.files[0]);
+                }
+            });
+        }
+    }
+
+    openSubCheckbox();
+    function openSubCheckbox() {
+        const mainCheckbox = document.querySelectorAll('.open-sub-checkbox'),
+            subCheckboxWrapp = document.querySelectorAll('.sub-checkbox-wrapp'),
+            subCheckbox = [];
+
+        Array.prototype.forEach.call(mainCheckbox, function (item, i) {
+            item.addEventListener('change', function () {
+                subCheckbox[i] = $(item).parent().find('.sub-checkbox');
+                if (item.checked) {
+                    subCheckboxWrapp[i].classList.remove('d-none');
+                } else {
+                    subCheckboxWrapp[i].classList.add('d-none');
+                }
+
+                for (let j = 0; j < subCheckbox[i].length; j++) {
+                    if (item.checked && !item.dataset.notSelectSubCheckboxes) {
+                        subCheckbox[i][j].checked = true;
+                    } else {
+                        subCheckbox[i][j].checked = false;
+                    }
+                }
+            })
+        })
+    }
+
+
+    var resendButton = $('#resend-button')
+    resendButton.click(function () {
+        let contact = $('#contact-phone').val()
+        window.location.href = resendButton.attr('data-href') + '?contactPhone=' + contact;
+    });
+
+
+    if ($("#timer").length) {
+        let timer = $('#timer'), button = resendButton, duration = parseInt(timer.attr('data-value'));
+
+        if (timer) {
+
+            let time = duration, minutes, seconds;
+
+            let interval = setInterval(function () {
+                minutes = parseInt(time / 60, 10);
+                seconds = parseInt(time % 60, 10);
+
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                timer.text(minutes + ':' + seconds);
+
+                if (--time < 0) {
+                    timer.hide();
+                    button.removeClass('disabled')
+                    button.removeAttr('disabled')
+                    $('.btn-qr').removeAttr('disabled')
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+    }
+
+    // кнопка находится внутри формы с атрибутом data-method=post, из-за этого происходит сабмит формы
+    $('#restore-link').click(function () {
+        let form = $(this).closest('form');
+        form.yiiActiveForm('destroy');
+    });
+
+    $(document).on('click', '#check-code', function () {
+        let button = $('#check-code'),
+            container = $('#restore-container'),
+            url = button.attr('data-url'),
+            scenario = button.attr('data-scenario'),
+            params = {},
+            block = $('#restore-block'),
+            message = $('#error-message')
+
+        if (scenario === 'restore_form_auth') {
+            $('#restore-form-auth').yiiActiveForm('validateAttribute', 'secure-key-input')
+            let secureKey = $('#secure-key-input').val()
+
+            if (!secureKey) {
+                return
+            }
+
+            params = {
+                'secureKey': secureKey
+            }
+        }
+        block.removeClass('has-error')
+
+        $.post(url, params, function (response) {
+            if (response.success) {
+                if (response.verified) {
+                    container.html(response.html)
+                } else {
+                    block.addClass('has-error')
+                    if (message.length) {
+                        message.html(response.message)
+                    } else {
+                        Alert.error(response.message)
+                    }
+                }
+            } else {
+                Alert.error(response.message)
+            }
+        })
+    })
+}
+
+Scrollable = {
+    showMore: function (buttonId, resultAppendId) {
+        var url = $('#lazy-url').val();
+        var formId = $('#lazy-form-id').val();
+        var formData = $('#' + formId).serialize();
+        var fullUrl = url + '?' + formData;
+
+        $.get(fullUrl, function (loaded) {
+            $('#' + resultAppendId).append(loaded);
+
+            $('#page-num').val(parseInt($('#page-num').val()) + 1);
+
+            var total_pages = parseInt($('#total-pages').val());
+            var page = parseInt($('#page-num').val());
+
+            if (total_pages <= page) {
+                $('#' + buttonId).hide();
+            }
+        });
+    },
+    clickSubmitButton: function (buttonId) {
+        $('#' + buttonId).click();
+    }
+};
+
+$(function () {
+    if (window.Inputmask !== undefined) {
+        $('input[data-mask=tel]').inputmask({mask: '+7 (999) 999-99-99'});
+        $('input[data-mask=code]').inputmask({mask: '9999'});
+        $('input[data-mask=iin]').inputmask({mask: '999999999999'});
+        $('input[data-mask=date]').inputmask({alias: 'dd.mm.yyyy', placeholder: '__.__.____'});
+        $('input[data-mask=email]').inputmask({alias: "email"});
+        $('input[data-mask=bank-number]').inputmask({
+            regex: "[a-za-zA-Z0-9]{18,22}",
+            //mask: '[a-za-zA-Z0-9]{4}9{18}'
+        });
+    }
+});
+(function ready() {
+    enabledBtn();
+    function enabledBtn() {
+        const checkbox = document.querySelectorAll('.step-agree-checkbox'),
+            disabledBtn = document.querySelector('.btn-disabled');
+
+        checkbox.forEach(c => c.addEventListener('change', e => {
+            disabledBtn.classList.toggle('btn-disabled', document.querySelectorAll('.step-agree-checkbox:not(:checked)').length);
+        }));
+    }
+})();
+
+$('#send-message').on('click', function (){
+    let modal = $('#supportModal');
+    let name = $('#sender-name').val();
+    let phone = $('#sender-phone').val();
+    let message = $('#message-text').val();
+
+    let csrfToken = $('meta[name="csrf-token"]').attr("content");
+
+    $.post( $('body').attr('data-lang') + "/site/send-message", { Number: phone, Full_name: name, Text: message,  _csrf : csrfToken })
+        .done(function( data ) {
+            if (data.IsSuccess) {
+                Alert.success('Сообщение #' + data.Result.nomer + ' успешно отправлено');
+            } else {
+                Alert.error('Техническая ошибка, повторите позднее');
+            }
+        });
+
+    modal.modal('hide');
+});
+
+$(function() {
+    let $allCards = $('.building-cards'),
+        $detailBlock = $('.building-card-short');
+
+    /**
+     * Открытие карточки оснащения
+     */
+    $(document).on('click', '#equipment-more-details', function() {
+
+        let $shortCard = $(this).closest('.building-card'),
+            title = $shortCard.find('.building-card__title').text(),
+            desc = $shortCard.find('.building-card__description').html(),
+            $img = $shortCard.find('img');
+
+        $detailBlock.find('img')
+            .attr('src', $img.attr('src'))
+            .attr('srcset', $img.attr('srcset'));
+
+        $detailBlock.find('#equipment-title').text(title);
+        $detailBlock.find('#equipment-description').html(desc);
+
+        $allCards
+            .removeClass('d-flex')
+            .addClass('d-none');
+
+        $detailBlock
+            .removeClass('d-none');
+
+        return false;
+    });
+
+    /**
+     * Возврат на общий список оснащений
+     */
+    $detailBlock.find('a').on('click', function() {
+
+        $allCards
+            .addClass('d-flex')
+            .removeClass('d-none');
+
+        $detailBlock.addClass('d-none');
+
+        return false;
+    });
+});
+
+$(function() {
+    $('.openMap').on('click', function() {
+        let formId = $(this).attr('for'),
+            ctrl = $(this).attr('id'),
+            $form = $('#'+formId);
+
+        map.drawFromUrl('/ru/'+ctrl+'/coordinates?' + $form.serialize());
+    });
+});
+// burger menu mobile
+var x = document.getElementById("burger-wrapper");
+
+x.addEventListener("click", myFunction);
+
+function myFunction() {
+    var element = document.getElementById("mobileMenu");
+    element.classList.toggle("open");
+
+    x.classList.toggle("change");
+}
+
+// filter mobile
+$(document).on('click', '.filter-toggle', function () {
+    $('#filter-form').toggleClass("show");
+    $('body').toggleClass("show-menu");
+});
+$('.close-filter').click(function () {
+    $('#filter-form').removeClass("show");
+    $('body').removeClass("show-menu");
+});
+
+$(document).on('click', '.fake-block', function () {
+    Alert.error(Messages['NO_SUPPORT']);
+});
+
+$(document).on('click', '#show-more-load-button', function () {
+    const page_num = $('#page-num');
+    const total_pages = parseInt($('#total-pages').val());
+    const page = parseInt(page_num.val()) + 1;
+
+    let lazy_url = '';
+    $(this).html('<img src="/images/loader.gif" height="20"/>');
+    lazy_url = $('#lazy-path').val();
+    $.get({
+        url: lazy_url,
+        data: {
+            type: $('#type').val(),
+            page: page,
+        },
+        success: function (loaded) {
+            $('#event-history').find('.cabinet-messages').append(loaded);
+            page_num.val(parseInt(page_num.val()) + 1);
+            if (total_pages <= page) {
+                $('#show-more-load-button').hide();
+            } else {
+                $('#show-more-load-button').text(Messages['SHOW_MORE']);
+            }
+        }
+    });
+
+});
+
+function chooseSenderOrg(orgId, sportId, sectionId) {
+    $('.alert').hide();
+
+    $(".btn-green").each(function() {
+        $(this).removeClass('btn-green');
+        $(this).addClass('main-btn');
+        $(this).html(Messages['TO_CHOOSE']);
+    });
+
+    let btn = $('#chooseSenderOrg'+orgId);
+    btn.removeClass('main-btn');
+    btn.addClass('btn-green');
+    btn.html(Messages['CHOSEN']);
+
+    $('#enrollmentboardingschoolform-organizationsenderid').val(orgId);
+    $('#enrollmentboardingschoolform-sportsenderid').val(sportId);
+    $('#enrollmentboardingschoolform-sectionsenderid').val(sectionId);
+
+    $('#enrollmentboardingschoolform-organizationsendername').val($('#orgName'+orgId).html().trim());
+    $('#enrollmentboardingschoolform-sportsendername').val($('#sportName'+orgId).html().trim());
+    $('#enrollmentboardingschoolform-sectionsendername').val($('#sectionName'+orgId).html().trim());
+}
+
+function createCabinetStep2() {
+    let $form = $('form.update-phone'),
+        $smsSendButton = $('.sendVerificationSms'),
+        phoneInputId = 'createcabinetform-phone';
+
+    $smsSendButton.on('click', function () {
+        $('#send-code-error').html('')
+        if ($("#send-code-success").hasClass("d-none") === false) {
+            $("#send-code-success").addClass("d-none");
+        }
+        $form.yiiActiveForm('validateAttribute', phoneInputId);
+
+        setTimeout(function () {
+            let phoneContainer = $('#createcabinetform-phone').parent(),
+                $phoneContainer = $(phoneContainer),
+                $smsCodeId = $('[name $= "[smsCodeId]"]');
+
+            if ($phoneContainer.hasClass('has-error')) {
+                return false;
+            }
+
+            PageLoader.show();
+
+            $.ajax({
+                url: $smsSendButton.data('url'),
+                type: 'POST',
+                data: $form.serialize(),
+                success: function (data) {
+                    if (data.success === false) {
+                        Alert.error(data.message);
+                        $smsCodeId.val('');
+                    } else {
+                        Alert.success(data.message);
+                        $smsCodeId.val(data.id);
+                    }
+
+                    if (data.id) {
+                        $smsCodeId.val(data.id);
+                        if (data.html) {
+                            $('#send-code-error').html(data.html)
+                        } else {
+                            $('#send-code-success').removeClass('d-none')
+                        }
+                    }
+
+                    PageLoader.hide();
+                }
+            });
+        }, 500);
+
+        return false;
+    });
+}

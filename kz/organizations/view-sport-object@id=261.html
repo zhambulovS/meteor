@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="kk-KK">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>ДШСҚ &quot;ДИНАМО&quot;</title>
+    <style>
+        body {
+            padding: 0!important;
+        }
+
+        /*page-loader styles*/
+        .page-loader {
+            background-color: #ffffff96;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 9998;
+            display: none;
+        }
+        .page-loader .preloader-image-preview {
+            left: 50%;
+            top: 50%;
+            position: relative;
+            display: block;
+            margin: -64px 0 0 -64px;
+        }
+        .preloader-image-preview img {
+            width: 128px;
+            height: 128px;
+        }
+
+        /*empty-not-found error styles*/
+        .g-callout.g-callout-danger {
+            border-left-color: #E76E6E;
+            background: #FFE4E4;
+            margin-left: 15px;
+        }
+        .g-callout {
+            padding: .875rem .875rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-left: .25rem solid transparent;
+            font-size: .875rem;
+        }
+
+        /* btn load more */
+        .main-cards__show-more {
+            border: 2px solid #1787FF;
+            color: #1787FF;
+            font-weight: bold;
+        }
+
+        /* fit img */
+        .avatar-card img {
+            object-fit: cover;
+        }
+
+        /* images for file-uploads on forms */
+        .file-download-wrapper .files-container .file-info-icon.doc {
+            background-image: url(../../images/doc.svg);
+        }
+        .file-download-wrapper .files-container .file-info-icon.zip {
+            background-image: url(../../images/folder.svg);
+        }
+
+        /* cabinet images on password inputs */
+        .password-control {
+            background: url(../../images/view.svg) 0 0 no-repeat;
+        }
+        .password-control.view {
+            background: url(../../images/no-view.svg) no-repeat 0 0;
+        }
+
+        .cabinet .form-control {
+            border: 1px solid #01B5F0!important;
+        }
+
+        .btn.cabinet-btn {
+            background-color: #fff;
+            border: 1px solid #0074F0;
+            color: #0074F0;
+        }
+
+        /* tech support fake */
+        .fake-block {
+            cursor: pointer;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+            z-index: 2147483648;
+        }
+        .fake-block .fb-body {
+            right: 30px;
+            left: auto;
+            position: relative;
+            box-shadow: 0 12px 14px 8px rgba(0, 0, 0, 0.17);
+            background: linear-gradient(95deg, #3f51b5 20%, #7486e5 80%);
+            border-top-left-radius: 8px !important;
+            border-top-right-radius: 34px !important;
+            height: 40px;
+            width: auto;
+            min-width: 300px;
+        }
+        .fake-block .fb-body .fb-title {
+            color: white;
+            margin: 0 33px 0 16px;
+            line-height: 40px;
+        }
+        .fake-block .fb-body .fb-img {
+            right: 0;
+            position: absolute;
+            top: 0;
+            width: 33px;
+            border-radius: 0 24px 0 0 !important;
+        }
+        .fake-block .fb-body .fb-img .icon {
+            width: 32px !important;
+            height: 34px !important;
+            position: absolute;
+            overflow: visible;
+            right: 0;
+            top: 0;
+        }
+
+        .checkbox-circle.off .icon-table-red {
+            font-size: 18px;
+            width: 35px;
+            height: 35px;
+            border: 3px solid #FF9D9D;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .child-visit-status-selector, .child-visit-status-selector-mobile {
+            position: relative;
+        }
+
+        .child-visit-status-variant {
+            z-index: 3;
+            position: relative;
+        }
+
+        .child-visit-status-variant-block, .child-visit-status-variant-block-mobile {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 4;
+            cursor: pointer;
+        }
+
+        .grey-mode-timesheet-cell {
+            filter: gray;
+            filter: gray; filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+            -webkit-filter: grayscale(100%);
+        }
+
+        .scroll-width {
+            max-width: none!important;
+        }
+    </style>
+
+        <meta name="csrf-param" content="_csrf">
+<meta name="csrf-token" content="fBMYvEDdLDHbVag49f0Ns0xXyve2a2DXTlm7CJaOs8cWdSDEMrFkU68m3EmciGf0fg37pN0jJuEga_dM0cOHrA==">
+
+<link href="../../assets/71d79331/css/bootstrap.css@v=1721220178.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap&quot; rel=&quot;stylesheet" rel="stylesheet">
+<link href="../../libs/slick/slick.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/slick/slick-theme.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/nice-select/nice-select.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/bootstrap/components.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../../css/alert.css@v=1686801454.css" rel="stylesheet">
+<link href="../../libs/fancybox/jquery.fancybox.min.css@v=1686801454.css" rel="stylesheet">
+<link href="../../css/main.css@v=1721219990.css" rel="stylesheet"></head>
+<!--class="meteor-almaty" включение метеор алматы-->
+<body class="" data-lang="kz" >
+
+
+<div class="page-loader" id="page-content-loader">
+    <div class="preloader-image-preview">
+        <img src="../../images/loader.gif" alt="">
+    </div>
+</div>
+
+
+
+<header class="header">
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-8 col-lg-3 d-flex">
+                    <div class="dropdown mobile-dropdown align-self-center">
+                        <a class="dropdown-info dropdown-toggle" href="view-sport-object@id=261.html#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sometext d-none d-sm-inline-block">Пайдалы ақпарат</span>
+                            <span class="sometext d-inline-block d-sm-none">Ақпарат</span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="view-sport-object@id=261.html#">Жеке кабинетке қалай кіруге болады?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex clock-block">
+                    <div class="m-lg-auto align-self-center pl-lg-3">
+                        Сервердің эталондық уақыты: <span id="clock-text">2024.08.12 16:23:50</span>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-lg-4 d-flex">
+                    <div class="ml-auto align-self-center">
+                        <a href="view-sport-object@id=261.html#" class="city-select" data-toggle="modal" data-target="#cityModal">
+                            <img src="../../images/icons/maps-and-flags.svg" class="mr-2" alt="">
+                            <span class="d-none d-sm-block">Қостанай облысы</span>
+                        </a>
+                    </div>
+                    
+<div class="d-none d-lg-flex justify-content-end">
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="view-sport-object@id=261.html">Қазақша</a>
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="../../ru/organizations/view-sport-object@id=261.html">Русский</a>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <nav class="navbar justify-content-between">
+                
+<div class="logo-city">
+<img src="view-sport-object@id=261.html" alt="" width="50">
+
+                                   </div>
+
+<style>
+    .main-header .logo-city {
+        flex: 0 0 15rem!important;
+    }
+</style>
+                <a href="../../kz.1.html" class="navbar-brand">
+                    <img src="../../images/logo/logo.svg" alt="meteor_logo">
+                </a>
+
+                <ul class="d-none d-lg-flex navbar-nav flex-row">
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../sections.html">Спорт секциялары</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../organizations.html">Спорт объектілері</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../couches.html">Жаттықтырушылар құрамы</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="../site/upcoming-events.html">Іс-шаралар</a>
+                    </li>
+                </ul>
+
+                <div class="burger-icon">
+                    <div id="burger-wrapper">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </div>
+
+                <a class="d-none d-lg-block btn main-btn personal-area-btn" href="../cabinet.html">
+                                            Жеке кабинетке кіру                                    </a>
+                <a class="d-block d-lg-none avatar-block" href="../cabinet.html">
+                    <img src="../../images/icons/user.svg" alt="">
+                </a>
+            </nav>
+        </div>
+    </div>
+
+</header>
+
+<div class="mobileMenu" id="mobileMenu" >
+    <div class="mobileMenu__wrapper">
+
+        <a href="view-sport-object@id=261.html#" class="city-select btn main-outline-btn" data-toggle="modal" data-target="#cityModal">
+            <svg class="icon">
+                <use xlink:href="/images/sprite.svg#map"></use>
+            </svg>
+            <span>Қостанай облысы</span>
+        </a>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="../sections.html">Спорт секциялары</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../organizations.html">Спорт объектілері</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../couches.html">Жаттықтырушылар құрамы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../site/upcoming-events.html">Іс-шаралар</a>
+            </li>
+        </ul>
+
+        
+<div class="mobile-menu__choice-language d-lg-none">
+    <ul class="btn-group--lang">
+                    <li class="active">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="view-sport-object@id=261.html">Қазақша</a>
+            </li>
+                    <li class="">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="../../ru/organizations/view-sport-object@id=261.html">Русский</a>
+            </li>
+            </ul>
+</div>
+
+        <a class="btn login-btn main-btn" href="../cabinet.html">
+                            Жеке кабинетке кіру                    </a>
+    </div>
+
+</div>
+
+
+
+<script>
+    var burger = document.querySelector('.burger') !== null;
+    if (burger) {
+        burger.addEventListener('click', function(){
+            document.querySelector('.burger span').classList.toggle('active');
+        })
+    }
+
+    var menu = document.querySelector('.menu') !== null;
+    if (menu) {
+        menu.classList.toggle("animate");
+    }
+</script>
+
+<main class="main bg-section-card">
+            <nav aria-label="breadcrumb" class="breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kz.1.html">Басты бет</a></li><li class="breadcrumb-item"><a href="index.html">Спорт ұйымдарының тізімі</a></li><li class="breadcrumb-item active" aria-current="page">ДШСҚ &quot;ДИНАМО&quot;</li></ol>            </div>
+        </nav>
+    
+        
+<section class="building sections-card__wrap">
+    <div class="container pb-5">
+        <div class="row">
+    <div class="col-lg-5">
+        <h1 class="title mb-20 d-lg-none d-block">ДШСҚ "ДИНАМО"</h1>
+        <div class="count-carousel mb-35">
+            <div class="slider__counter" data-counter="slider1"></div>
+            <div class="slider slider-for--inner" data-counter="slider1">
+                                    <img class="carousel__img-inner" src="../../images/no-img.svg" alt="">
+                            </div>
+            <div class="slider slider-nav--inner" data-counter="slider1">
+                                    <img class="carousel__nav-inner" src="../../images/no-img.svg" alt="">
+                            </div>
+        </div>
+        <div class="d-flex justify-content-center px-3 mb-lg-40">
+                            <a data-toggle="modal" id="modalSportTypes" class="btn main-btn w-100 btn-md">
+                    Оқуға қабылдау туралы өтініш беру                </a>
+                    </div>
+    </div>
+    <div class="col-lg-6">
+        <h1 class="title mb-20 d-none d-lg-block">ДШСҚ "ДИНАМО"</h1>
+        <ul class="description__list mb-35">
+            <li class="row description__item">
+                <div class="col-lg-5 col-6 pr-lg-0">
+                    <h6 class="description__title mb-0">Ұйымның түрі:</h6>
+                </div>
+                <div class="col-lg-7 col-6">
+                    <span class="description__text"></span>
+                </div>
+            </li>
+            <li class="row description__item">
+                <div class="col-lg-5 col-6 pr-lg-0">
+                    <h6 class="description__title mb-0">Құрылған жылы:</h6>
+                </div>
+                <div class="col-lg-7 col-6">
+                    <span class="description__text">0</span>
+                </div>
+            </li>
+            <li class="row description__item">
+                <div class="col-lg-5 col-6 pr-lg-0">
+                    <h6 class="description__title mb-0">Меншік нысаны:</h6>
+                </div>
+                <div class="col-lg-7 col-6">
+                    <span class="description__text"></span>
+                </div>
+            </li>
+            <li class="row description__item">
+                <div class="col-lg-5 col-6 pr-lg-0">
+                    <h6 class="description__title mb-0">Жұмыс кестесі:</h6>
+                </div>
+                <div class="col-lg-7 col-6">
+                    <span class="description__text"></span>
+                </div>
+            </li>
+            <li class="row description__item">
+                <div class="col-lg-5 col-6 pr-lg-0">
+                    <h6 class="description__title mb-0">Жұмыс уақыты:</h6>
+                </div>
+                <div class="col-lg-7 col-6">
+                    <span class="description__text"></span>
+                </div>
+            </li>
+            <li class="row description__item">
+                <div class="col-lg-5 col-6 pr-lg-0">
+                    <h6 class="description__title mb-0">Байланыс деректері:</h6>
+                </div>
+                <div class="col-lg-7 col-6">
+                    
+                                    </div>
+            </li>
+            <li class="row description__item">
+                <div class="col-lg-5 col-6 pr-lg-0">
+                    <h6 class="description__title mb-0">Мекенжайы:</h6>
+                </div>
+                <div class="col-lg-7 col-6">
+                    <span class="description__text">Толстой 59 к</span>
+                </div>
+            </li>
+            <li class="row description__item">
+                <div class="col-lg-5 col-6 pr-lg-0">
+                    <h6 class="description__title mb-0">Интернет-ресурстары:</h6>
+                </div>
+                <div class="col-lg-7 col-6 d-flex flex-wrap">
+                                                                            </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="common-modals">
+    <div class="modal fade settings-modal settings-modal_olympic" id="customModalFirst" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <svg class="icon" data-dismiss="modal">
+                        <use xlink:href="/images/sprite.svg#close"></use>
+                    </svg>
+                </div>
+                <div class="modal-body d-flex flex-column align-items-center">
+                    <img src="../../images/img-exit.svg" alt="img">
+                    <p class="settings-modal__text">
+                        Оқуға қабылдау туралы өтінішті беру үшін оқу бейінін таңдау қажет                    </p>
+                    <div class="settings-modal__tags" id="sport-types"></div>
+                    <input type="hidden" id="profileId">
+                    <input type="hidden" id="sectionId" value="261">
+                    <div class="settings-modal__btn-bar">
+                        <div class="btn second-btn settings-modal__close-btn" data-dismiss="modal">
+                            Күшін жою                        </div>
+                        <span class="btn main-btn settings-modal__save-btn" id="applyModal">
+                            Өтінішті беру                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .slider-for--inner img {
+        object-fit: contain;
+    }
+</style>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <hr class="custom-hr">
+                <h5 class="subtitle mb-20">Сипаттама</h5>
+                <p class="font-size-md mb-20"></p>
+                <div class="tab-body-group">
+                    <ul class="nav nav-tabs flex-lg-nowrap d-lg-flex">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="view-sport-object@id=261.html#equipment">Жабдықталуы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="view-sport-object@id=261.html#sportSections">Спорт секциялары</a>
+                        </li>
+                                            </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="equipment">
+                            <div class="building-cards d-flex flex-wrap">
+                    <div class="building-card">
+
+                        <div class="building-card__body d-flex flex-column align-items-center">
+                <h6 class="building-card__title">Баскетбол</h6>
+                <div class="building-card__description d-none"></div>
+                <a href="view-sport-object@id=261.html#" class="btn main-btn building-card__link" id="equipment-more-details">
+                    Толығырақ                </a>
+            </div>
+        </div>
+                    <div class="building-card">
+
+                        <div class="building-card__body d-flex flex-column align-items-center">
+                <h6 class="building-card__title">Гандбол </h6>
+                <div class="building-card__description d-none"></div>
+                <a href="view-sport-object@id=261.html#" class="btn main-btn building-card__link" id="equipment-more-details">
+                    Толығырақ                </a>
+            </div>
+        </div>
+    </div>
+
+<div class="building-card-short d-none">
+    <div class="building-card-short__header d-lg-flex align-items-center justify-content-between mb-20">
+        <div>
+            <h6 class="building-card-short__title" id="equipment-title"></h6>
+        </div>
+        <a href="view-sport-object@id=261.html#" class="btn main-outline-btn btn-with-icon btn-back">
+            <svg class="icon">
+                <use xlink:href="/images/sprite.svg#chevron"></use>
+            </svg>
+            <span>Артқа</span>
+        </a>
+    </div>
+    <div class="building-card-short__body row">
+        <div class="building-card-short__img col-lg-6">
+            <img src="../../images/no-img.svg" srcset="../../images/no-img.svg 2x" alt="img">
+        </div>
+        <div class="building-card-short__info col-lg-6" id="equipment-description"></div>
+    </div>
+</div>                        </div>
+                        <div class="tab-pane" id="sportSections">
+                            
+<div class="row">
+    <div class="col-lg-3">
+        <form id="filter-form" class="main-filter filter-block" action="https://meteor-kostanay-region.e-orda.kz/kz/organizations/view-sport-object" method="GET">
+<input type="hidden" name="id" value="261">            <div class="main-filter__header">
+                <h6 class="main-filter__title">Сүзгі</h6>
+                <span class="close-filter"></span>
+            </div>
+            <div class="main-filter__body">
+                <div class="main-filter__category">
+                    <div class="form-group main-filter__multiselect">
+                        <label for="main-filter__sport-type-1" class="main-filter__category-title">Спорттың түрі</label>
+                        <select class="form-control js-multiselect" id="main-filter__sport-type-1" multiple>
+                                                                                            <option name="SearchOrganizationSectionForm[vidy_sporta][]" value="1" >
+                                    Олимпиадалық емес спорт түрлері                                </option>
+                                                                                            <option name="SearchOrganizationSectionForm[vidy_sporta][]" value="2" >
+                                    Жазғы олимпиадалық спорт түрлері                                </option>
+                                                                                            <option name="SearchOrganizationSectionForm[vidy_sporta][]" value="3" >
+                                    Қысқы олимпиадалық спорт түрлері                                </option>
+                                                                                            <option name="SearchOrganizationSectionForm[vidy_sporta][]" value="4" >
+                                    Ұлттық спорт түрлері                                </option>
+                                                                                            <option name="SearchOrganizationSectionForm[vidy_sporta][]" value="5" >
+                                    Паралимпиадалық, сурдлимпиадалық және бейімдеу спорт түрлері                                </option>
+                                                    </select>
+                    </div>
+                </div>
+
+                                    <div class="main-filter__category">
+                        <p class="main-filter__category-title">Көрсетілетін қызметтің түрі</p>
+                        <div class="main-filter__input-group">
+                            <input type="checkbox" class="main-filter__checkbox check-all-points" id="main-filter__service-type-all" data-name="SearchOrganizationSectionForm[vidy_uslug][]">
+                            <label class="main-filter__check-mark" for="main-filter__service-type-all"></label>
+                            <label for="main-filter__service-type-all">Барлығы</label>
+                        </div>
+                                                                                <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox" value="2" id="main-filter__service-type-2" name="SearchOrganizationSectionForm[vidy_uslug][]" >
+                                <label class="main-filter__check-mark" for="main-filter__service-type-2"></label>
+                                <label for="main-filter__service-type-2">Тегін</label>
+                            </div>
+                                                                                <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox" value="1" id="main-filter__service-type-1" name="SearchOrganizationSectionForm[vidy_uslug][]" >
+                                <label class="main-filter__check-mark" for="main-filter__service-type-1"></label>
+                                <label for="main-filter__service-type-1">Ақылы</label>
+                            </div>
+                                                                                <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox" value="3" id="main-filter__service-type-3" name="SearchOrganizationSectionForm[vidy_uslug][]" >
+                                <label class="main-filter__check-mark" for="main-filter__service-type-3"></label>
+                                <label for="main-filter__service-type-3">Жартылай төлем</label>
+                            </div>
+                                            </div>
+                
+                <div class="main-filter__category">
+                    <p class="main-filter__category-title">Мәртебесі</p>
+                    <div class="main-filter__input-group">
+                        <input type="checkbox" class="main-filter__checkbox check-all-points" id="main-filter__status-all" data-name="SearchOrganizationSectionForm[statuses][]">
+                        <label class="main-filter__check-mark" for="main-filter__status-all"></label>
+                        <label for="main-filter__status-all">Барлығы</label>
+                    </div>
+                                                                    <div class="main-filter__input-group">
+                            <input type="checkbox" class="main-filter__checkbox" value="1" id="main-filter__status-1" name="SearchOrganizationSectionForm[statuses][]" >
+                            <label class="main-filter__check-mark" for="main-filter__status-1"></label>
+                            <label for="main-filter__status-1">Открыт набор каз</label>
+                        </div>
+                                                                    <div class="main-filter__input-group">
+                            <input type="checkbox" class="main-filter__checkbox" value="2" id="main-filter__status-2" name="SearchOrganizationSectionForm[statuses][]" >
+                            <label class="main-filter__check-mark" for="main-filter__status-2"></label>
+                            <label for="main-filter__status-2">Закрыт набор каз</label>
+                        </div>
+                                    </div>
+
+                                    <div class="main-filter__category">
+                        <p class="main-filter__category-title">Тілі </p>
+                        <div class="main-filter__input-group">
+                            <input type="checkbox" class="main-filter__checkbox check-all-points" id="main-filter__lang-all" data-name="SearchOrganizationSectionForm[langs][]">
+                            <label class="main-filter__check-mark" for="main-filter__lang-all"></label>
+                            <label for="main-filter__lang-all">Барлығы</label>
+                        </div>
+                                                                                <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox" id="main-filter__lang-4" value="4" name="SearchOrganizationSectionForm[langs][]" >
+                                <label class="main-filter__check-mark" for="main-filter__lang-4"></label>
+                                <label for="main-filter__lang-4">Ағылшын</label>
+                            </div>
+                                                                                <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox" id="main-filter__lang-3" value="3" name="SearchOrganizationSectionForm[langs][]" >
+                                <label class="main-filter__check-mark" for="main-filter__lang-3"></label>
+                                <label for="main-filter__lang-3">Өзбек</label>
+                            </div>
+                                                                                <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox" id="main-filter__lang-1" value="1" name="SearchOrganizationSectionForm[langs][]" >
+                                <label class="main-filter__check-mark" for="main-filter__lang-1"></label>
+                                <label for="main-filter__lang-1">Қазақ</label>
+                            </div>
+                                                                                <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox" id="main-filter__lang-2" value="2" name="SearchOrganizationSectionForm[langs][]" >
+                                <label class="main-filter__check-mark" for="main-filter__lang-2"></label>
+                                <label for="main-filter__lang-2">Орыс</label>
+                            </div>
+                                            </div>
+                
+                                    <div class="main-filter__category">
+                        <p class="main-filter__category-title">Топтардың құрамы</p>
+                        <div class="main-filter__input-group">
+                            <input type="checkbox" class="main-filter__checkbox check-all-points" id="main-filter__group-composition-all" data-name="SearchOrganizationSectionForm[sostav_grupp][]">
+                            <label class="main-filter__check-mark" for="main-filter__group-composition-all"></label>
+                            <label for="main-filter__group-composition-all">Барлығы</label>
+                        </div>
+                                                                                <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox" id="main-filter__group-composition-2" value="2" name="SearchOrganizationSectionForm[sostav_grupp][]" >
+                                <label class="main-filter__check-mark" for="main-filter__group-composition-2"></label>
+                                <label for="main-filter__group-composition-2">Әйелдер</label>
+                            </div>
+                                                                                <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox" id="main-filter__group-composition-1" value="1" name="SearchOrganizationSectionForm[sostav_grupp][]" >
+                                <label class="main-filter__check-mark" for="main-filter__group-composition-1"></label>
+                                <label for="main-filter__group-composition-1">Ерлер</label>
+                            </div>
+                                                                                <div class="main-filter__input-group">
+                                <input type="checkbox" class="main-filter__checkbox" id="main-filter__group-composition-3" value="3" name="SearchOrganizationSectionForm[sostav_grupp][]" >
+                                <label class="main-filter__check-mark" for="main-filter__group-composition-3"></label>
+                                <label for="main-filter__group-composition-3">Ерлер, әйелдер</label>
+                            </div>
+                                            </div>
+                
+                
+                
+                <div class="main-filter__btn-group">
+                    <button type="submit" class="btn main-btn main-filter__btn main-filter__btn_submit applyFilter">Қолдану</button>
+                    <button type="reset" class="btn second-btn main-filter__btn main-filter__btn_cancel resetFilter">Алып тастау</button>
+                </div>
+            </div>
+        </form>    </div>
+    <div class="col-lg-9">
+        <div id="df-search-pjax" data-pjax-container="" data-pjax-push-state data-pjax-timeout="1000">
+        <a href="javascript:void(0);" class="btn second-light-btn btn-search-filter filter-toggle">
+            <svg class="icon">
+                <use xlink:href="/images/sprite.svg#filter"></use>
+            </svg>
+            Сүзгі        </a>
+
+        <div class="sort-select-group mb-4 d-flex flex-lg-row flex-column align-items-lg-center justify-content-between">
+            <div class="layout-dropdown d-flex align-items-center order-2 order-lg-1" id="view-changes">
+                <div class="dropdown-btn" data-toggle="dropdown" data-parent="parent">
+                    <svg class="icon">
+                        <use xlink:href="/images/sprite.svg#filter"></use>
+                    </svg>
+                </div>
+
+                                <div class="js-text">
+                                    </div>
+                                    <h6 class="blank-title" style="margin-left: 0.6em">бойынша сұрыптау</h6>
+                
+                <div class="dropdown-menu">
+                    <div class="d-flex align-items-center dropdown-item" data-id="sort-up" data-df-sorting="price_l">
+                        <svg class="icon">
+                            <use xlink:href="/images/sprite.svg#sort-up"></use>
+                        </svg>
+                        <span class="js-text">бағасы (ұлғаюы бойынша)</span>
+                    </div>
+                    <div class="d-flex align-items-center dropdown-item" data-id="sort-down" data-df-sorting="price_h">
+                        <svg class="icon">
+                            <use xlink:href="/images/sprite.svg#sort-down"></use>
+                        </svg>
+                        <span class="js-text">бағасы (кемуі бойынша)</span>
+                    </div>
+                    <div class="d-flex align-items-center dropdown-item" data-id="title" data-df-sorting="az">
+                        <svg class="icon">
+                            <use xlink:href="/images/sprite.svg#a-b"></use>
+                        </svg>
+                        <span class="js-text">атауы (А-Я)</span>
+                    </div>
+                    <div class="d-flex align-items-center dropdown-item" data-id="title-reverse" data-df-sorting="za">
+                        <svg class="icon">
+                            <use xlink:href="/images/sprite.svg#b-a"></use>
+                        </svg>
+                        <span class="js-text">атауы (Я-А)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sort-select__total-count d-flex order-1 order-lg-2 justify-content-center  mb-3 mb-lg-0">
+                Спорт секцияларының саны:
+                <span class="sort-select__total-count-target">0</span>
+            </div>
+        </div>
+        <div class="main-cards">
+            <div id="sections-list">
+                <div class="col-12">Ештеңе табылмады</div>            </div>
+
+            
+<div class="row">
+    <input type="hidden" id="lazy-url" name="url" value="/kz/organizations/sections-lazy" form="filter-form">    <input type="hidden" id="lazy-form-id" name="lazy-form-id" value="filter-form" form="filter-form">    <input type="hidden" id="total-pages" name="total-pages" value="0" form="filter-form">    <input type="hidden" id="page-num" name="page-num" value="1" form="filter-form">    <input type="hidden" id="per-page" name="per-page" form="filter-form">
+    </div>        </div>
+        </div>    </div>
+</div>
+
+                        </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section></main>
+
+
+<footer class="footer footer-almaty">
+    <div class="container">
+        
+        <hr class="d-lg-block d-none "/>
+        <div class="text-center f-link">
+            <p class="f-body footer-copyright">Интернет-ресурс, оның құрылымы, форматты-логикалық бақылау ережелері жəне орналастырылған медиа-контент Қазақстан Республикасының «Авторлық құқық жəне сабақтас құқықтар туралы» заңымен қорғалады. Эверест ЖМ, 2021©</p>
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="supportModal" tabindex="-1" role="dialog" aria-labelledby="supportModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="supportModalLabel">Спорт басқармасына өтініш</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Тегі, аты, әкесінің аты:</label>
+                        <input type="text" class="form-control" id="sender-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Телефон нөмірі                            :</label>
+                        <input type="text" class="form-control" id="sender-phone" data-mask="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label">Хабарлама мәтіні                            :</label>
+                        <textarea class="form-control" id="message-text" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Күшін жою</button>
+                <button type="button" class="btn btn-primary"
+                        id="send-message">Хабарламаны жөнелту</button>
+            </div>
+        </div>
+    </div>
+</div><script>var Messages = {"SNOW_MORE":"Тағы жүктеу","RECEIVE_VERIFY_CODE_SMS":"SMS арқылы растау кодын алу","RECEIVE_VERIFY_CODE_EMAIL":"Email арқылы растау кодын алу","FAILED_SEND_VERIFY_CODE":"Растау коды жіберілмеді","SUCCESS_SEND_VERIFY_CODE":"Растау коды сәтті жіберілді","FAILED_TO_GET_DATA":"Деректер табылмады","YOU_MUST_SELECT_A_TRAINING_PROFILE":"Оқу бейінін таңдау қажет","UNABLE_TO_APPLY_AGE_IS":"Өтінішті беруді әрі қарай жалғастыру мүмкін емес. Жасы:","GO_TO":"Өту","NOTHING_IS_SELECTED":"Ештеңе таңдалмады","ALL":"Барлығы","NO_SUPPORT":"<div><h4 class=\"alert-heading\">Кешіріңіз, Сіз жұмыс емес уақытта хабарластыңыз.</h4><p>Техникалық қолдау қызметінің жұмыс кестесі - жұмыс күндері, сағат 9:00-ден бастап 18:00-ге дейін.</p><hr><p class=\"mb-0\">Жұмыс күні басталған соң парақшаны жаңартып көріңіз.<br>Рахмет</p></div>","ERROR":"Қате","UNABLE_TO_APPLY_CITY_CHECK":"Өтініш беруді жалғастыру мүмкін емес. Тіркелген мекенжайы қызмет көрсетілетін қалаға сәйкес келмейді","UNABLE_TO_APPLY_PARENT_AGE":"Өтініш беруді жалғастыру мүмкін емес. Заңды өкілдің жасы 18-ге толған болу керек","UNABLE_TO_APPLY_APPLICANT_AGE":"Өтініш беруді жалғастыру мүмкін емес. Өтініш берушінің жасы 18-ге толған болу керек","ERROR_SAME_IINS":"Баланың және заңды өкілдің жасы бірдей бола алмайды","YOU_MUST_SELECT_THE_CURRENT_ORGANIZATION":"Қазіргі ұйымды таңдау қажет","TO_CHOOSE":"To chose","CHOSEN":"Таңдалды","SHOW_MORE":"Тағы көрсету..."}</script><div class="alert alert--hide"></div>
+
+
+            <script>var LHC_API = LHC_API||{};
+            LHC_API.args = {mode:'widget',lhc_base_url:'//support.e-orda.kz/index.php/',wheight:450,wwidth:350,pheight:520,pwidth:500,leaveamessage:true,department:["46"],check_messages:false,proactive:false,lang:'rus/'};
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.setAttribute('crossorigin','anonymous'); po.async = true;
+                var date = new Date();po.src = '//support.e-orda.kz/design/defaulttheme/js/widgetv2/index.js?'+(""+date.getFullYear() + date.getMonth() + date.getDate());
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+    
+<script src="../../assets/ad15b6a8/jquery.js@v=1721220178"></script>
+<script src="../../assets/6d082268/yii.js@v=1721220178"></script>
+<script src="../../assets/6d082268/yii.activeForm.js@v=1721220178"></script>
+<script src="../../assets/93c93100/jquery.pjax.js@v=1721220213"></script>
+<script src="../../assets/71d79331/js/bootstrap.bundle.js@v=1721220178"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=38bc483f-f846-4395-9bc9-cdc3cca71845&amp;lang=ru_RU"></script>
+<script src="../../js/map.js@v=1686801454"></script>
+<script src="../../libs/slick/slick.min.js@v=1686801454"></script>
+<script src="../../libs/nice-select/jquery.nice-select.min.js@v=1686801454"></script>
+<script src="../../libs/bootstrap/bootstrap-multiselect.js@v=1686801454"></script>
+<script src="../../libs/fancybox/jquery.fancybox.min.js@v=1686801454"></script>
+<script src="../../libs/inputmask/jquery.maskedinput.min.js@v=1686801454"></script>
+<script src="../../js/script.js@v=1721219990"></script>
+<script src="../../js/defaultSearch.js@v=1693483620"></script>
+<script src="../../js/jquery.doubleScroll.js@v=1693483620"></script>
+<script src="../../assets/666c9d38/jquery.inputmask.js@v=1721220178"></script>
+<script>jQuery(function ($) {
+	
+	(function ready() {
+	  arrowRotate();
+	  
+	  function arrowRotate() {
+	    const collapseShowBtn = document.querySelectorAll('.collapse-list__item-show'),
+	    	collapseBlock = document.querySelectorAll('.state-passport');
+	    
+	    Array.prototype.forEach.call(collapseShowBtn, function(item, i) {
+	      if( collapseBlock[i].classList.contains('show')) {
+	          item.classList.toggle('arrow-rotate');
+	      } 
+	      
+	      item.addEventListener('click', function() {
+	         item.classList.toggle('arrow-rotate');
+	      });
+	    })
+	  }
+	})();
+
+    $('#modalSportTypes').on('click', function(){
+        
+        $.ajax({
+            url: '/'+$('body').attr('data-lang')+'/enrollment-boarding-school/get-sports-list',
+            type: 'GET',
+            success: function(data) {
+                $('#customModalFirst').modal('toggle');              
+                
+                $.each(data, function(index, value){
+                    $('#sport-types').append('<div class="settings-modal__tag" id="'+index+'">'+value+'</div>');
+                });
+                
+            }
+        });
+    });
+    
+    $('#applyModal').on('click', function(){
+        var profileId = $('#profileId').val(),
+            sectionId = $('#sectionId').val();
+        
+        if(profileId === undefined || profileId === null || profileId === '') {
+            Alert.error(Messages['YOU_MUST_SELECT_A_TRAINING_PROFILE']);
+            return false;
+        }
+        
+        window.location.href = "/"+$('body').attr('data-lang')+"/enrollment-boarding-school/start?sectionId="+sectionId+"&profileId="+profileId;
+    });
+   
+
+jQuery('#filter-form').yiiActiveForm([], {"errorSummary":".alert.alert-danger","errorCssClass":"is-invalid","successCssClass":"is-valid","validationStateOn":"input"});
+jQuery(document).pjax("#df-search-pjax a", {"push":true,"replace":false,"timeout":1000,"scrollTo":false,"container":"#df-search-pjax"});
+jQuery(document).off("submit", "#df-search-pjax form[data-pjax]").on("submit", "#df-search-pjax form[data-pjax]", function (event) {jQuery.pjax.submit(event, {"push":true,"replace":false,"timeout":1000,"scrollTo":false,"container":"#df-search-pjax"});});
+$(function() {
+    let $sectionTab = $('.nav-tabs a[href="#sportSections"]');
+    
+    if (location.hash === '#sportSections') {
+        $sectionTab.click();
+    }
+    
+    $sectionTab.on('click', function(e) {
+        e.preventDefault();
+        
+        $(this).tab('show');
+        
+        location.href = $(this).attr('href');
+    });
+   
+});
+    var lang = $('body').data('lang')
+    var d = new Date(2024,7,12,16,23,50);
+    function refreshTime() {
+        $.post("/" + lang + "/site/get-time", function(data) {
+            d = new Date(data.y, data.m, data.d, data.h, data.min, data.s);
+            update();
+        });
+    }  
+    
+    function update() {
+         var month = d.getMonth()+1 < 10 
+                    ? '0' + (d.getMonth()+1)
+                    : d.getMonth()+1;
+         var day = d.getDate() < 10 
+                    ? '0' + d.getDate() 
+                    : d.getDate();
+         var year = d.getFullYear();   
+            
+         var hours = d.getHours() == 0 
+                    ? '00'
+                    : d.getHours();
+            
+         var minutes = d.getMinutes() < 10 
+                    ? '0' + d.getMinutes() 
+                    : d.getMinutes();
+      
+        var seconds = d.getSeconds() < 10 
+                    ? '0' + d.getSeconds() 
+                    : d.getSeconds();     
+       
+       d.setSeconds(d.getSeconds() + 1);
+            $('#clock-text').text((year + '.' + month + '.' + day + ' ' + hours +':' + minutes + ':' + seconds ));
+    }
+    
+    update();
+    window.setInterval(update, 1000); 
+    window.setInterval(refreshTime, 1000*60*5);
+
+});</script></body>
+</html>
