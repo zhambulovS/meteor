@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="kk-KK">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>Метеор - электрондық спорт</title>
+    <style>
+        body {
+            padding: 0!important;
+        }
+
+        /*page-loader styles*/
+        .page-loader {
+            background-color: #ffffff96;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 9998;
+            display: none;
+        }
+        .page-loader .preloader-image-preview {
+            left: 50%;
+            top: 50%;
+            position: relative;
+            display: block;
+            margin: -64px 0 0 -64px;
+        }
+        .preloader-image-preview img {
+            width: 128px;
+            height: 128px;
+        }
+
+        /*empty-not-found error styles*/
+        .g-callout.g-callout-danger {
+            border-left-color: #E76E6E;
+            background: #FFE4E4;
+            margin-left: 15px;
+        }
+        .g-callout {
+            padding: .875rem .875rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-left: .25rem solid transparent;
+            font-size: .875rem;
+        }
+
+        /* btn load more */
+        .main-cards__show-more {
+            border: 2px solid #1787FF;
+            color: #1787FF;
+            font-weight: bold;
+        }
+
+        /* fit img */
+        .avatar-card img {
+            object-fit: cover;
+        }
+
+        /* images for file-uploads on forms */
+        .file-download-wrapper .files-container .file-info-icon.doc {
+            background-image: url(images/doc.svg);
+        }
+        .file-download-wrapper .files-container .file-info-icon.zip {
+            background-image: url(images/folder.svg);
+        }
+
+        /* cabinet images on password inputs */
+        .password-control {
+            background: url(images/view.svg) 0 0 no-repeat;
+        }
+        .password-control.view {
+            background: url(images/no-view.svg) no-repeat 0 0;
+        }
+
+        .cabinet .form-control {
+            border: 1px solid #01B5F0!important;
+        }
+
+        .btn.cabinet-btn {
+            background-color: #fff;
+            border: 1px solid #0074F0;
+            color: #0074F0;
+        }
+
+        /* tech support fake */
+        .fake-block {
+            cursor: pointer;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+            z-index: 2147483648;
+        }
+        .fake-block .fb-body {
+            right: 30px;
+            left: auto;
+            position: relative;
+            box-shadow: 0 12px 14px 8px rgba(0, 0, 0, 0.17);
+            background: linear-gradient(95deg, #3f51b5 20%, #7486e5 80%);
+            border-top-left-radius: 8px !important;
+            border-top-right-radius: 34px !important;
+            height: 40px;
+            width: auto;
+            min-width: 300px;
+        }
+        .fake-block .fb-body .fb-title {
+            color: white;
+            margin: 0 33px 0 16px;
+            line-height: 40px;
+        }
+        .fake-block .fb-body .fb-img {
+            right: 0;
+            position: absolute;
+            top: 0;
+            width: 33px;
+            border-radius: 0 24px 0 0 !important;
+        }
+        .fake-block .fb-body .fb-img .icon {
+            width: 32px !important;
+            height: 34px !important;
+            position: absolute;
+            overflow: visible;
+            right: 0;
+            top: 0;
+        }
+
+        .checkbox-circle.off .icon-table-red {
+            font-size: 18px;
+            width: 35px;
+            height: 35px;
+            border: 3px solid #FF9D9D;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .child-visit-status-selector, .child-visit-status-selector-mobile {
+            position: relative;
+        }
+
+        .child-visit-status-variant {
+            z-index: 3;
+            position: relative;
+        }
+
+        .child-visit-status-variant-block, .child-visit-status-variant-block-mobile {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 4;
+            cursor: pointer;
+        }
+
+        .grey-mode-timesheet-cell {
+            filter: gray;
+            filter: gray; filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+            -webkit-filter: grayscale(100%);
+        }
+
+        .scroll-width {
+            max-width: none!important;
+        }
+    </style>
+
+        <meta name="csrf-param" content="_csrf">
+<meta name="csrf-token" content="49_UWtsoXbuq7uSrDj5cNBZW_OuPl7mRtDM1vFvH0WOJuewiqUQV2d6dkNpnSzZzJAzNuOTf_6faAXn4HIrlCA==">
+
+<link href="assets/71d79331/css/bootstrap.css@v=1721220178.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap&quot; rel=&quot;stylesheet" rel="stylesheet">
+<link href="libs/slick/slick.css@v=1686801454.css" rel="stylesheet">
+<link href="libs/slick/slick-theme.css@v=1686801454.css" rel="stylesheet">
+<link href="libs/nice-select/nice-select.css@v=1686801454.css" rel="stylesheet">
+<link href="libs/bootstrap/components.min.css@v=1686801454.css" rel="stylesheet">
+<link href="css/alert.css@v=1686801454.css" rel="stylesheet">
+<link href="libs/fancybox/jquery.fancybox.min.css@v=1686801454.css" rel="stylesheet">
+<link href="css/main.css@v=1721219990.css" rel="stylesheet"></head>
+<!--class="meteor-almaty" включение метеор алматы-->
+<body class="" data-lang="kz" >
+
+
+<div class="page-loader" id="page-content-loader">
+    <div class="preloader-image-preview">
+        <img src="images/loader.gif" alt="">
+    </div>
+</div>
+
+
+
+<header class="header">
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-8 col-lg-3 d-flex">
+                    <div class="dropdown mobile-dropdown align-self-center">
+                        <a class="dropdown-info dropdown-toggle" href="kz.1.html#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sometext d-none d-sm-inline-block">Пайдалы ақпарат</span>
+                            <span class="sometext d-inline-block d-sm-none">Ақпарат</span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="kz.1.html#">Жеке кабинетке қалай кіруге болады?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex clock-block">
+                    <div class="m-lg-auto align-self-center pl-lg-3">
+                        Сервердің эталондық уақыты: <span id="clock-text">2024.08.12 16:10:24</span>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-lg-4 d-flex">
+                    <div class="ml-auto align-self-center">
+                        <a href="kz.1.html#" class="city-select" data-toggle="modal" data-target="#cityModal">
+                            <img src="images/icons/maps-and-flags.svg" class="mr-2" alt="">
+                            <span class="d-none d-sm-block">Қостанай облысы</span>
+                        </a>
+                    </div>
+                    
+<div class="d-none d-lg-flex justify-content-end">
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="kz.1.html">Қазақша</a>
+            <a class="lang-link" onclick="app.setLanguage(this.pathname); return false;" href="ru.1.html">Русский</a>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <nav class="navbar justify-content-between">
+                
+<div class="logo-city">
+<img src="kz.1.html" alt="" width="50">
+
+                                   </div>
+
+<style>
+    .main-header .logo-city {
+        flex: 0 0 15rem!important;
+    }
+</style>
+                <a href="kz.1.html" class="navbar-brand">
+                    <img src="images/logo/logo.svg" alt="meteor_logo">
+                </a>
+
+                <ul class="d-none d-lg-flex navbar-nav flex-row">
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="kz/sections.html">Спорт секциялары</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="kz/organizations.html">Спорт объектілері</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="kz/couches.html">Жаттықтырушылар құрамы</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" href="kz/site/upcoming-events.html">Іс-шаралар</a>
+                    </li>
+                </ul>
+
+                <div class="burger-icon">
+                    <div id="burger-wrapper">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </div>
+
+                <a class="d-none d-lg-block btn main-btn personal-area-btn" href="kz/cabinet.html">
+                                            Жеке кабинетке кіру                                    </a>
+                <a class="d-block d-lg-none avatar-block" href="kz/cabinet.html">
+                    <img src="images/icons/user.svg" alt="">
+                </a>
+            </nav>
+        </div>
+    </div>
+
+</header>
+
+<div class="mobileMenu" id="mobileMenu" >
+    <div class="mobileMenu__wrapper">
+
+        <a href="kz.1.html#" class="city-select btn main-outline-btn" data-toggle="modal" data-target="#cityModal">
+            <svg class="icon">
+                <use xlink:href="/images/sprite.svg#map"></use>
+            </svg>
+            <span>Қостанай облысы</span>
+        </a>
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="kz/sections.html">Спорт секциялары</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="kz/organizations.html">Спорт объектілері</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="kz/couches.html">Жаттықтырушылар құрамы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="kz/site/upcoming-events.html">Іс-шаралар</a>
+            </li>
+        </ul>
+
+        
+<div class="mobile-menu__choice-language d-lg-none">
+    <ul class="btn-group--lang">
+                    <li class="active">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="kz.1.html">Қазақша</a>
+            </li>
+                    <li class="">
+                <a onclick="app.setLanguage(this.pathname); return false;" href="ru.1.html">Русский</a>
+            </li>
+            </ul>
+</div>
+
+        <a class="btn login-btn main-btn" href="kz/cabinet.html">
+                            Жеке кабинетке кіру                    </a>
+    </div>
+
+</div>
+
+
+
+<script>
+    var burger = document.querySelector('.burger') !== null;
+    if (burger) {
+        burger.addEventListener('click', function(){
+            document.querySelector('.burger span').classList.toggle('active');
+        })
+    }
+
+    var menu = document.querySelector('.menu') !== null;
+    if (menu) {
+        menu.classList.toggle("animate");
+    }
+</script>
+
+<main class="main bg-section-card">
+    
+        <section class="section-almaty">
+    <div class="almaty-page">
+        <div class="promo-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="promo-wrapper">
+                            <img src="kz.1.html" alt="" class="promo-wrapper__img">
+                            <h1 class="promo-wrapper__title">Спорттық жастар — дені сау ұлт</h1>
+                            <h2 class="promo-wrapper__subtitle">Барлық спорттық ұйымдарды, іс-шараларды ыңғайлы іздеу, сондай-ақ көптеген секциялар мен жаттықтырушылар құрамы</h2>
+                            <div class="promo-box">
+                                <a href="kz/enrollment-sport-school/start.html" class="btn second-light-btn btn-block">БЖСМ-ға жазылу</a>
+                                <a href="kz/enrollment-adult/start.html" class="btn white-btn btn-block">Спорт клубына жазылу</a>
+                            </div>
+                            <a href="kz.1.html#" class="promo-wrapper__link" data-toggle="modal"
+                               data-target="#supportModal">Спорт басқармасына хат жазу</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-wrapper">
+                            <div class="card-grid">
+                                <div class="card-item">
+                                    <img src="images/almaty/card-img-1.jpg" alt="" class="card-item__img">
+                                    <div class="card-box">
+                                        <h3 class="card-box__title">Олимпиадалық емес спорт түрлері</h3>
+                                        <a href="kz/site/sport-page@id=1.html" class="card-box__link">Толығырақ білу</a>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <img src="images/almaty/card-img-2.jpg" alt="" class="card-item__img">
+                                    <div class="card-box">
+                                        <h3 class="card-box__title">Жазғы олимпиадалық спорт түрлері</h3>
+                                        <a href="kz/site/sport-page@id=2.html" class="card-box__link">Толығырақ білу</a>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <img src="images/almaty/card-img-3.jpg" alt="" class="card-item__img">
+                                    <div class="card-box">
+                                        <h3 class="card-box__title">Қысқы олимпиадалық спорт түрлері</h3>
+                                        <a href="kz/site/sport-page@id=3.html" class="card-box__link">Толығырақ білу</a>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <img src="images/almaty/card-img-4.jpg" alt="" class="card-item__img">
+                                    <div class="card-box">
+                                        <h3 class="card-box__title">Ұлттық спорт түрлері</h3>
+                                        <a href="kz/site/sport-page@id=4.html" class="card-box__link">Толығырақ білу</a>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <img src="images/almaty/card-img-5.jpg" alt="" class="card-item__img">
+                                    <div class="card-box">
+                                        <h3 class="card-box__title">Паралимпиадалық, Сурдлимпиадалық адаптивные - бейімді спорт түрлері</h3>
+                                        <a href="kz/site/sport-page@id=5.html" class="card-box__link">Толығырақ білу</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="organization-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="organization-wrapper">
+                            <h2 class="organization-wrapper__title">Спорт ұйымдары</h2>
+                            <div class="organization-wrap">
+                                <a href="kz/organizations/index@SearchOrganizationForm[tipy_organizatsiy][0]=1&amp;SearchOrganizationForm[tipy_organizatsiy][1]=3.html" class="section-item">
+                                    <img src="images/almaty/organization-img-1.jpg" alt="" class="section-item__img">
+                                    <div class="section-box">
+                                        <p class="section-item__text">Спорт мектептері</p>
+                                    </div>
+                                </a>
+                                <a href="kz/organizations/index@SearchOrganizationForm[tipy_organizatsiy][0]=2.html" class="section-item">
+                                    <img src="images/almaty/organization-img-2.jpg" alt="" class="section-item__img">
+                                    <div class="section-box">
+                                        <p class="section-item__text">Спорт объектілері</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <h2 class="organization-wrapper__title">Карталардан спорт мектептерін және спорт объектілерін іздеу</h2>
+                        </div>
+                        <div class="organization-wrap organization-wrap--one">
+                            <a href="kz/organizations/index@open-map=1.html" class="section-item">
+                                <img src="images/almaty/organization-img-3.jpg" alt="" class="section-item__img">
+                                <div class="section-box">
+                                    <svg viewBox="0 0 29 41" fill="none" class="section-box__icon">
+                                        <path d="M14.5 0C10.6544 0 6.96623 1.51187 4.24695 4.20302C1.52767 6.89416 0 10.5441 0 14.35C0 25.1125 14.5 41 14.5 41C14.5 41 29 25.1125 29 14.35C29 10.5441 27.4723 6.89416 24.753 4.20302C22.0338 1.51187 18.3456 0 14.5 0V0ZM14.5 19.475C13.4758 19.475 12.4746 19.1744 11.6229 18.6113C10.7713 18.0481 10.1076 17.2477 9.71562 16.3113C9.32367 15.3748 9.22112 14.3443 9.42093 13.3502C9.62075 12.356 10.114 11.4428 10.8382 10.7261C11.5624 10.0093 12.4852 9.52122 13.4897 9.32347C14.4943 9.12573 15.5355 9.22722 16.4818 9.61512C17.428 10.003 18.2368 10.6599 18.8058 11.5027C19.3749 12.3455 19.6786 13.3364 19.6786 14.35C19.6786 15.023 19.5446 15.6895 19.2844 16.3113C19.0241 16.933 18.6427 17.498 18.1618 17.9739C17.6809 18.4498 17.11 18.8273 16.4818 19.0849C15.8535 19.3424 15.1801 19.475 14.5 19.475V19.475Z"
+                                              fill="white"/>
+                                    </svg>
+                                    <p class="section-item__text">Спорт мектептері</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="services-wrapper">
+                        <h2 class="organization-wrapper__title">Көрсетілетін қызметтер</h2>
+                        <div class="services-grid">
+                                                        <a href="kz/enrollment-boarding-school/start.html" class="services-item">
+                                Олимпиадалық резервтің мамандандырылған мектептерге және спорттағы дарынды балаларға арналған облыстық мектеп-интернаттарға қабылдау                            </a>
+                                                                                    <a href="kz/enrollment-sport-school/start.html" class="services-item">
+                                Балалар-жасөспірімдер спорт мектептеріне, мүгедектігі бар адамдарға арналған спорт мектептеріне құжаттарды қабылдау                            </a>
+                                                                                    <a href="kz/enrollment-adult/start.html" class="services-item">
+                                Спорт мектептеріне, мүгедектігі бар спорт мектептеріне 18+ спорт контингентін қабылдау                            </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="events-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="events-wrapper">
+                            <h2 class="organization-wrapper__title">Көрсетілетін қызметтер</h2>
+                            <a href="kz/site/upcoming-events.html" class="events-link">
+                                <svg viewBox="0 0 20 20" fill="none" class="events-link__icon">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.9013 2.66667H17.868C18.9541 2.66667 19.8346 3.5621 19.8346 4.66667V18C19.8346 19.1046 18.9541 20 17.868 20H2.13464C1.04848 20 0.167969 19.1046 0.167969 18V4.66667C0.167969 3.5621 1.04848 2.66667 2.13464 2.66667H4.1013V0H5.41241V2.66667H14.5902V0H15.9013V2.66667ZM8.03464 10.6667H4.1013V9.33333H8.03464V10.6667ZM15.9013 9.33333H11.968V10.6667H15.9013V9.33333ZM8.03464 14.6667H4.1013V13.3333H8.03464V14.6667ZM11.968 14.6667H15.9013V13.3333H11.968V14.6667Z" fill="white" />
+                                </svg>
+                                <span class="events-link__text">Спорт іс-шараларының күнтізбесі</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="new-services-section">
+            <div class="container position-relative">
+
+                <div class="icons-content">
+                    <div>
+                        <div class="icons icon-1">
+                            <svg class="icon">
+                                <use xlink:href="/images/new-services/sprite.svg#icon-1"></use>
+                            </svg>
+                        </div>
+                        <div class="icons icon-2">
+                            <svg class="icon">
+                                <use xlink:href="/images/new-services/sprite.svg#icon-2"></use>
+                            </svg>
+                        </div>
+                        <div class="icons icon-3">
+                            <svg class="icon">
+                                <use xlink:href="/images/new-services/sprite.svg#icon-3"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="icons icon-4">
+                            <svg class="icon">
+                                <use xlink:href="/images/new-services/sprite.svg#icon-4"></use>
+                            </svg>
+                        </div>
+                        <div class="icons icon-5">
+                            <svg class="icon">
+                                <use xlink:href="/images/new-services/sprite.svg#icon-5"></use>
+                            </svg>
+                        </div>
+                        <div class="icons icon-6">
+                            <svg class="icon">
+                                <use xlink:href="/images/new-services/sprite.svg#icon-6"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m-auto text-center">
+                    <a target="_blank" href="https://ed24.kz/kz" class="logo-img">
+                        <img src="images/new-services/logotype.svg" alt="edu-24"/>
+                    </a>
+                    <h2>Балалардың білімі үшін Цифрлық көрсетілетін қызметтер порталындағы көптеген мүмкіндіктер</h2>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+</div>
+<div class="main-page main-page--hidden">
+    <section class="promo-section position-relative">
+        <div class="logotype-desktop"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-7">
+                    <h1 class="title">Спортпен шұғылданатын жастар - дені сау ұлт</h1>
+                    <p class="description">Барлық спорт ұйымдарын, іс-шараларын ыңғайлы іздеу, сондай-ақ көптеген секциялар және жаттықтырушылар құрамы </p>
+                </div>
+                <div class="col-12">
+                    <div class="promo-btn-group">
+                        <div class="width-btn">
+                            <a href="kz/enrollment-sport-school/start.html"
+                               class="btn white-btn btn-block">Баланы секцияға жазу</a>
+                        </div>
+                                                    <div class="width-btn">
+                                <a href="kz/enrollment-adult/start.html"
+                                   class="btn second-light-btn btn-block">Секцияға жазылу</a>
+                            </div>
+                                                <div class="width-btn">
+                            <a href="kz.1.html#" class="btn second-btn btn-block" data-toggle="modal"
+                               data-target="#supportModal">Спорт басқармасына хат жазу</a>
+                        </div>
+                    </div>
+                    <div class="logotype">
+                        <img src="images/logo/logo-eorda.svg" alt="logo">
+                    </div>
+                </div>
+            </div>
+            <div class="card__item-wrap row">
+                <div class="col-lg-6">
+                    <a class="card__item-link" href="kz/site/sport-page@id=1.html">
+                        <div class="card__item">
+                            <div class="card__item-icons icon-2"></div>
+                            <h3 class="text-center">Олимпиадалық емес спорт түрлері</h3>
+                            <span class="btn second-light-btn btn-block">Толығырақ білу</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a class="card__item-link" href="kz/site/sport-page@id=2.html">
+                        <div class="card__item">
+                            <div class="card__item-icons icon-7"></div>
+                            <h3 class="text-center">Жазғы олимпиадалық спорт түрлері</h3>
+                            <span class="btn second-light-btn btn-block">Толығырақ білу</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a class="card__item-link" href="kz/site/sport-page@id=3.html">
+                        <div class="card__item">
+                            <div class="card__item-icons icon-3"></div>
+                            <h3 class="text-center">Қысқы олимпиадалық спорт түрлері</h3>
+                            <span class="btn second-light-btn btn-block">Толығырақ білу</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a class="card__item-link" href="kz/site/sport-page@id=4.html">
+                        <div class="card__item">
+                            <div class="card__item-icons icon-5"></div>
+                            <h3 class="text-center">Ұлттық спорт түрлері</h3>
+                            <span class="btn second-light-btn btn-block">Толығырақ білу</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-12">
+                    <a class="card__item-link" href="kz/site/sport-page@id=5.html">
+                        <div class="card__item">
+                            <div class="card__item-icons icon-8"></div>
+                            <h3 class="text-center">Паралимпиадалық, Сурдлимпиадалық адаптивные - бейімді спорт түрлері</h3>
+                            <span class="btn second-light-btn btn-block">Толығырақ білу</span>
+                        </div>
+                    </a>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="promo-section-bg-right"></div>
+    </section>
+
+    <section class="org-section">
+        <div class="container">
+            <h2 class="text-center">Спорт ұйымдары</h2>
+            <div class="row">
+                <div class="col-lg-6 padding-x cursor-pointer mb-3 mb-lg-0"
+                     onclick="location.href='/kz/organizations/index?SearchOrganizationForm%5Btipy_organizatsiy%5D%5B0%5D=1&SearchOrganizationForm%5Btipy_organizatsiy%5D%5B1%5D=3'">
+                    <div class="card__item f-obj">
+                        <h3 class="col-lg-6">Спорт мектептері</h3>
+                    </div>
+                </div>
+                <div class="col-lg-6 padding-x cursor-pointer mb-3 mb-lg-0"
+                     onclick="location.href='/kz/organizations/index?SearchOrganizationForm%5Btipy_organizatsiy%5D%5B0%5D=2'">
+                    <div class="card__item s-obj">
+                        <h3 class="col-lg-6">Спорт объектілері</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="org-section__wrap">
+                <div class="search__block-maps col-lg-8 px-0">
+                    <img src="kz/image/full/3568-5-7"
+                         alt="map">
+                </div>
+            </div>
+            <h3 class="title col-lg-8">Карталардан спорт мектептерін және спорт объектілерін іздеу</h3>
+
+            <div class="d-flex justify-content-center">
+                <a href="kz/organizations/index@open-map=1.html" class="btn main-btn btn-with-icon">
+                    <svg class="icon">
+                        <use xlink:href="/images/sprite.svg#map"></use>
+                    </svg>
+                    <span>Карта ашу</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+            <section class="service-section">
+            <div class="service-section--wrap">
+                <div class="container">
+                    <h2 class="text-center">Көрсетілетін қызметтер</h2>
+                    <div class="row">
+                                                    <div class="col-lg-6 padding-x">
+                                <a href="kz/enrollment-boarding-school/start.html" class="card__item-link">
+                                    <div class="card__item">
+                                        <svg class="icon icon-1">
+                                            <use xlink:href="/images/sprite.svg#service-talent"></use>
+                                        </svg>
+                                        <h3>Олимпиадалық резервтің мамандандырылған мектептерге және спорттағы дарынды балаларға арналған облыстық мектеп-интернаттарға қабылдау</h3>
+                                    </div>
+                                </a>
+                            </div>
+                                                                            <div class="col-lg-6 padding-x">
+                                <a href="kz/enrollment-sport-school/start.html" class="card__item-link">
+                                    <div class="card__item">
+                                        <svg class="icon icon-2">
+                                            <use xlink:href="/images/sprite.svg#service-disabled"></use>
+                                        </svg>
+                                        <h3>Балалар-жасөспірімдер спорт мектептеріне, мүгедектігі бар адамдарға арналған спорт мектептеріне құжаттарды қабылдау</h3>
+                                    </div>
+                                </a>
+                            </div>
+                                                                                                    <div class="col-lg-6 padding-x mx-auto">
+                                <a href="kz/enrollment-adult/start.html" class="card__item-link">
+                                    <div class="card__item">
+                                        <svg class="icon icon-4">
+                                            <use xlink:href="/images/sprite.svg#service-disabled"></use>
+                                        </svg>
+                                        <h3>Спорт мектептеріне, мүгедектігі бар спорт мектептеріне 18+ спорт контингентін қабылдау</h3>
+                                    </div>
+                                </a>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </section>
+        <section class="events-section" id="events">
+        <div class="container">
+            <h2 class="text-center">Жуырда өтетін шаралар</h2>
+            <div class="row mb-lg-40 mb-0">
+                                    <div class="col-lg-4 mb-20">
+                        <div class="card__item-link">
+                            <div class="card__item d-flex flex-column">
+                                <h3>ЖДШ және АДШ бойынша ОЖЖ</h3>
+                                <div class="date">
+                                    <svg class="icon">
+                                        <use xlink:href="/images/sprite.svg#date"></use>
+                                    </svg>
+                                    <span>03.08.2024 - 18.08.2024</span>
+                                </div>
+                                <p class="mb-3">Қатысушылар:
+                                    <span>10</span></p>
+                                <p class="mb-3">Өткізу орны:
+                                    <span>г.Щучинск</span></p>
+                                <p>Жауапты: <span>Цыганова А.В.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4 mb-20">
+                        <div class="card__item-link">
+                            <div class="card__item d-flex flex-column">
+                                <h3>Жазғы президенттік көпсайыз (бессайыз жүгіру )ересектер арасында ҚР Кубоғы </h3>
+                                <div class="date">
+                                    <svg class="icon">
+                                        <use xlink:href="/images/sprite.svg#date"></use>
+                                    </svg>
+                                    <span>14.08.2024 - 22.08.2024</span>
+                                </div>
+                                <p class="mb-3">Қатысушылар:
+                                    <span>2</span></p>
+                                <p class="mb-3">Өткізу орны:
+                                    <span></span></p>
+                                <p>Жауапты: <span>Кнышев В.В.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4 mb-20">
+                        <div class="card__item-link">
+                            <div class="card__item d-flex flex-column">
+                                <h3>Классикалық шахматтан Қазақстан Республикасы балалар кубогының 5 кезеңі</h3>
+                                <div class="date">
+                                    <svg class="icon">
+                                        <use xlink:href="/images/sprite.svg#date"></use>
+                                    </svg>
+                                    <span>21.08.2024 - 30.08.2024</span>
+                                </div>
+                                <p class="mb-3">Қатысушылар:
+                                    <span>280</span></p>
+                                <p class="mb-3">Өткізу орны:
+                                    <span>ДЮСШ №3</span></p>
+                                <p>Жауапты: <span>Русанов П.В.   Уралбаев А.А.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4 mb-20">
+                        <div class="card__item-link">
+                            <div class="card__item d-flex flex-column">
+                                <h3> Қысқы демысты тиімді  пайдалану мақсатында  Қазақ күресінен 2012-2014ж.т. кіші жасөспірімдер арасындағы топ  аралық мектеп біріншілгінің</h3>
+                                <div class="date">
+                                    <svg class="icon">
+                                        <use xlink:href="/images/sprite.svg#date"></use>
+                                    </svg>
+                                    <span>04.12.2024 - 04.01.2024</span>
+                                </div>
+                                <p class="mb-3">Қатысушылар:
+                                    <span>40</span></p>
+                                <p class="mb-3">Өткізу орны:
+                                    <span>Қостанай облысы Жангелдин ауданы Торғай с </span></p>
+                                <p>Жауапты: <span>Молдагассимов А</span></p>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+
+            <div class="d-flex justify-content-center">
+                <a href="kz/site/upcoming-events.html" class="btn main-btn btn-with-icon">
+                    <svg class="icon">
+                        <use xlink:href="/images/sprite.svg#date"></use>
+                    </svg>
+                    <span>Спорт іс-шараларының күнтізбесі</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="new-services-section">
+        <div class="container position-relative">
+
+            <div class="icons-content">
+                <div>
+                    <div class="icons icon-1">
+                        <svg class="icon">
+                            <use xlink:href="/images/new-services/sprite.svg#icon-1"></use>
+                        </svg>
+                    </div>
+                    <div class="icons icon-2">
+                        <svg class="icon">
+                            <use xlink:href="/images/new-services/sprite.svg#icon-2"></use>
+                        </svg>
+                    </div>
+                    <div class="icons icon-3">
+                        <svg class="icon">
+                            <use xlink:href="/images/new-services/sprite.svg#icon-3"></use>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <div class="icons icon-4">
+                        <svg class="icon">
+                            <use xlink:href="/images/new-services/sprite.svg#icon-4"></use>
+                        </svg>
+                    </div>
+                    <div class="icons icon-5">
+                        <svg class="icon">
+                            <use xlink:href="/images/new-services/sprite.svg#icon-5"></use>
+                        </svg>
+                    </div>
+                    <div class="icons icon-6">
+                        <svg class="icon">
+                            <use xlink:href="/images/new-services/sprite.svg#icon-6"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-auto text-center">
+                <a target="_blank" href="https://ed24.kz/kz" class="logo-img">
+                    <img src="images/new-services/logotype.svg" alt="edu-24"/>
+                </a>
+                <h2>Балалардың білімі үшін Цифрлық көрсетілетін қызметтер порталындағы көптеген мүмкіндіктер</h2>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+</main>
+
+
+<footer class="footer footer-almaty">
+    <div class="container">
+        
+        <hr class="d-lg-block d-none "/>
+        <div class="text-center f-link">
+            <p class="f-body footer-copyright">Интернет-ресурс, оның құрылымы, форматты-логикалық бақылау ережелері жəне орналастырылған медиа-контент Қазақстан Республикасының «Авторлық құқық жəне сабақтас құқықтар туралы» заңымен қорғалады. Эверест ЖМ, 2021©</p>
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="supportModal" tabindex="-1" role="dialog" aria-labelledby="supportModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="supportModalLabel">Спорт басқармасына өтініш</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Тегі, аты, әкесінің аты:</label>
+                        <input type="text" class="form-control" id="sender-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Телефон нөмірі                            :</label>
+                        <input type="text" class="form-control" id="sender-phone" data-mask="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label">Хабарлама мәтіні                            :</label>
+                        <textarea class="form-control" id="message-text" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Күшін жою</button>
+                <button type="button" class="btn btn-primary"
+                        id="send-message">Хабарламаны жөнелту</button>
+            </div>
+        </div>
+    </div>
+</div><script>var Messages = {"SNOW_MORE":"Тағы жүктеу","RECEIVE_VERIFY_CODE_SMS":"SMS арқылы растау кодын алу","RECEIVE_VERIFY_CODE_EMAIL":"Email арқылы растау кодын алу","FAILED_SEND_VERIFY_CODE":"Растау коды жіберілмеді","SUCCESS_SEND_VERIFY_CODE":"Растау коды сәтті жіберілді","FAILED_TO_GET_DATA":"Деректер табылмады","YOU_MUST_SELECT_A_TRAINING_PROFILE":"Оқу бейінін таңдау қажет","UNABLE_TO_APPLY_AGE_IS":"Өтінішті беруді әрі қарай жалғастыру мүмкін емес. Жасы:","GO_TO":"Өту","NOTHING_IS_SELECTED":"Ештеңе таңдалмады","ALL":"Барлығы","NO_SUPPORT":"<div><h4 class=\"alert-heading\">Кешіріңіз, Сіз жұмыс емес уақытта хабарластыңыз.</h4><p>Техникалық қолдау қызметінің жұмыс кестесі - жұмыс күндері, сағат 9:00-ден бастап 18:00-ге дейін.</p><hr><p class=\"mb-0\">Жұмыс күні басталған соң парақшаны жаңартып көріңіз.<br>Рахмет</p></div>","ERROR":"Қате","UNABLE_TO_APPLY_CITY_CHECK":"Өтініш беруді жалғастыру мүмкін емес. Тіркелген мекенжайы қызмет көрсетілетін қалаға сәйкес келмейді","UNABLE_TO_APPLY_PARENT_AGE":"Өтініш беруді жалғастыру мүмкін емес. Заңды өкілдің жасы 18-ге толған болу керек","UNABLE_TO_APPLY_APPLICANT_AGE":"Өтініш беруді жалғастыру мүмкін емес. Өтініш берушінің жасы 18-ге толған болу керек","ERROR_SAME_IINS":"Баланың және заңды өкілдің жасы бірдей бола алмайды","YOU_MUST_SELECT_THE_CURRENT_ORGANIZATION":"Қазіргі ұйымды таңдау қажет","TO_CHOOSE":"To chose","CHOSEN":"Таңдалды","SHOW_MORE":"Тағы көрсету..."}</script><div class="alert alert--hide"></div>
+
+
+            <script>var LHC_API = LHC_API||{};
+            LHC_API.args = {mode:'widget',lhc_base_url:'//support.e-orda.kz/index.php/',wheight:450,wwidth:350,pheight:520,pwidth:500,leaveamessage:true,department:["46"],check_messages:false,proactive:false,lang:'rus/'};
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.setAttribute('crossorigin','anonymous'); po.async = true;
+                var date = new Date();po.src = '//support.e-orda.kz/design/defaulttheme/js/widgetv2/index.js?'+(""+date.getFullYear() + date.getMonth() + date.getDate());
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+    
+<script src="assets/ad15b6a8/jquery.js@v=1721220178"></script>
+<script src="assets/71d79331/js/bootstrap.bundle.js@v=1721220178"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=38bc483f-f846-4395-9bc9-cdc3cca71845&amp;lang=ru_RU"></script>
+<script src="js/map.js@v=1686801454"></script>
+<script src="libs/slick/slick.min.js@v=1686801454"></script>
+<script src="libs/nice-select/jquery.nice-select.min.js@v=1686801454"></script>
+<script src="libs/bootstrap/bootstrap-multiselect.js@v=1686801454"></script>
+<script src="libs/fancybox/jquery.fancybox.min.js@v=1686801454"></script>
+<script src="libs/inputmask/jquery.maskedinput.min.js@v=1686801454"></script>
+<script src="js/script.js@v=1721219990"></script>
+<script src="js/defaultSearch.js@v=1693483620"></script>
+<script src="js/jquery.doubleScroll.js@v=1693483620"></script>
+<script src="assets/6d082268/yii.js@v=1721220178"></script>
+<script src="assets/666c9d38/jquery.inputmask.js@v=1721220178"></script>
+<script>jQuery(function ($) {
+    var lang = $('body').data('lang')
+    var d = new Date(2024,7,12,16,10,24);
+    function refreshTime() {
+        $.post("/" + lang + "/site/get-time", function(data) {
+            d = new Date(data.y, data.m, data.d, data.h, data.min, data.s);
+            update();
+        });
+    }  
+    
+    function update() {
+         var month = d.getMonth()+1 < 10 
+                    ? '0' + (d.getMonth()+1)
+                    : d.getMonth()+1;
+         var day = d.getDate() < 10 
+                    ? '0' + d.getDate() 
+                    : d.getDate();
+         var year = d.getFullYear();   
+            
+         var hours = d.getHours() == 0 
+                    ? '00'
+                    : d.getHours();
+            
+         var minutes = d.getMinutes() < 10 
+                    ? '0' + d.getMinutes() 
+                    : d.getMinutes();
+      
+        var seconds = d.getSeconds() < 10 
+                    ? '0' + d.getSeconds() 
+                    : d.getSeconds();     
+       
+       d.setSeconds(d.getSeconds() + 1);
+            $('#clock-text').text((year + '.' + month + '.' + day + ' ' + hours +':' + minutes + ':' + seconds ));
+    }
+    
+    update();
+    window.setInterval(update, 1000); 
+    window.setInterval(refreshTime, 1000*60*5);
+
+});</script></body>
+</html>
